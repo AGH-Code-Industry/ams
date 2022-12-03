@@ -12,3 +12,4 @@ Nazywajmy nasze sceny ImieNazwisko.
  - Text Mesh Pro Essentials
  - ProBuilder
  - Cinemachine
+ - Quick Outline
