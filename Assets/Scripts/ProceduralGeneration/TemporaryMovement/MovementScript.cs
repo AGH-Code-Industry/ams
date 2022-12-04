@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
-    #region "Variables"
-    public Rigidbody Rigid;
-    public float MouseSensitivity;
-    public float MoveSpeed;
-    #endregion
+    [Header("Variables")]
+    private float horizontalMovement;
+    private float verticalMovement;
+    public float speed;
+    public float drag;
+    public float rotationSpeed;
+
+    [Header("References")]
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+    }
 
     void Update()
     {
-        Rigid.MoveRotation(Rigid.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * MouseSensitivity, 0)));
-        Rigid.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * MoveSpeed) + (transform.right * Input.GetAxis("Horizontal") * MoveSpeed));
+        horizontalMovement = Input.GetAxisRaw("Horizontal");
+        verticalMovement = Input.GetAxisRaw("Vertical");
+
+        Vector3 movementDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
+
+        rb.AddForce(movementDirection * speed, ForceMode.Force);
+        rb.drag = drag;
+
+        if(movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }
