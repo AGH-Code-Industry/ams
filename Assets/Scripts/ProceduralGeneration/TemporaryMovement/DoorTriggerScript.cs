@@ -11,4 +11,12 @@ public class DoorTriggerScript : MonoBehaviour
     {
         _door = this.transform.parent.gameObject;
     }
+
+    private void OnTriggerStay(Collider col)
+    {
+       if(col.name == "Player" && Input.GetKeyDown(KeyCode.E)) //change name to tag
+        {
+            _door.SetActive(false);
+        }
+    }
 }
