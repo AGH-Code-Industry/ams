@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoomController : MonoBehaviour
 {
     [Header("References")]
-    private GameObject _floor;
     private List<GameObject> _doors;
     private bool _isOpened;
     private float _doorCooldown;
@@ -15,12 +14,8 @@ public class RoomController : MonoBehaviour
         _doors = new List<GameObject>();
 
         foreach(Transform child in gameObject.transform)
-        {
-            if(child.CompareTag("Floor"))
-            {
-                _floor = child.gameObject;
-            }     
-            else if(child.CompareTag("Door"))
+        {         
+            if(child.CompareTag("Door"))
             {
                 _doors.Add(child.gameObject);
             }          
