@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,36 +6,72 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
     [Header("Variables")]
-    private float horizontalMovement;
-    private float verticalMovement;
+    private float _horizontalMovement;
+    private float _verticalMovement;
     public float speed;
-    public float drag;
-    public float rotationSpeed;
+    private Camera _mainCamera;
 
     [Header("References")]
-    private Rigidbody rb;
+    private Rigidbody _rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        _rb = GetComponent<Rigidbody>();
+        _rb.freezeRotation = true;
+        _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
     }
 
     void Update()
     {
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
-        verticalMovement = Input.GetAxisRaw("Vertical");
+        _horizontalMovement = Input.GetAxisRaw("Horizontal");
+        _verticalMovement = Input.GetAxisRaw("Vertical");
+        
+        LookAtCursor();
 
-        Vector3 movementDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
+        // Vector3 movementDirection = transform.forward * _verticalMovement + transform.right * _horizontalMovement;
+        //
+        // _rb.AddForce(movementDirection * speed, ForceMode.Force);
+        // _rb.drag = drag;
+        //
+        // if(movementDirection != Vector3.zero)
+        // {
+        //     Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+        //
+        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        // }
+        
+        
+    }
 
-        rb.AddForce(movementDirection * speed, ForceMode.Force);
-        rb.drag = drag;
-
-        if(movementDirection != Vector3.zero)
+    private void LookAtCursor() {
+        Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+ 
+        if (groundPlane.Raycast(cameraRay, out rayLength))
         {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.cyan);
+ 
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
+    }
+
+    private void FixedUpdate() {
+        Vector3 moveDirection = new Vector3(0,0,0); 
+        if (_horizontalMovement != 0) {
+            moveDirection += new Vector3(-1,0,1) * -_horizontalMovement;
+        }
+        if (_verticalMovement != 0) {
+            moveDirection += new Vector3(1,0,1) * _verticalMovement;
+        }
+        MoveToDirection(moveDirection);
+    }
+
+    void MoveToDirection(Vector3 direction) {
+        if (direction == Vector3.zero) {
+            return;
+        }
+        _rb.AddForce(direction * speed, ForceMode.Force);
     }
 }
