@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
@@ -19,28 +20,13 @@ public class MovementScript : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
         _mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        
     }
 
     void Update()
     {
         _horizontalMovement = Input.GetAxisRaw("Horizontal");
         _verticalMovement = Input.GetAxisRaw("Vertical");
-        
-        LookAtCursor();
-
-        // Vector3 movementDirection = transform.forward * _verticalMovement + transform.right * _horizontalMovement;
-        //
-        // _rb.AddForce(movementDirection * speed, ForceMode.Force);
-        // _rb.drag = drag;
-        //
-        // if(movementDirection != Vector3.zero)
-        // {
-        //     Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        //
-        //     transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        // }
-        
-        
     }
 
     private void LookAtCursor() {
@@ -66,6 +52,7 @@ public class MovementScript : MonoBehaviour
             moveDirection += new Vector3(1,0,1) * _verticalMovement;
         }
         MoveToDirection(moveDirection);
+        LookAtCursor();
     }
 
     void MoveToDirection(Vector3 direction) {
