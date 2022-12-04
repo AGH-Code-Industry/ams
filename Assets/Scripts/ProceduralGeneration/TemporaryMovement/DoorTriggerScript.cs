@@ -16,7 +16,7 @@ public class DoorTriggerScript : MonoBehaviour
     {
        if(col.name == "Player" && Input.GetKeyDown(KeyCode.E)) //change name to tag
         {
-            _door.SetActive(false);
+            _door.SetActive(false); //can be changed to Animation etc.
         }
     }
 }
