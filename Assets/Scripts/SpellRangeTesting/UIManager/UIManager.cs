@@ -4,28 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour
-{
+public class UIManager : MonoBehaviour {
    [SerializeField] TMP_Text timeText;
    [SerializeField] TMP_Text distanceText;
+   [SerializeField] private GameObject measuredDataDisplay;
 
    public static UIManager instance;
    public List<MeasuredData> measuredDataList = new List<MeasuredData>();
 
    // Start is called before the first frame update
-   void Start()
-   {
+   void Start() {
       instance = this;
    }
 
-   public MeasuredData StartMeasure(Vector3 startPos)
-   {
+   public MeasuredData StartMeasure(Vector3 startPos) {
       MeasuredData currentMeasure = new MeasuredData(new TimeSpan(DateTime.Now.Ticks).TotalSeconds, startPos);
       return currentMeasure;
    }
 
-   public void StopMeasure(Vector3 endPos, MeasuredData currentMeasure)
-   {
+   public void StopMeasure(Vector3 endPos, MeasuredData currentMeasure) {
       currentMeasure.endPosition = endPos;
       currentMeasure.endTime = new TimeSpan(DateTime.Now.Ticks).TotalSeconds;
 

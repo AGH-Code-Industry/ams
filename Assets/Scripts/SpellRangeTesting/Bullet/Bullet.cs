@@ -4,24 +4,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
-{
+public class Bullet : MonoBehaviour {
    [SerializeField] private float _bulletSpeed;
 
    public MeasuredData currentMeasure;
 
-   private void Start()
-   {
+   private void Start(){
       currentMeasure = UIManager.instance.StartMeasure(transform.position);
    }
 
    // Update is called once per frame
-   void Update()
-   {
+   void Update() {
       transform.position += transform.rotation * new Vector3(0, 0, 1) * _bulletSpeed * Time.deltaTime;
 
-      if (new TimeSpan(DateTime.Now.Ticks).TotalSeconds - currentMeasure.startTime > 5)
-      {
+      if (new TimeSpan(DateTime.Now.Ticks).TotalSeconds - currentMeasure.startTime > 5) {
          UIManager.instance.StopMeasure(transform.position, currentMeasure);
          Destroy(this);
       }
