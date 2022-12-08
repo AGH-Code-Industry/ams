@@ -10,17 +10,16 @@ public class MeasuredDataDisplay : MonoBehaviour {
     [SerializeField] TMP_Text spellNameText;
 
     Vector3 startPosition;
-    double startTime;
+    float startTime;
 
     private void Start() {
         startPosition = transform.position;
-        startTime = new TimeSpan(DateTime.Now.Ticks).TotalSeconds;
+        startTime = Time.time;
     }
 
     private void Update() {
-        float time = (float) ((new TimeSpan(DateTime.Now.Ticks).TotalSeconds - startTime) * (MathF.PI/8) % (2*Math.PI));
-
-        Debug.Log(time);
+        float time = (Time.time - startTime) * (MathF.PI/8);
+        
         transform.position = new Vector3(
             startPosition.x,
             startPosition.y + Mathf.Sin(time)*0.4f,
