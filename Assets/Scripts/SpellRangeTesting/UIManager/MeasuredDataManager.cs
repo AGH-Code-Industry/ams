@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour {
-   [SerializeField] TMP_Text timeText;
-   [SerializeField] TMP_Text distanceText;
-   [SerializeField] private GameObject measuredDataDisplay;
+public class MeasuredDataManager : MonoBehaviour {
+   [SerializeField] private GameObject measuredDataDisplayPrefab;
 
-   public static UIManager instance;
+   public static MeasuredDataManager instance;
    public List<MeasuredData> measuredDataList = new List<MeasuredData>();
 
    // Start is called before the first frame update
@@ -31,10 +29,18 @@ public class UIManager : MonoBehaviour {
 
       measuredDataList.Add(currentMeasure);
 
-      timeText.text = $"New Time: {currentMeasure.time:0.##}s";
-      distanceText.text = $"New Distance: {currentMeasure.distance:0.##}";
+      SpawnMeasuredDataDisplay(currentMeasure);
 
       string jsonString = JsonUtility.ToJson(currentMeasure);
       Debug.Log(jsonString);
+   }
+
+   private void SpawnMeasuredDataDisplay(MeasuredData currentMeasure){
+      GameObject measuredDataDisplay = Instantiate(measuredDataDisplayPrefab, currentMeasure.endPosition, Quaternion.identity);
+
+      measuredDataDisplay.transform.parent = this.gameObject.transform;
+      var measuredScript = measuredDataDisplay.GetComponent<MeasuredDataDisplay>();
+
+      measuredScript.AddTextValues(currentMeasure.time, currentMeasure.distance, "Test");
    }
 }

@@ -10,16 +10,16 @@ public class Bullet : MonoBehaviour {
    public MeasuredData currentMeasure;
 
    private void Start(){
-      currentMeasure = UIManager.instance.StartMeasure(transform.position);
+      currentMeasure = MeasuredDataManager.instance.StartMeasure(transform.position);
    }
 
    // Update is called once per frame
    void Update() {
       transform.position += transform.rotation * new Vector3(0, 0, 1) * _bulletSpeed * Time.deltaTime;
 
-      if (new TimeSpan(DateTime.Now.Ticks).TotalSeconds - currentMeasure.startTime > 5) {
-         UIManager.instance.StopMeasure(transform.position, currentMeasure);
-         Destroy(this);
+      if (new TimeSpan(DateTime.Now.Ticks).TotalSeconds - currentMeasure.startTime > 1) {
+         MeasuredDataManager.instance.StopMeasure(transform.position, currentMeasure);
+         Destroy(this.gameObject);
       }
    }
 }
