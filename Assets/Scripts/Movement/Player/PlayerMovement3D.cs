@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement3D : MonoBehaviour
 {
-
-    public float speed = 6.0f;
     private float horizontalInput;
     private float verticalInput;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    private bool isSprinting => canSprint && Input.GetKey(sprintKey);
+    
+    [SerializeField] private bool canSprint = true;
+    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] float baseSpeed = 8.0f;
+    [SerializeField] private float sprintSpeed = 16.0f;
 
-    // Update is called once per frame
+    private float nextDash = 0.0f;
+    [SerializeField] private KeyCode dashKey = KeyCode.Space;
+    [SerializeField] float dashSpeed = 30.0f;
+    [SerializeField] private float dashTime = 0.2f;
+    [SerializeField] private float dashCooldown = 4.0f;
+
     void Update()
     {
         //getting input
@@ -22,9 +27,36 @@ public class PlayerMovement3D : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         
         //moving 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        Vector3 moveDir = new Vector3(horizontalInput, 0f,verticalInput);
+        
+        if (moveDir.magnitude > 1.0f)
+        {
+            moveDir = moveDir.normalized;
+        }
 
+        if (Time.time > nextDash)
+        {
+            if (Input.GetKey(dashKey))
+            {
+                StartCoroutine(Dash(moveDir));
+                nextDash = Time.time + dashCooldown;
+            }
+        }
+        
+        transform.Translate(moveDir * (isSprinting ? sprintSpeed : baseSpeed) * Time.deltaTime);
+        
+    }
+    
+    IEnumerator Dash(Vector3 dir)
+    {
+        float startTime= Time.time;
+
+        while (Time.time < startTime + dashTime)
+        {
+            transform.Translate(dir * dashSpeed * Time.deltaTime);
+
+            yield return null;
+        }
     }
     
 }
