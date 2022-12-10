@@ -11,12 +11,12 @@ public class PlayerMovement3D : MonoBehaviour
     
     [SerializeField] private bool canSprint = true;
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
-    [SerializeField] float baseSpeed = 8.0f;
-    [SerializeField] private float sprintSpeed = 16.0f;
+    [SerializeField] float baseSpeed = 6.0f;
+    [SerializeField] private float sprintSpeed = 12.0f;
 
     private float nextDash = 0.0f;
     [SerializeField] private KeyCode dashKey = KeyCode.Space;
-    [SerializeField] float dashSpeed = 30.0f;
+    [SerializeField] float dashSpeed = 40.0f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 4.0f;
 
