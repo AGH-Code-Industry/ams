@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e40f53ae69f65478b8d83430556a82, type: 3}
   m_Name: FlyingChair 1
   m_EditorClassIdentifier: 
-  id: 1
+  id: 6
   itemName: "Krzes\u0142o"
   description: "Siema jestem lataj\u0105ce krzes\u0142o"
   icon: {fileID: 0}

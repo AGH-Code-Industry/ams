@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e40f53ae69f65478b8d83430556a82, type: 3}
   m_Name: "Ca\u0142kaNiew\u0142a\u015Bciwa"
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  description: 
+  id: 1
+  itemName: "Ca\u0142ka Niew\u0142a\u015Bciwa"
+  description: "Powalona troch\u0119, trzeba granice"
   icon: {fileID: 0}

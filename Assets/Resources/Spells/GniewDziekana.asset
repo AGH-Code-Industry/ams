@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e40f53ae69f65478b8d83430556a82, type: 3}
   m_Name: GniewDziekana
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  description: 
+  id: 7
+  itemName: Gniew Dziekana
+  description: "No chyba \u017Ce to Kluza"
   icon: {fileID: 0}

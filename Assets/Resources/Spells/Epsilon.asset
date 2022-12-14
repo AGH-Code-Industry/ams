@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e40f53ae69f65478b8d83430556a82, type: 3}
   m_Name: Epsilon
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  description: 
+  id: 4
+  itemName: "Jaki\u015B ma\u0142y epsilon"
+  description: "Bardzo ma\u0142a warto\u015B\u0107"
   icon: {fileID: 0}
