@@ -11,11 +11,11 @@ public class FloorScript : MonoBehaviour
     [Header("Variables")]
     private Vector3 _wallPos;
     private float _wallOffset;
-    [SerializeField] private MeshRenderer mesh;
+    [SerializeField] private MeshRenderer _mesh;
 
     private void Awake()
     {
-        _wallOffset = mesh.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x;
+        _wallOffset = _mesh.GetComponent<MeshFilter>().sharedMesh.bounds.extents.x;
 
         CreateLeft();
         CreateRight();
