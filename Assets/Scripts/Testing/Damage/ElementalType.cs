@@ -1,13 +1,11 @@
-﻿public enum Elemental
-{
-    fire,
-    water,
-    physical,
-}
+﻿using Testing.Damage;
 
-public struct ElementalType
+public enum ElementalType
 {
-    public Elemental elemental;
-    public int damage;
-    public int effectVal;
+    Fire,
+    Water,
+    Air,
+    Earth,
+    Electric,
+    Physical,
 }
