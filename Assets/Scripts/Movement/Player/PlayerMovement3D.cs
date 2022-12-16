@@ -57,12 +57,13 @@ public class PlayerMovement3D : MonoBehaviour
     
     IEnumerator Dash(Vector3 dir)
     {
-        float startTime= Time.time;
+        float startTime = Time.time;
 
-        while (Time.time < startTime + dashTime)
+        while(Time.time < startTime + dashTime)
         {
             // TODO:
-            transform.Translate(dir * dashSpeed * Time.deltaTime);
+            //transform.Translate(dir * dashSpeed * Time.deltaTime);
+            characterController.SimpleMove(transform.TransformVector(dir * dashSpeed));
 
             yield return null;
         }
