@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class PlayerMovement3D : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
+    private CharacterController characterController;
     
     private bool isSprinting => canSprint && Input.GetKey(sprintKey);
     
@@ -19,6 +21,11 @@ public class PlayerMovement3D : MonoBehaviour
     [SerializeField] float dashSpeed = 40.0f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 4.0f;
+
+    private void Awake()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
 
     void Update()
     {
@@ -43,8 +50,9 @@ public class PlayerMovement3D : MonoBehaviour
             }
         }
         
-        transform.Translate(moveDir * (isSprinting ? sprintSpeed : baseSpeed) * Time.deltaTime);
-        
+        //transform.Translate(moveDir * (isSprinting ? sprintSpeed : baseSpeed) * Time.deltaTime);
+        characterController.SimpleMove(transform.TransformVector(moveDir)  * (isSprinting ? sprintSpeed : baseSpeed));
+
     }
     
     IEnumerator Dash(Vector3 dir)
@@ -53,6 +61,7 @@ public class PlayerMovement3D : MonoBehaviour
 
         while (Time.time < startTime + dashTime)
         {
+            // TODO:
             transform.Translate(dir * dashSpeed * Time.deltaTime);
 
             yield return null;
