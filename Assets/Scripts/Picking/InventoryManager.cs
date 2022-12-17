@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     public Transform ItemContent;
     public GameObject InventoryItem;
     
+    
 
     private void Awake()
     {
