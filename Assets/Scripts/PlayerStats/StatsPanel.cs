@@ -12,7 +12,7 @@ public class StatsPanel : MonoBehaviour
     private void OnValidate()
     {
         statDisplays = GetComponentsInChildren<StatsDisplay>();
-        //UpdateStatsName();
+        UpdateStatsName();
     }
 
     public void SetStats(params PlayerStats[] charStats)
@@ -33,11 +33,12 @@ public class StatsPanel : MonoBehaviour
         }
     }
 
-    //public void UpdateStatsName()
-    //{
-    //    for (int i = 0; i < stats.Length; i++)
-    //    {
-    //        statDisplays[i].NameText.text = statNames[i];
-    //    }
-    //}
+    public void UpdateStatsName()
+    {
+        for (int i = 0; i < statNames.Length; i++)
+        {
+            statDisplays[i].NameText.text = statNames[i];
+        }
+    }
+
 }

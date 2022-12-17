@@ -299,7 +299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Agility
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Strength
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -694,8 +694,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121.6001, y: -299.5}
-  m_SizeDelta: {x: 246.4, y: 600}
+  m_AnchoredPosition: {x: 121.6001, y: -455.8}
+  m_SizeDelta: {x: 246.4, y: 925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746019778
 MonoBehaviour:
@@ -890,10 +890,10 @@ MonoBehaviour:
   - {fileID: 2046993320}
   - {fileID: 1918869039}
   statNames:
-  - Strength
-  - Protection
-  - Endurance
-  - Speed
+  - 1
+  - 2
+  - 3
+  - 4
 --- !u!1 &1093187953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Endurance
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1549,6 +1549,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376527873}
   m_CullTransparentMesh: 1
+--- !u!1 &1378685777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2213897129354524269, guid: 8815b428d20516a4eaf2c03de3b19050,
+    type: 3}
+  m_PrefabInstance: {fileID: 1884263493}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1378685778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378685777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0befe4d8c4857e24496cf5f43f2c9e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mana:
+    BaseValue: 100
+  Strength:
+    BaseValue: 100
+  Spell1:
+    BaseValue: 100
+  Spell2:
+    BaseValue: 100
 --- !u!1 &1684042493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1815,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1469611736028004784, guid: 8815b428d20516a4eaf2c03de3b19050,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2213897129354524257, guid: 8815b428d20516a4eaf2c03de3b19050,
         type: 3}
       propertyPath: m_RootOrder

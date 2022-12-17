@@ -30,12 +30,16 @@ using System;
     private float LastBaseValue = float.MinValue;
     
 
-    public PlayerStats(float baseValue)
+    public PlayerStats()
     {
-        BaseValue = baseValue;
         statsModifiers = new List<StatsModifier>();
         statsModifiersReadOnly = statsModifiers.AsReadOnly();
 
+    }
+
+    public PlayerStats(float baseValue) : this()
+    {
+        BaseValue = baseValue;
     }
 
     private int SortModifiers(StatsModifier a, StatsModifier b)
