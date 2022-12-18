@@ -2,20 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class PlayerFeatures
-//{
-//    public PlayerStats Strength;
-//}
-public class SpellStat
+public class _Spell0
 {
 
     public void Equip(PlayerFeatures c)
     {
-        //c.Strength.AddModifier(new StatsModifier(10, StatModType.Flat, this));
+        c.Mana.AddModifier(new StatsModifier(10, StatModType.Flat, this));
     }
 
     public void Unequip(PlayerFeatures c)
     {
-        //c.Strength.RemoveAllModifiersSource(this);
+        c.Mana.RemoveAllModifiersSource(this);
     }
 }
