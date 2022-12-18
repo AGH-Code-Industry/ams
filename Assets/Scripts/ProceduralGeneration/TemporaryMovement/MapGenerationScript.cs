@@ -7,13 +7,13 @@ public class MapGenerationScript : MonoBehaviour
     [Header("References")]
     [SerializeField] private List<GameObject> _rooms;
     [SerializeField] private List<GameObject> _floors;
-    private MeshFilter _mesh;
 
     [Header("Variables")]
-    [SerializeField] private float _worldScale;
+    [SerializeField] private int _worldScale;
     [SerializeField] private float _roomAmout;
+    [SerializeField] private float _corridorSize;
+    [SerializeField] private float _padding;
     private int _roomIndex;
-    private Vector3 _floorSize;
 
 
     private void Awake()
@@ -22,12 +22,15 @@ public class MapGenerationScript : MonoBehaviour
         RoomPlacement();
     }
 
-    private void Update()
+    private void Start()
     {
-        CheckingIfOverlapping();
+        IsOverlapping();
     }
 
-
+    private void Update()
+    {
+        IsOverlapping();
+    }
 
     private void AddRoomPrefabs()
     {
@@ -40,10 +43,11 @@ public class MapGenerationScript : MonoBehaviour
 
     private void RoomPlacement()
     {
+
         for(int i = 0; i < _roomAmout; i++)
         {
             _roomIndex = Random.Range(0, _rooms.Count);
-            Instantiate(_rooms[_roomIndex], new Vector3(Random.Range(0, _worldScale), 0, Random.Range(0, _worldScale)), Quaternion.Euler(0, Random.Range(0, 3) * 90, 0));           
+            Instantiate(_rooms[_roomIndex], Vector3.zero, Quaternion.Euler(0, Random.Range(0, 3) * 90, 0));           
         }
 
         foreach (GameObject floor in GameObject.FindGameObjectsWithTag("Floor"))
@@ -52,22 +56,81 @@ public class MapGenerationScript : MonoBehaviour
         }
     }
 
-    private void CheckingIfOverlapping()
+    private void IsOverlapping()
     {
 
+        //bool roomWasRerolled = true;
 
-        for (int i = 0; i < _floors.Count; i++)
-        {
-            for (int p = 0; p < _floors.Count; p++)
+       // while(roomWasRerolled)
+       // {
+            //roomWasRerolled = false;
+
+            foreach (GameObject floor in _floors)
             {
-                if (i != p)
+                Collider[] hit = Physics.OverlapBox(floor.transform.position, (floor.GetComponent<MeshRenderer>().bounds.size) / 2 + new Vector3(_padding, 0 , _padding), floor.transform.rotation);
+
+                foreach (Collider roomObject in hit)
                 {
-                    if (_floors[i].GetComponent<MeshCollider>().bounds.Intersects(_floors[p].GetComponent<MeshCollider>().bounds))
+                    if (!roomObject.gameObject.CompareTag("Floor"))
                     {
-                        _floors[i].transform.parent.position = new Vector3(Random.Range(0, _worldScale), 0, Random.Range(0, _worldScale));
+                        continue;
                     }
+
+                    if (roomObject.transform == floor.transform)
+                    {
+                        continue;
+                    }
+
+                    RerollPosition(floor);
+                    //roomWasRerolled = true;
                 }
             }
+       // }
+    }
+
+    private void RerollPosition(GameObject floor)
+    {
+        MeshRenderer roomSize = floor.GetComponent<MeshRenderer>();
+
+        float x = GenerateAxisPosition(roomSize.bounds.size.x);
+        float z = GenerateAxisPosition(roomSize.bounds.size.z);
+
+        floor.transform.parent.rotation = GenerateAxisRotation();
+
+        if(floor.transform.parent.rotation.y % 180 != 0)
+        {
+            x += 2.5f;
+            z += 2.5f;
+        }
+
+        floor.transform.parent.position = new Vector3(x, 0, z);
+    }
+
+    private float GenerateAxisPosition(float roomAxisSize)
+    {
+        float x = Mathf.RoundToInt(Random.Range(0, _worldScale / _corridorSize));
+
+        if(Mathf.RoundToInt(roomAxisSize) % (_corridorSize * 2) != 0)
+        {
+            x += _corridorSize / 2;
+        }
+
+        return x * _corridorSize;
+    }
+
+    private Quaternion GenerateAxisRotation()
+    {
+        return Quaternion.Euler(0, Random.Range(0, 3) * 90, 0);      
+    }
+
+    private void OnDrawGizmos()
+    {
+
+        foreach (GameObject floor in _floors)
+        {
+            Gizmos.color = Color.green;
+
+            Gizmos.DrawWireCube(floor.transform.position, (floor.GetComponent<MeshRenderer>().bounds.size) + new Vector3(_padding, 0, _padding));
         }
     }
 }

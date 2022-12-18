@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Wall
   - Room
+  - CorridorFloor
   layers:
   - Default
   - TransparentFX

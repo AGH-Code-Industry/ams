@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 
-public class FloorScript : MonoBehaviour
+public class CorridorFloorScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _wall;

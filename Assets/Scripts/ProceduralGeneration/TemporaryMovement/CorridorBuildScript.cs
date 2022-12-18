@@ -5,14 +5,14 @@ using UnityEngine;
 public class CorridorBuildScript : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private List<GameObject> _floors;
+    [SerializeField] private List<GameObject> _corridorFloors;
     [SerializeField] private List<GameObject> _walls;
 
     private void Awake()
     {
-        foreach(GameObject floor in GameObject.FindGameObjectsWithTag("Floor"))
+        foreach(GameObject floor in GameObject.FindGameObjectsWithTag("CorridorFloor"))
         {
-            _floors.Add(floor);
+            _corridorFloors.Add(floor);
         }
     }
 
