@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rooms: []
   _floors: []
-  _worldScale: 150
-  _roomAmout: 10
+  _worldScale: 500
+  _roomAmout: 50
   _corridorSize: 5
   _padding: 5
 --- !u!4 &410074464

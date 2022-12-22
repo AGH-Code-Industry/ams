@@ -97,12 +97,6 @@ public class MapGenerationScript : MonoBehaviour
 
         floor.transform.parent.rotation = GenerateAxisRotation();
 
-        if(floor.transform.parent.rotation.y % 180 != 0)
-        {
-            x += _corridorSize / 2;
-            z += _corridorSize / 2;
-        }
-
         floor.transform.parent.position = new Vector3(x, 0, z);
     }
 
