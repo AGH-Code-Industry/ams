@@ -10,7 +10,7 @@ public class PulsePellet : MonoBehaviour
     public pulseFire.PelletType behaviour;
 
 
-    //PURSUIT BEHAVIOUR
+    //FOR PURSUIT BEHAVIOUR
     GameObject target;
 
     private void OnCollisionEnter(Collision collision)
@@ -29,7 +29,7 @@ public class PulsePellet : MonoBehaviour
 
     public void Start()
     {
-        Destroy(this.gameObject, lifeSpan);
+        Destroy(gameObject, lifeSpan);
         StartCoroutine(disableCollisionForInitialisation());
         //Handle pellet behavior
     }
@@ -45,7 +45,6 @@ public class PulsePellet : MonoBehaviour
     private void FixedUpdate()
     {
         if (behaviour == pulseFire.PelletType.PURSUIT && target) {
-            Debug.Log("Targeting...");
             GetComponent<Rigidbody>().velocity += (target.transform.position - transform.position) * 20 * Time.deltaTime;
         }
     }
@@ -63,6 +62,7 @@ public class PulsePellet : MonoBehaviour
     {
         if (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())
         {
+            //disable target
             target = null;
         }
     }
@@ -71,8 +71,8 @@ public class PulsePellet : MonoBehaviour
     //Player Collision workaround (please change)
     IEnumerator disableCollisionForInitialisation()
     {
-        gameObject.GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(0.1f);
-        gameObject.GetComponent<Collider>().enabled = true;
+        GetComponent<Collider>().enabled = true;
     }
 }

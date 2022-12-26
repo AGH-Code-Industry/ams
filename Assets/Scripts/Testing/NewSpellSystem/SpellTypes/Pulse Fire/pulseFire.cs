@@ -7,7 +7,15 @@ public class pulseFire : SpellType
     public PulseFireInfo spellInfo;
     [System.Serializable]
     public enum PelletType { SIMPLE, PURSUIT }
+    /*Bug log for pursuit behaviour:
+        Postaæ siê dziwnie obraca podczas u¿ywania pulse Fire typu PURSUIT
 
+        Prawdopodobny powód:
+            Skrypt od obracania siê "trafia" w trigger u¿ywany przy detekcji magnetyzmu pocisków, przez co postaæ siê 
+            próbuje odbiæ w jego stronê.
+
+            Nie powinno byæ to problemem przy lepszej implementacji systemu obracania siê, ale jest to rzecz o której
+            warto pamiêtaæ na przysz³oœæ gdyby to nadal nie dzia³a³o.*/
 
 
     public override void Cast(Transform _origin)
