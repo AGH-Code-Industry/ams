@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54cc02d5f0b48f3419407b770bcc38b8, type: 3}
-  m_Name: testSpike
+  m_Script: {fileID: 11500000, guid: 7cfaeacadfd3eb14b8439d2010c7b64c, type: 3}
+  m_Name: testProjectile
   m_EditorClassIdentifier: 
   castTime: 0
-  cooldown: 0.2
-  pellet: {fileID: 0}
+  cooldown: 0
+  force: 1000
+  projectileLifeSpan: 2
+  projectile: {fileID: 4677660285048492493, guid: 2420809778e6327438ddbeca8c06e20a,
+    type: 3}
   elementals:
   - elemental: 2
-    damage: 10
+    damage: 50
     effectVal: 0

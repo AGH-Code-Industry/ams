@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerSpellManager : MonoBehaviour
 {
     public bool canCast = true;
+    public Transform spellOrigin;
 
     public KeyCode[] primaryBinds = { KeyCode.Mouse0, KeyCode.Mouse1 };
     public KeyCode[] secondaryBinds = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3};
@@ -16,9 +17,12 @@ public class PlayerSpellManager : MonoBehaviour
     Dictionary<KeyCode, SpellType> secondarySpellsDict;
 
     bool primaryCasting = false;
+    bool secondaryCasting = false;
 
     private void Start()
     {
+        primarySpellsDict = new Dictionary<KeyCode, SpellType>();
+        secondarySpellsDict = new Dictionary<KeyCode, SpellType>();
         for(int i=0; i<primarySpells.Length && i<primaryBinds.Length; i++)
         {
             primarySpellsDict.Add(primaryBinds[i], primarySpells[i].GetComponent<SpellType>());
@@ -32,6 +36,7 @@ public class PlayerSpellManager : MonoBehaviour
     private void Update()
     {
         UsePrimarySpell();
+        UseSecondarySpell();
     }
 
     void UsePrimarySpell()
@@ -42,7 +47,7 @@ public class PlayerSpellManager : MonoBehaviour
                 if (Input.GetKeyDown(entry.Key))
                 {
                     primaryCasting = true;
-                    primaryCooldown(entry.Value, entry.Key);
+                    StartCoroutine(primaryCooldown(entry.Value, entry.Key));
                 }
             }
         }
@@ -53,13 +58,34 @@ public class PlayerSpellManager : MonoBehaviour
         while (primaryCasting)
         {
             yield return new WaitForSeconds(spell.GetCooldown());
-            spell.Cast(gameObject.transform);
+            spell.Cast(spellOrigin);
 
-            if (Input.GetKeyUp(key))
+            if (!Input.GetKey(key))
             {
                 primaryCasting = false;
                 spell.StopCast();
             }
         }
+    }
+
+    void UseSecondarySpell()
+    {
+        if (canCast && !secondaryCasting) {
+            foreach (KeyValuePair<KeyCode, SpellType> entry in secondarySpellsDict)
+            {
+                if (Input.GetKeyDown(entry.Key))
+                {
+                    secondaryCasting = true;
+                    SecondaryCast(entry.Value);
+                }
+            }
+        }
+    }
+
+    void SecondaryCast(SpellType spell) {
+        //Add cast time functionality
+        spell.Cast(spellOrigin);
+        secondaryCasting = false;
+        //Add cooldown functionality?
     }
 }

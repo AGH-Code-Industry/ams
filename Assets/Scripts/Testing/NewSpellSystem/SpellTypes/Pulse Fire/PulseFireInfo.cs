@@ -8,5 +8,7 @@ public class PulseFireInfo : ScriptableObject
     public float castTime;
     public float cooldown;
     public Rigidbody pellet;
+    public int pelletLifeSpan;
+    public pulseFire.PelletType pelletBehaviour;
     public ElementalType[] elementals;
 }
