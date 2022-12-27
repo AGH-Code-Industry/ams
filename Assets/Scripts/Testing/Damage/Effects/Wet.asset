@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee368f38a9f9469d87721b72b3c8e445, type: 3}
   m_Name: Wet
   m_EditorClassIdentifier: 
-  effectType: 0
-  effectReactions: []
+  effectType: 3
+  effectReactions:
+  - factor: {fileID: 11400000, guid: b56a8fbfbe21b6f44820e0fb8a4b244f, type: 2}
+    result: {fileID: 11400000, guid: 439738985c2a10e4d9f6962b390026fb, type: 2}
+  duration: 50

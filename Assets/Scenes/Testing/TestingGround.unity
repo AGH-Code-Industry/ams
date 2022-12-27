@@ -8839,6 +8839,7 @@ GameObject:
   - component: {fileID: 448794493}
   - component: {fileID: 448794496}
   - component: {fileID: 448794494}
+  - component: {fileID: 448794497}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -8933,6 +8934,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f4ba6f11502dde4a9a9708a994c4f60, type: 2}
   - {fileID: 11400000, guid: 1e8efaa0603f61145a9455c2f3f08f9c, type: 2}
   _activeSpellIndex: 0
+--- !u!114 &448794497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448794490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f44839763c1a543991e78e145557d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackElementals1:
+  - {fileID: 11400000, guid: 2389e1f7a5714f040910f31fd2136e5d, type: 2}
+  attackElementals2:
+  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
+  - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
+  attackElementals3:
+  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
 --- !u!1 &467256794
 GameObject:
   m_ObjectHideFlags: 0
