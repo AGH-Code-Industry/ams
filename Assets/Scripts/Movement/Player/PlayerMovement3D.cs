@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class PlayerMovement3D : MonoBehaviour
 {
+    
     private float horizontalInput;
     private float verticalInput;
     private CharacterController characterController;
-    
+
+
+    [SerializeField] private LayerMask aimLayerMask;
     private bool isSprinting => canSprint && Input.GetKey(sprintKey);
     
     [SerializeField] private bool canSprint = true;
@@ -29,18 +32,22 @@ public class PlayerMovement3D : MonoBehaviour
 
     void Update()
     {
+
         //getting input
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         
-        //moving 
-        Vector3 moveDir = new Vector3(horizontalInput, 0f,verticalInput);
         
+        //direction Vector
+        Vector3 moveDir = new Vector3(horizontalInput, 0f,verticalInput);
+
         if (moveDir.magnitude > 1.0f)
         {
             moveDir = moveDir.normalized;
         }
 
+        
+        //dash cooldown check
         if (Time.time > nextDash)
         {
             if (Input.GetKey(dashKey))
@@ -50,21 +57,18 @@ public class PlayerMovement3D : MonoBehaviour
             }
         }
         
-        //transform.Translate(moveDir * (isSprinting ? sprintSpeed : baseSpeed) * Time.deltaTime);
-        characterController.SimpleMove(transform.TransformVector(moveDir)  * (isSprinting ? sprintSpeed : baseSpeed));
-
+        
+        //moving
+        characterController.SimpleMove(moveDir  * (isSprinting ? sprintSpeed : baseSpeed));
+        
     }
     
     IEnumerator Dash(Vector3 dir)
     {
         float startTime = Time.time;
-
         while(Time.time < startTime + dashTime)
         {
-            // TODO:
-            //transform.Translate(dir * dashSpeed * Time.deltaTime);
             characterController.SimpleMove(transform.TransformVector(dir * dashSpeed));
-
             yield return null;
         }
     }
