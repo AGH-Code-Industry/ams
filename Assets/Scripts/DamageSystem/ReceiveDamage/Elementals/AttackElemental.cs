@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Testing.Damage.Elementals {
+namespace DamageSystem.ReceiveDamage.Elementals.Elementals {
     
     [CreateAssetMenu(fileName = "new AttackElemental", menuName = "ScriptableObjects/AttackElemental")]
     public class AttackElemental : Elemental {

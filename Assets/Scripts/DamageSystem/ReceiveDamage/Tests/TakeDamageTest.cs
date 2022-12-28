@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Testing.Damage;
-using Testing.Damage.Elementals;
+using DamageSystem.ReceiveDamage.Elementals;
+using DamageSystem.ReceiveDamage.Elementals.Elementals;
 using UnityEngine;
 
 public class TakeDamageTest : MonoBehaviour

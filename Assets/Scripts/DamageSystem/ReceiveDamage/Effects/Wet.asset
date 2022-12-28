@@ -16,4 +16,4 @@ MonoBehaviour:
   effectReactions:
   - factor: {fileID: 11400000, guid: b56a8fbfbe21b6f44820e0fb8a4b244f, type: 2}
     result: {fileID: 11400000, guid: 439738985c2a10e4d9f6962b390026fb, type: 2}
-  duration: 50
+  duration: 3

@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35094
+  m_Name: pb_Mesh28692
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8949,7 +8949,6 @@ MonoBehaviour:
   attackElementals1:
   - {fileID: 11400000, guid: 2389e1f7a5714f040910f31fd2136e5d, type: 2}
   attackElementals2:
-  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
   - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
   attackElementals3:
   - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
@@ -17864,7 +17863,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34598
+  m_Name: pb_Mesh28200
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

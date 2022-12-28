@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Testing.Damage
+namespace DamageSystem.ReceiveDamage.Elementals
 {
     public enum EffectType
     {
