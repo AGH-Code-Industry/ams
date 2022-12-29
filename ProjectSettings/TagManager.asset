@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Enemy
+  - Chest
+  - Item
+  - Wall
+  - Door
+  - Floor
   layers:
   - Default
   - TransparentFX
