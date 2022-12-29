@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    [SerializeField] private float _movementSpeed = 6f;
+    [SerializeField] public float _movementSpeed = 6f;
 
     void Update() {
         float mvX = Input.GetAxis("Horizontal");

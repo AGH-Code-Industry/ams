@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _Spell0
+public class Item
 {
-
     public void Equip(PlayerFeatures c)
     {
-        c.Mana.AddModifier(new StatsModifier(10, StatModType.Flat, this));
+        // Create the modifiers and set the Source to "this"
+        // Note that we don't need to store the modifiers in variables anymore
+        c.Strength.AddModifier(new StatsModifier(10, StatModType.Flat, this));
     }
 
     public void Unequip(PlayerFeatures c)
     {
-        c.Mana.RemoveAllModifiersSource(this);
+        // Remove all modifiers applied by "this" Item
+        c.Strength.RemoveAllModifiersFromSource(this);
     }
 }

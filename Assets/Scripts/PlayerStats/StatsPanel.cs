@@ -4,41 +4,51 @@ using UnityEngine;
 
 public class StatsPanel : MonoBehaviour
 {
-    [SerializeField] StatsDisplay[] statDisplays;
+    [SerializeField] StatsDisplay[] statsDisplay;
     [SerializeField] string[] statNames;
-
+    [SerializeField] float[] statValues;
     private PlayerStats[] stats;
+    
 
-    private void OnValidate()
+    public void OnValidate()
     {
-        statDisplays = GetComponentsInChildren<StatsDisplay>();
-        UpdateStatsName();
+        statsDisplay = GetComponentsInChildren<StatsDisplay>();
+        
+        UpdateStatNames();
+        UpdateStatValues();
     }
 
     public void SetStats(params PlayerStats[] charStats)
     {
         stats = charStats;
 
-        for (int i = 0; i < stats.Length; i++)
+        if (stats.Length > statsDisplay.Length)
         {
-            statDisplays[i].gameObject.SetActive(i < statDisplays.Length);
+            Debug.LogError("Not Enough Stat Displays!");
+            return;
+        }
+
+        for (int i = 0; i < statsDisplay.Length; i++)
+        {
+            statsDisplay[i].Stat = i < stats.Length ? stats[i] : null;
+            statsDisplay[i].gameObject.SetActive(i < stats.Length);
         }
     }
 
-    public void UpdateStatsValue()
+    public void UpdateStatValues()
     {
-        for (int i = 0; i < stats.Length; i++)
+        
+        for (int i = 0; i < statValues.Length; i++)
         {
-            statDisplays[i].ValueText.text = stats[i].Value.ToString();
+            statsDisplay[i].ValueText.text = statValues[i].ToString();
         }
     }
 
-    public void UpdateStatsName()
+    public void UpdateStatNames()
     {
         for (int i = 0; i < statNames.Length; i++)
         {
-            statDisplays[i].NameText.text = statNames[i];
+            statsDisplay[i].NameText.text = statNames[i];
         }
     }
-
 }

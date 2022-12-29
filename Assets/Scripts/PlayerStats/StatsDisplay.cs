@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
@@ -8,6 +10,9 @@ public class StatsDisplay : MonoBehaviour
 {
     public Text NameText;
     public Text ValueText;
+
+    [NonSerialized]
+    public PlayerStats Stat;
 
     private void OnValidate()
     {
