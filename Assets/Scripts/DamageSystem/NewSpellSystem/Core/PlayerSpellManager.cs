@@ -18,6 +18,8 @@ namespace DamageSystem.NewSpellSystem.Core
         Dictionary<KeyCode, SpellType> primarySpellsDict;
         Dictionary<KeyCode, SpellType> secondarySpellsDict;
 
+        KeyValuePair<KeyCode, SpellType> queuedSpell;
+
         bool primaryCasting = false;
         bool secondaryCasting = false;
 
@@ -43,13 +45,19 @@ namespace DamageSystem.NewSpellSystem.Core
 
         void UsePrimarySpell()
         {
-            if (canCast && !primaryCasting)
+            if (canCast)
             {
                 foreach (KeyValuePair<KeyCode, SpellType> entry in primarySpellsDict) {
                     if (Input.GetKeyDown(entry.Key))
                     {
-                        primaryCasting = true;
-                        StartCoroutine(primaryCooldown(entry.Value, entry.Key));
+                        if (!primaryCasting)
+                        {
+                            primaryCasting = true;
+                            StartCoroutine(primaryCooldown(entry.Value, entry.Key));
+                        }
+                        else {
+                            queuedSpell = new KeyValuePair<KeyCode, SpellType>(entry.Key, entry.Value);
+                        }
                     }
                 }
             }
@@ -57,8 +65,6 @@ namespace DamageSystem.NewSpellSystem.Core
 
         IEnumerator primaryCooldown(SpellType spell, KeyCode key)
         {
-            //Debug.Log(spell);
-
             while (primaryCasting)
             {
                 yield return new WaitForSeconds(spell.GetCooldown());
@@ -68,7 +74,17 @@ namespace DamageSystem.NewSpellSystem.Core
                 {
                     primaryCasting = false;
                     spell.StopCast();
+                   
                 }
+            }
+            if (queuedSpell.Value && queuedSpell.Value != spell)
+            {
+                primaryCasting = true;
+                StartCoroutine(primaryCooldown(queuedSpell.Value, queuedSpell.Key));
+            }
+            else
+            {
+                queuedSpell = new KeyValuePair<KeyCode, SpellType>(KeyCode.None, null);
             }
         }
 
@@ -86,11 +102,24 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        void SecondaryCast(SpellType spell) {
-            //Add cast time functionality
+        void SecondaryCast(SpellType spell) 
+        {
+            StartCoroutine(DelayedCast(spell.GetCastTime(), spell));
+        }
+
+        IEnumerator DelayedCast(float delay, SpellType spell)
+        {
+            Debug.Log("Casting " + spell);
+            yield return new WaitForSeconds(delay);
             spell.Cast(spellOrigin);
+            StartCoroutine(Cooldown(spell.GetCooldown()));
+        }
+
+        IEnumerator Cooldown(float cooldown) {
+            Debug.Log("Spell Cooldown: " + cooldown);
+            yield return new WaitForSeconds(cooldown);
             secondaryCasting = false;
-            //Add cooldown functionality?
+            Debug.Log("Can cast again");
         }
     }
 
