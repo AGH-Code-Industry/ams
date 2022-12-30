@@ -16,14 +16,8 @@ MonoBehaviour:
   cooldown: 0.08
   pellet: {fileID: 5388026953992196322, guid: 0b53bb248e0945140bbd018f94aab656, type: 3}
   pelletLifeSpan: 2
-  type: 1
+  pelletBehaviour: 0
   elementals:
-  - elemental: 2
-    damage: 3
-    effectVal: 0
-  - elemental: 0
-    damage: 2
-    effectVal: 0
-  - elemental: 1
-    damage: 3
-    effectVal: 0
+  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
+  - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
+  - {fileID: 11400000, guid: 2389e1f7a5714f040910f31fd2136e5d, type: 2}

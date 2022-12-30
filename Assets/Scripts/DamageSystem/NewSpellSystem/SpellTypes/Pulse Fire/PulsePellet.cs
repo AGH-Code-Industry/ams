@@ -17,6 +17,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         GameObject target;
 
         private void OnCollisionEnter(Collision collision) {
+            Debug.Log(collision.gameObject.GetComponent<Damageable>());
+            Debug.Log(damageInfo);
             if (collision.gameObject.GetComponent<Damageable>()) {
                 collision.gameObject.GetComponent<Damageable>().TakeDamage(damageInfo);
             }

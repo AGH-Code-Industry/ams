@@ -29,16 +29,19 @@ namespace DamageSystem.ReceiveDamage.Elementals {
 
             _currentHealth = Math.Clamp(_currentHealth - damageTaken, entity.isImmortal ? 1 : 0, entity.maxHealth);
 
-            if (_currentHealth == 0) Died.Invoke();
+            if (_currentHealth == 0) {
+                Debug.Log("Dead");
+                Died.Invoke();
+            };
 
             TakeEffect(damageInfo);
             return true;
         }
 
         private void TakeEffect(DamageInfo damageInfo) {
-            Debug.Log("-----------------------");
-            Debug.Log("Effects before:");
-            foreach (var effect in effects) Debug.Log(effect.baseInfo.effectType);
+            //Debug.Log("-----------------------");
+            //Debug.Log("Effects before:");
+            //foreach (var effect in effects) Debug.Log(effect.baseInfo.effectType);
 
             foreach (var attackElemental in damageInfo.elementals) {
                 var effectReaction =
@@ -66,18 +69,18 @@ namespace DamageSystem.ReceiveDamage.Elementals {
                 StartCoroutine(removeEffectByTime(newEffect));
             }
 
-            Debug.Log("-----------------------");
-            Debug.Log("Effects after:");
-            foreach (var effect in effects) Debug.Log(effect.baseInfo.effectType);
+            //Debug.Log("-----------------------");
+            //Debug.Log("Effects after:");
+            //foreach (var effect in effects) Debug.Log(effect.baseInfo.effectType);
         }
 
 
         private IEnumerator removeEffectByTime(ExtendedEffect effect) {
             yield return new WaitForSeconds(effect.baseInfo.duration);
             effects.Remove(effect);
-            Debug.Log("-----------------------");
-            Debug.Log("After remove:");
-            foreach (var effect1 in effects) Debug.Log(effect1.baseInfo.effectType);
+            //Debug.Log("-----------------------");
+            //Debug.Log("After remove:");
+            //foreach (var effect1 in effects) Debug.Log(effect1.baseInfo.effectType);
         }
     }
 }

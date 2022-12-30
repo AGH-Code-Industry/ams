@@ -18,6 +18,4 @@ MonoBehaviour:
   pelletLifeSpan: 3
   pelletBehaviour: 1
   elementals:
-  - elemental: 2
-    damage: 2
-    effectVal: 0
+  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}

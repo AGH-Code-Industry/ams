@@ -57,6 +57,8 @@ namespace DamageSystem.NewSpellSystem.Core
 
         IEnumerator primaryCooldown(SpellType spell, KeyCode key)
         {
+            //Debug.Log(spell);
+
             while (primaryCasting)
             {
                 yield return new WaitForSeconds(spell.GetCooldown());

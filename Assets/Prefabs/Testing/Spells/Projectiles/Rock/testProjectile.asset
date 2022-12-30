@@ -19,6 +19,4 @@ MonoBehaviour:
   projectile: {fileID: 4677660285048492493, guid: 2420809778e6327438ddbeca8c06e20a,
     type: 3}
   elementals:
-  - elemental: 2
-    damage: 50
-    effectVal: 0
+  - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}

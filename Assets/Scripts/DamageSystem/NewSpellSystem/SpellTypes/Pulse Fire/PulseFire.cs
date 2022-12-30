@@ -11,6 +11,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         [System.Serializable]
         public enum PelletType { SIMPLE, PURSUIT }
         /*Bug log for pursuit behaviour:
+         * 11
             Postaæ siê dziwnie obraca podczas u¿ywania pulse Fire typu PURSUIT
 
             Prawdopodobny powód:
