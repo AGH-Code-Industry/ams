@@ -27,14 +27,18 @@ namespace DamageSystem.NewSpellSystem.Core
         {
             primarySpellsDict = new Dictionary<KeyCode, SpellType>();
             secondarySpellsDict = new Dictionary<KeyCode, SpellType>();
+            Debug.Log("PRIMARY SPELLS:");
             for(int i=0; i<primarySpells.Length && i<primaryBinds.Length; i++)
             {
                 primarySpellsDict.Add(primaryBinds[i], primarySpells[i].GetComponent<SpellType>());
+                Debug.Log(primaryBinds[i] + " - " + primarySpells[i].name);
             }
 
+            Debug.Log("SECONDARY SPELLS:");
             for (int i = 0; i < secondarySpells.Length && i < secondaryBinds.Length; i++)
             {
                 secondarySpellsDict.Add(secondaryBinds[i], secondarySpells[i].GetComponent<SpellType>());
+                Debug.Log(secondaryBinds[i] + " - " + secondarySpells[i].name);
             }
         }
         private void Update()
@@ -67,8 +71,8 @@ namespace DamageSystem.NewSpellSystem.Core
         {
             while (primaryCasting)
             {
-                yield return new WaitForSeconds(spell.GetCooldown());
                 spell.Cast(spellOrigin);
+                yield return new WaitForSeconds(spell.GetCooldown());
 
                 if (!Input.GetKey(key))
                 {

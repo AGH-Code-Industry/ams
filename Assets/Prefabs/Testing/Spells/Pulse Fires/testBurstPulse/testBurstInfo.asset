@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54cc02d5f0b48f3419407b770bcc38b8, type: 3}
-  m_Name: pursuitPulse
+  m_Name: testBurstInfo
   m_EditorClassIdentifier: 
   castTime: 0
-  cooldown: 0.3
-  pellet: {fileID: 5388026953992196322, guid: 6be5a5ed4ccf3264d94bcebb7768ef29, type: 3}
-  pelletLifeSpan: 3
-  castBehaviour: 0
-  pelletBehaviour: 1
+  cooldown: 1
+  pellet: {fileID: 5388026953992196322, guid: f2bdc94bae1fb3b469a51ed3f57b320f, type: 3}
+  pelletLifeSpan: 2
+  castBehaviour: 1
+  pelletBehaviour: 0
   elementals:
-  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
+  - {fileID: 11400000, guid: 2389e1f7a5714f040910f31fd2136e5d, type: 2}

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: testPulse
   m_EditorClassIdentifier: 
   castTime: 0
-  cooldown: 0.08
+  cooldown: 0.3
   pellet: {fileID: 5388026953992196322, guid: 0b53bb248e0945140bbd018f94aab656, type: 3}
   pelletLifeSpan: 2
+  castBehaviour: 0
   pelletBehaviour: 0
   elementals:
   - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
