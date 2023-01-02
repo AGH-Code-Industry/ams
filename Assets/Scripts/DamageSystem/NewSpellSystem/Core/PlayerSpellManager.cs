@@ -23,10 +23,13 @@ namespace DamageSystem.NewSpellSystem.Core
 
         KeyValuePair<KeyCode, SpellType> activePrimarySpell;
         KeyValuePair<KeyCode, SpellType> queuedPrimarySpell;
-        SpellType queuedSecondarySpell;
+        
+        [HideInInspector]
+        public SpellType queuedSecondarySpell;
+        [HideInInspector]
+        public float secondaryCastTime = 0f;
 
         float activeSpellCooldown = 0f;
-        float secondaryCastTime = 0f;
 
         bool primaryCasting = false;
         bool secondaryCasting = false;

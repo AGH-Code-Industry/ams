@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace DamageSystem.NewSpellSystem.Core
 {
-    public class SpellBarHandler : MonoBehaviour
+    public class DemoSpellBarHandler : MonoBehaviour
     {
 
         public GameObject player;
