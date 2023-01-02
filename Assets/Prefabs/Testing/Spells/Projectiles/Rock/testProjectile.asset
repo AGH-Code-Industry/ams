@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: testProjectile
   m_EditorClassIdentifier: 
   castTime: 0
-  cooldown: 0
+  cooldown: 1
   force: 1000
   projectileLifeSpan: 2
   projectile: {fileID: 4677660285048492493, guid: 2420809778e6327438ddbeca8c06e20a,

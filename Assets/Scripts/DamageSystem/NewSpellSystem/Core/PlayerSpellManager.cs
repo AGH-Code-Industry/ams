@@ -17,7 +17,9 @@ namespace DamageSystem.NewSpellSystem.Core
 
         Dictionary<KeyCode, SpellType> primarySpellsDict;
         Dictionary<KeyCode, SpellType> secondarySpellsDict;
-        Dictionary<SpellType, float> spellCooldowns;
+        
+        [HideInInspector]
+        public Dictionary<SpellType, float> spellCooldowns;
 
         KeyValuePair<KeyCode, SpellType> activePrimarySpell;
         KeyValuePair<KeyCode, SpellType> queuedPrimarySpell;
