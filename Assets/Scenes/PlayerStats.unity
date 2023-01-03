@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jk
+  m_text: null1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1102,16 +1102,17 @@ MonoBehaviour:
   - {fileID: 1161020}
   statNames:
   - Speed
-  - jk
-  - jkl
-  - jkli
-  - jklio
+  - null1
+  - null2
+  - null3
+  - null4
   statValues:
-  - 6
-  - 5
-  - 2
-  - 4
   - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  playerMovement: {fileID: 1378685781}
 --- !u!1 &1093187953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jkli
+  m_text: null3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1555,7 +1556,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1690,7 +1691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jkl
+  m_text: null2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1785,14 +1786,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0befe4d8c4857e24496cf5f43f2c9e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mana:
+  Speed:
     BaseValue: 100
   Strength:
     BaseValue: 100
+  Mana:
+    BaseValue: 100
   Spell1:
     BaseValue: 100
-  Spell2:
-    BaseValue: 100
+--- !u!114 &1378685781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2213897129354524259, guid: 8815b428d20516a4eaf2c03de3b19050,
+    type: 3}
+  m_PrefabInstance: {fileID: 1884263493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378685777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7917b74c99b74c9366f319f1e5635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1684042493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2115,6 +2128,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2213897129354524269, guid: 8815b428d20516a4eaf2c03de3b19050,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8815b428d20516a4eaf2c03de3b19050, type: 3}
 --- !u!1 &1914900943
@@ -2175,7 +2193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jklio
+  m_text: null4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2384,7 +2402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2695,7 +2713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

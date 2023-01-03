@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerFeatures : MonoBehaviour
 {
-    public PlayerStats Mana;
+    public PlayerStats Speed;
     public PlayerStats Strength;
+    public PlayerStats Mana;
     public PlayerStats Spell1;
-    public PlayerStats Spell2;
 }

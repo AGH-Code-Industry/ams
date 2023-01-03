@@ -5,10 +5,11 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    public int speed = 10;
+    public int speed;
     // Start is called before the first frame update
     void Start()
     {
+        speed = 5;
       rb = GetComponent<Rigidbody>();
     }
 

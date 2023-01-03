@@ -8,13 +8,22 @@ public class StatsPanel : MonoBehaviour
     [SerializeField] string[] statNames;
     [SerializeField] float[] statValues;
     private PlayerStats[] stats;
-    
+
+    public playerMovement playerMovement;
+
+
 
     public void OnValidate()
     {
         statsDisplay = GetComponentsInChildren<StatsDisplay>();
-        
+
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>();
+
         UpdateStatNames();
+        UpdateStatValues();
+    }
+    public void Update()
+    {
         UpdateStatValues();
     }
 
@@ -38,10 +47,11 @@ public class StatsPanel : MonoBehaviour
     public void UpdateStatValues()
     {
         
-        for (int i = 0; i < statValues.Length; i++)
+        for (int i = 1; i < statValues.Length; i++)
         {
             statsDisplay[i].ValueText.text = statValues[i].ToString();
         }
+        statsDisplay[0].ValueText.text = playerMovement.speed.ToString();
     }
 
     public void UpdateStatNames()
