@@ -4,61 +4,48 @@ using UnityEngine;
 
 public class StatsPanel : MonoBehaviour
 {
-    [SerializeField] StatsDisplay[] statsDisplay;
-    [SerializeField] string[] statNames;
-    [SerializeField] float[] statValues;
-    private PlayerStats[] stats;
-
-    public playerMovement playerMovement;
+    [SerializeField] StatsDisplay[] statsDisplay;    
+    PlayerFeatures playerFeatures;
 
 
 
     public void OnValidate()
     {
         statsDisplay = GetComponentsInChildren<StatsDisplay>();
-
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<playerMovement>();
+        playerFeatures = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFeatures>();
 
         UpdateStatNames();
-        UpdateStatValues();
+        
     }
     public void Update()
     {
-        UpdateStatValues();
-    }
-
-    public void SetStats(params PlayerStats[] charStats)
-    {
-        stats = charStats;
-
-        if (stats.Length > statsDisplay.Length)
-        {
-            Debug.LogError("Not Enough Stat Displays!");
-            return;
-        }
-
-        for (int i = 0; i < statsDisplay.Length; i++)
-        {
-            statsDisplay[i].Stat = i < stats.Length ? stats[i] : null;
-            statsDisplay[i].gameObject.SetActive(i < stats.Length);
-        }
+        UpdateStatValuesPercentage();
     }
 
     public void UpdateStatValues()
     {
+        statsDisplay[0].ValueText.text = playerFeatures.speed.value.ToString();
+        statsDisplay[1].ValueText.text = playerFeatures.strenght.value.ToString();
+        statsDisplay[2].ValueText.text = playerFeatures.mana.value.ToString();
+        statsDisplay[3].ValueText.text = playerFeatures.spell1.value.ToString();
+        statsDisplay[4].ValueText.text = playerFeatures.spell2.value.ToString();
+    }
+    public void UpdateStatValuesPercentage()
+    {
+        statsDisplay[0].ValueText.text = (playerFeatures.speed.value / playerFeatures.speed.baseValue * 100).ToString() + "%";
+        statsDisplay[1].ValueText.text = (playerFeatures.strenght.value / playerFeatures.strenght.baseValue * 100).ToString() + "%";
+        statsDisplay[2].ValueText.text = (playerFeatures.mana.value / playerFeatures.mana.baseValue * 100).ToString() + "%";
+        statsDisplay[3].ValueText.text = (playerFeatures.spell1.value / playerFeatures.spell1.baseValue * 100).ToString() + "%";
+        statsDisplay[4].ValueText.text = (playerFeatures.spell2.value / playerFeatures.spell2.baseValue * 100).ToString() + "%";
         
-        for (int i = 1; i < statValues.Length; i++)
-        {
-            statsDisplay[i].ValueText.text = statValues[i].ToString();
-        }
-        statsDisplay[0].ValueText.text = playerMovement.speed.ToString();
     }
 
     public void UpdateStatNames()
     {
-        for (int i = 0; i < statNames.Length; i++)
-        {
-            statsDisplay[i].NameText.text = statNames[i];
-        }
+        statsDisplay[0].NameText.text = "Speed";
+        statsDisplay[1].NameText.text = "Strenght";
+        statsDisplay[2].NameText.text = "Mana";
+        statsDisplay[3].NameText.text = "Spell1";
+        statsDisplay[4].NameText.text = "Spell2";
     }
 }

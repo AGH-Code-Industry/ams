@@ -11,9 +11,6 @@ public class StatsDisplay : MonoBehaviour
     public Text NameText;
     public Text ValueText;
 
-    [NonSerialized]
-    public PlayerStats Stat;
-
     private void OnValidate()
     {
         Text[] texts = GetComponentsInChildren<Text>();

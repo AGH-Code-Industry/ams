@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+    PlayerFeatures playerFeatures;
     Rigidbody rb;
-    public int speed;
     // Start is called before the first frame update
+    
+
     void Start()
     {
-        speed = 5;
-      rb = GetComponent<Rigidbody>();
+        playerFeatures = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerFeatures>();
+        playerFeatures.speed.baseValue = 5;
+        playerFeatures.speed.value = playerFeatures.speed.baseValue;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,15 +23,12 @@ public class playerMovement : MonoBehaviour
         Move();
         Rotate();
     }
-
-    
-
     public void Move()
     {
 
         Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        transform.position += Movement * speed * Time.deltaTime;
+        transform.position += Movement * playerFeatures.speed.value * Time.deltaTime;
 
     }
 
@@ -35,7 +36,7 @@ public class playerMovement : MonoBehaviour
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
         {
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }

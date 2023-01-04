@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: null1
+  m_text: Strenght
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -485,7 +485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 248.9, y: -48.7}
+  m_AnchoredPosition: {x: 208, y: -48.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506353739
@@ -1100,19 +1100,6 @@ MonoBehaviour:
   - {fileID: 2046993320}
   - {fileID: 1918869039}
   - {fileID: 1161020}
-  statNames:
-  - Speed
-  - null1
-  - null2
-  - null3
-  - null4
-  statValues:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  playerMovement: {fileID: 1378685781}
 --- !u!1 &1093187953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Statistisc
+  m_text: Statistics
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1421,7 +1408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: null3
+  m_text: Spell1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1533,7 +1520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 248.9, y: -48.7}
+  m_AnchoredPosition: {x: 208, y: -48.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330450359
@@ -1556,7 +1543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1691,7 +1678,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: null2
+  m_text: Mana
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1774,7 +1761,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1884263493}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1378685778
+--- !u!114 &1378685782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1786,26 +1773,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0befe4d8c4857e24496cf5f43f2c9e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed:
-    BaseValue: 100
-  Strength:
-    BaseValue: 100
-  Mana:
-    BaseValue: 100
-  Spell1:
-    BaseValue: 100
---- !u!114 &1378685781 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2213897129354524259, guid: 8815b428d20516a4eaf2c03de3b19050,
-    type: 3}
-  m_PrefabInstance: {fileID: 1884263493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378685777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae7917b74c99b74c9366f319f1e5635, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  speed:
+    baseValue: 5
+    value: 5
+  strenght:
+    baseValue: 1
+    value: 2
+  mana:
+    baseValue: 1
+    value: 3
+  spell1:
+    baseValue: 1
+    value: 4
+  spell2:
+    baseValue: 1
+    value: 5
 --- !u!1 &1684042493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 248.9, y: -48.7}
+  m_AnchoredPosition: {x: 208, y: -48.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1684042495
@@ -2193,7 +2175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: null4
+  m_text: Spell2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2379,7 +2361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 248.9, y: -48.7}
+  m_AnchoredPosition: {x: 208, y: -48.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956836415
@@ -2690,7 +2672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 248.9, y: -48.7}
+  m_AnchoredPosition: {x: 208, y: -48.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060030580
