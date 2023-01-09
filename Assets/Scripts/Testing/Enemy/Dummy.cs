@@ -16,6 +16,7 @@ public class Dummy : Enemy {
     }
 
     void UpdateDebugDisplay(float dmg, string source) {
+        return;
         _healthText.text = $"Health: {_currentHP}/{_maxHP}";
         _spellText.text = $"Spell: {source} ({dmg} dmg)";
     }
