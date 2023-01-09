@@ -12,11 +12,9 @@ public class DummyEnemy : MonoBehaviour {
         _animator = GetComponent<Animator>();
         _startTime = Time.time;
         _avaitingTime = Random.Range(2f, 5f);
-        
     }
 
-    void Update()
-    {
-        
+    public void OnDead() {
+        Destroy(gameObject);
     }
 }
