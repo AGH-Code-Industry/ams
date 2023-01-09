@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfaeacadfd3eb14b8439d2010c7b64c, type: 3}
+  m_Name: chair
+  m_EditorClassIdentifier: 
+  castTime: 1
+  cooldown: 3
+  force: 500
+  projectileLifeSpan: 2
+  projectile: {fileID: -3436793938213148360, guid: 36f6898587ae4d945a5bb6b596d72875,
+    type: 3}
+  elementals:
+  - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}

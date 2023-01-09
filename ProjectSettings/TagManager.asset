@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Coin
   - Pickable
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Spell
   - Water
   - UI
   - 
