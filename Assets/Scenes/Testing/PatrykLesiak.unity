@@ -2162,7 +2162,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34368
+  m_Name: pb_Mesh27848
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11279,7 +11279,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34386
+  m_Name: pb_Mesh28110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11444,11 +11444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2112429318}
     m_Modifications:
-    - target: {fileID: 3532266966632498870, guid: aa79e5f2fea91a241afb84f06b21f0e7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 3628195952112334701, guid: aa79e5f2fea91a241afb84f06b21f0e7,
         type: 3}
       propertyPath: m_RootOrder
@@ -11508,11 +11503,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DummyEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7017696525455545317, guid: aa79e5f2fea91a241afb84f06b21f0e7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa79e5f2fea91a241afb84f06b21f0e7, type: 3}
