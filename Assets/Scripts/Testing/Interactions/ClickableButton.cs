@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Button : MonoBehaviour, IInteractable
+public class ClickableButton : MonoBehaviour, IInteractable
 {
     public GameObject mechanism;
 
