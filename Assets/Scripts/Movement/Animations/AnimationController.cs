@@ -9,7 +9,12 @@ public class AnimationController : MonoBehaviour
     public Transform target;
     private float horizontalInput;
     private float verticalInput;
+    private bool sprintInput;
+    private bool attackInput;
+    private bool dashInput;
     private Animator anim;
+
+    public float temporaryMultiplier;
 
     public Vector2 mousePos;
     public Vector2 screenPos;
@@ -29,6 +34,9 @@ public class AnimationController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+        sprintInput = Input.GetKey(KeyCode.LeftShift);
+        attackInput = Input.GetKey(KeyCode.Mouse0);
+        dashInput = Input.GetKey(KeyCode.Space);
         
         moveDir = new Vector3(horizontalInput, 0f,verticalInput);  
         mousePos = Input.mousePosition;
@@ -39,9 +47,15 @@ public class AnimationController : MonoBehaviour
 
         
         Debug.Log(angle);
-        velocityX = -Mathf.Sin(angle * Mathf.Deg2Rad) * moveDir.magnitude;    
-        velocityY = Mathf.Cos(angle * Mathf.Deg2Rad) * moveDir.magnitude;
-        
+        Debug.Log("VelocityX" + velocityX);
+        Debug.Log("VelocityY" + velocityY);
+        velocityX = -Mathf.Sin(angle * Mathf.Deg2Rad) * moveDir.magnitude / temporaryMultiplier;    
+        velocityY = Mathf.Cos(angle * Mathf.Deg2Rad) * moveDir.magnitude / temporaryMultiplier;
+        if (sprintInput) {
+            velocityX *= temporaryMultiplier;
+            velocityY *= temporaryMultiplier;
+        }
+
         Debug.DrawRay(transform.position, new Vector3(velocityX, 0 , velocityY));
         //animating
         
@@ -74,6 +88,7 @@ public class AnimationController : MonoBehaviour
         
         anim.SetFloat("VelocityZ", velocityY, 0.1f, Time.deltaTime);
         anim.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
-
+        anim.SetBool("IsAttacking", attackInput);
+        anim.SetBool("IsDashing", dashInput);
     }
 }
