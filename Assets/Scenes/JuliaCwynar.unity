@@ -412,14 +412,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144542796}
-  m_LocalRotation: {x: 0, y: 0.93897426, z: -0.34398746, w: 0}
-  m_LocalPosition: {x: 0, y: 8.55, z: 7.92}
+  m_LocalRotation: {x: 0, y: 0.9099613, z: -0.41469327, w: 0}
+  m_LocalPosition: {x: 0.38, y: 16.39, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40.24, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 49, y: 180, z: 0}
 --- !u!114 &144542800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,16 +1954,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootTable:
     list:
-    - item: {fileID: -8679921383154817045, guid: a3aa1d37be0b549bebacbbe0f64eba58,
+    - item: {fileID: 1402708727686718825, guid: 3065d3592ad7eea4a99de70408608abb,
         type: 3}
       weight: 2
-    - item: {fileID: -8679921383154817045, guid: 02899071da4d6429c8d36c7405246011,
+    - item: {fileID: 7897633564436596158, guid: d2530b02892ef174e98c49a1fef98093,
         type: 3}
       weight: 3
-    - item: {fileID: -8679921383154817045, guid: 0b304439beda640d987498dbc060fe7d,
-        type: 3}
+    - item: {fileID: 965988278846480795, guid: c404eb2b9929d1f4896c60eb3941a6bb, type: 3}
       weight: 3
-    - item: {fileID: -8679921383154817045, guid: dbac4f5f0bce5440198847bc2b5a75b5,
+    - item: {fileID: 8755454686297409844, guid: a2031a60f1fcc2a4db10c889247e2421,
         type: 3}
       weight: 2
   itemHolder: {fileID: 1290011583}
