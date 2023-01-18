@@ -58155,6 +58155,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7050234134953712666, guid: 1d1497f7afd97064ebecab8822fe55dc,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050234134953712666, guid: 1d1497f7afd97064ebecab8822fe55dc,
+        type: 3}
       propertyPath: secondarySpells.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -58168,6 +58173,11 @@ PrefabInstance:
       propertyPath: secondarySpells.Array.data[1]
       value: 
       objectReference: {fileID: 1843999983}
+    - target: {fileID: 7603795515779045637, guid: 1d1497f7afd97064ebecab8822fe55dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8687427059016946144, guid: 1d1497f7afd97064ebecab8822fe55dc,
         type: 3}
       propertyPath: m_RootOrder
@@ -58257,6 +58267,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152802754467829293, guid: 1d1497f7afd97064ebecab8822fe55dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152802754467829294, guid: 1d1497f7afd97064ebecab8822fe55dc,
+        type: 3}
+      propertyPath: dashKey
+      value: 308
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152802754467829294, guid: 1d1497f7afd97064ebecab8822fe55dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9152802754467829294, guid: 1d1497f7afd97064ebecab8822fe55dc,
+        type: 3}
+      propertyPath: levitationSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d1497f7afd97064ebecab8822fe55dc, type: 3}
