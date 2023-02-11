@@ -5,18 +5,28 @@ using UnityEngine;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 {
+    
     public class Cone : SpellType
     {
         public coneInfo spellInfo;
+        bool setup = false;
 
-        Collider coneTrigger;
+        //Collider coneTrigger;
+        public GameObject coneTrigger;
         public override void Cast(Transform origin)
         {
-            if (!coneTrigger.gameObject.activeInHierarchy)
+            if (!coneTrigger.activeInHierarchy)
             {
-                coneTrigger.gameObject.SetActive(true);
+                coneTrigger.SetActive(true);
+                if(!setup)
+                {
+                    coneTrigger.GetComponent<coneEntity>().SetTickRate(spellInfo.tickRate);
+                    coneTrigger.GetComponent<coneEntity>().AssignDamageInfo(spellInfo.elementals, origin.gameObject);
+                    setup = true;
+                }
             }
         }
+ 
 
         public override float GetCastTime()
         {
@@ -30,9 +40,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 
         public override void StopCast()
         {
-            if (coneTrigger.gameObject.activeInHierarchy)
+            if (coneTrigger.activeInHierarchy)
             {
-                coneTrigger.gameObject.SetActive(false);
+                coneTrigger.SetActive(false);
             }
         }
     }
