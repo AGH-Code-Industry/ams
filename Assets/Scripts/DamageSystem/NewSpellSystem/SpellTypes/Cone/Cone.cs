@@ -11,17 +11,16 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         public coneInfo spellInfo;
         bool setup = false;
 
-        //Collider coneTrigger;
-        public GameObject coneTrigger;
+        public coneEntity coneTrigger;
         public override void Cast(Transform origin)
         {
-            if (!coneTrigger.activeInHierarchy)
+            if (!coneTrigger.isActive())
             {
-                coneTrigger.SetActive(true);
-                if(!setup)
+                coneTrigger.Activate();
+                if (!setup)
                 {
-                    coneTrigger.GetComponent<coneEntity>().SetTickRate(spellInfo.tickRate);
-                    coneTrigger.GetComponent<coneEntity>().AssignDamageInfo(spellInfo.elementals, origin.gameObject);
+                    coneTrigger.SetTickRate(spellInfo.tickRate);
+                    coneTrigger.AssignDamageInfo(spellInfo.elementals, origin.gameObject);
                     setup = true;
                 }
             }
@@ -40,9 +39,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 
         public override void StopCast()
         {
-            if (coneTrigger.activeInHierarchy)
+            if (coneTrigger.isActive())
             {
-                coneTrigger.SetActive(false);
+                coneTrigger.Deactivate();
             }
         }
     }
