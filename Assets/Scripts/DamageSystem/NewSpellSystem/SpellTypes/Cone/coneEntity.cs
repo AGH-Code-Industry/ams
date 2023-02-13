@@ -4,6 +4,7 @@ using DamageSystem.ReceiveDamage.Elementals.Elementals;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 {
@@ -11,12 +12,43 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
     {
         public DamageInfo damageInfo;
         float tickRate = 0.5f;
+        VisualEffect vfx;
+        public Transform rotationOrigin;
 
         float cooldown = 0f;
         GameObject origin;
-        bool setup = false;
+        bool active = false;
 
         List<Damageable> enemies = new List<Damageable>();
+
+        private void Start()
+        {
+            vfx = GetComponentInChildren<VisualEffect>();
+            vfx.Stop();
+        }
+
+        public void Activate()
+        {
+            if (!active)
+            {
+                vfx.Play();
+            }
+            active = true;
+            GetComponent<MeshCollider>().enabled = true;
+        }
+
+        public void Deactivate()
+        {
+            active = false;
+            GetComponent<MeshCollider>().enabled = false;
+            vfx.Stop();
+        }
+
+        public bool isActive()
+        {
+            return active;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.GetComponent<Damageable>())
@@ -27,7 +59,6 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 
         private void OnTriggerExit(Collider other)
         {
-
             if(enemies.Contains(other.GetComponent<Damageable>()))
             {
                 enemies.Remove(other.GetComponent<Damageable>());
@@ -38,7 +69,6 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         {
             damageInfo.elementals = dmg;
             origin = caster;
-            setup = true;
         }
 
         public void SetTickRate(float rate)
@@ -54,6 +84,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         private void Update()
         {
             TickRate();
+            Quaternion rotation = Quaternion.Euler(90f, rotationOrigin.rotation.eulerAngles.y+90f, -90f);
+            gameObject.transform.rotation = rotation;
         }
 
         //Damage over time
