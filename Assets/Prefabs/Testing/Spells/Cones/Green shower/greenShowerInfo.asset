@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b9efc7f031b29544b9ddd9e344ec195, type: 3}
-  m_Name: FlamethrowerInfo
+  m_Name: greenShowerInfo
   m_EditorClassIdentifier: 
   tickRate: 0.5
   rangeY: 5.85
   spreadHorizontalX: 3.75
   spreadVerticalZ: 1.25
-  particles: {fileID: 8926484042661614526, guid: 28583f89ee4c324448f97e84edf570b9,
+  particles: {fileID: 8926484042661614526, guid: 31c8b2fab802f554a9798fb76e436d1c,
     type: 3}
   elementals:
-  - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
+  - {fileID: 11400000, guid: 2389e1f7a5714f040910f31fd2136e5d, type: 2}

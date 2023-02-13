@@ -20,7 +20,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
                 if (!setup)
                 {
                     coneTrigger.SetTickRate(spellInfo.tickRate);
-                    coneTrigger.AssignDamageInfo(spellInfo.elementals, origin.gameObject);
+                    coneTrigger.AssignDamageInfo(spellInfo.elementals, origin.gameObject, spellInfo);
                     setup = true;
                 }
             }

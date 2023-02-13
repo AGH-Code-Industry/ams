@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.ProBuilder.Shapes;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 {
@@ -13,8 +14,6 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         public DamageInfo damageInfo;
         float tickRate = 0.5f;
         VisualEffect vfx;
-        public Transform rotationOrigin;
-
         float cooldown = 0f;
         GameObject origin;
         bool active = false;
@@ -65,10 +64,11 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
             }
         }
 
-        public void AssignDamageInfo(List<AttackElemental> dmg, GameObject caster)
+        public void AssignDamageInfo(List<AttackElemental> dmg, GameObject caster, coneInfo info)
         {
             damageInfo.elementals = dmg;
             origin = caster;
+            vfx.visualEffectAsset = info.particles;
         }
 
         public void SetTickRate(float rate)
@@ -84,8 +84,11 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         private void Update()
         {
             TickRate();
-            Quaternion rotation = Quaternion.Euler(90f, rotationOrigin.rotation.eulerAngles.y+90f, -90f);
-            gameObject.transform.rotation = rotation;
+            if (origin)
+            {
+                Quaternion rotation = Quaternion.Euler(90f, origin.transform.rotation.eulerAngles.y + 90f, -90f);
+                gameObject.transform.parent.rotation = rotation;
+            }
         }
 
         //Damage over time
