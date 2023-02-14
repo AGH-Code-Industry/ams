@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 7020730449434859140, guid: f18d7e277deea864a899d8c7bb0cf32f,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12977
+      value: 12983
       objectReference: {fileID: 0}
     - target: {fileID: 7020730449434859141, guid: f18d7e277deea864a899d8c7bb0cf32f,
         type: 3}
@@ -1735,7 +1735,7 @@ PrefabInstance:
     - target: {fileID: 7020730449363683140, guid: 46dd90991c6bf12419be73085f614d0e,
         type: 3}
       propertyPath: m_Name
-      value: testCone
+      value: flamethrowerCone
       objectReference: {fileID: 0}
     - target: {fileID: 7020730449363683140, guid: 46dd90991c6bf12419be73085f614d0e,
         type: 3}
@@ -1805,7 +1805,7 @@ PrefabInstance:
     - target: {fileID: 7020730449434859140, guid: 46dd90991c6bf12419be73085f614d0e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12983
+      value: 12989
       objectReference: {fileID: 0}
     - target: {fileID: 7020730449434859141, guid: 46dd90991c6bf12419be73085f614d0e,
         type: 3}
