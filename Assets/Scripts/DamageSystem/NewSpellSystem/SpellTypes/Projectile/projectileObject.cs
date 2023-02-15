@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DamageSystem.ReceiveDamage.Elementals;
 using DamageSystem.ReceiveDamage.Elementals.Elementals;
 using UnityEngine;
+using DamageSystem.NewSpellSystem.SpellTypes.Aoe;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile 
 {
@@ -12,7 +13,11 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile
         public DamageInfo damageInfo;
         public int lifeSpan;
 
-   
+        //Testing aoe
+        bool exploded = false;
+        public AoeInfo aoeEffect;
+        //Testing aoe
+
         public void AssignDamageInfo(List<AttackElemental> elementals, GameObject caster)
         {
             damageInfo.elementals = elementals;
@@ -35,6 +40,13 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile
             if (collision.gameObject.GetComponent<Damageable>())
             {
                 collision.gameObject.GetComponent<Damageable>().TakeDamage(damageInfo);
+                //Testing aoe
+                if(!exploded && aoeEffect != null)
+                {
+                    AoeEffect.Spawn(transform.position, aoeEffect);
+                    exploded = true;
+                }
+                //Testing aoe
             }
             //Do starej implementacji dummy
             //if (collision.gameObject.GetComponent<Enemy>())
