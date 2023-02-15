@@ -1,6 +1,7 @@
 using DamageSystem.ReceiveDamage.Elementals.Elementals;
 using System.Collections;
 using System.Collections.Generic;
+using DamageSystem.NewSpellSystem.SpellTypes.Aoe;
 using UnityEngine;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
@@ -13,5 +14,6 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
         public int projectileLifeSpan;
         public Rigidbody projectile;
         public List<AttackElemental> elementals;
+        public AoeInfo aoe;
     }
 }

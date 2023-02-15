@@ -18,7 +18,7 @@ namespace DamageSystem.DamageNumbers
         }
 
         public Transform damagePopup;
-
+        public Transform aoePrefab;
 
     }
 }

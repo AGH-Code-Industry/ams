@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cfaeacadfd3eb14b8439d2010c7b64c, type: 3}
-  m_Name: testProjectile
+  m_Script: {fileID: 11500000, guid: cff53b87d59286149a6804b354b3c351, type: 3}
+  m_Name: explosionAoe
   m_EditorClassIdentifier: 
-  castTime: 0
-  cooldown: 1
-  force: 1000
-  projectileLifeSpan: 2
-  projectile: {fileID: 4677660285048492493, guid: 2420809778e6327438ddbeca8c06e20a,
-    type: 3}
+  aoeRange: 4.7
   elementals:
   - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
-  aoe: {fileID: 11400000, guid: 8d8f54bdb0355d24293d24166a1bb5cf, type: 2}
+  vfx: {fileID: 8926484042661614526, guid: 0d9fa680aa28d404a96b4c5d8b68e6ea, type: 3}

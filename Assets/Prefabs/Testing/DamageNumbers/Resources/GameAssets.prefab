@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePopup: {fileID: 5360898327425462774, guid: 41d460118ab38de4f8ca13f69344a1a5,
     type: 3}
+  aoePrefab: {fileID: 6444742439985946476, guid: fa5a25d051d6410458e391090c9e78a1,
+    type: 3}
