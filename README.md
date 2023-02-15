@@ -13,3 +13,4 @@ Nazywajmy nasze sceny ImieNazwisko.
  - ProBuilder
  - Cinemachine
  - Quick Outline
+ - Visual Effect Graph
