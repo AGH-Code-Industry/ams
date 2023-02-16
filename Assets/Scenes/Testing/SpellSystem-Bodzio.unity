@@ -267,6 +267,7 @@ Transform:
   m_Children:
   - {fileID: 215441249}
   - {fileID: 604941984}
+  - {fileID: 399446556}
   m_Father: {fileID: 1197352693}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -380,6 +381,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7020730449363683140, guid: f18d7e277deea864a899d8c7bb0cf32f,
     type: 3}
   m_PrefabInstance: {fileID: 377567686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &399446555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6654184543676357110, guid: 02057b27eff95a54c94d323ddc15a850,
+    type: 3}
+  m_PrefabInstance: {fileID: 6654184543957175277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &399446556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+    type: 3}
+  m_PrefabInstance: {fileID: 6654184543957175277}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &573304811
 GameObject:
@@ -632,7 +645,7 @@ MonoBehaviour:
   canCast: 1
   spellOrigin: {fileID: 1354583584}
   primaryBinds: 4301000044010000200000007a000000
-  secondaryBinds: 3100000032000000
+  secondaryBinds: 310000003200000033000000
   primarySpells:
   - {fileID: 1248413601}
   - {fileID: 2042243431}
@@ -641,6 +654,7 @@ MonoBehaviour:
   secondarySpells:
   - {fileID: 215441250}
   - {fileID: 604941983}
+  - {fileID: 399446555}
   queuedSecondarySpell: {fileID: 0}
   secondaryCastTime: 0
 --- !u!114 &618348609
@@ -1342,7 +1356,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1332
+  m_Name: pb_Mesh-1288
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1720,6 +1734,75 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2042243429}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6654184543957175277
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 376769248}
+    m_Modifications:
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357105, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654184543676357110, guid: 02057b27eff95a54c94d323ddc15a850,
+        type: 3}
+      propertyPath: m_Name
+      value: fireAoeSpell
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02057b27eff95a54c94d323ddc15a850, type: 3}
 --- !u!1001 &7020730447815515924
 PrefabInstance:
   m_ObjectHideFlags: 0

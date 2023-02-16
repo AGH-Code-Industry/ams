@@ -22,6 +22,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 
         private void Start()
         {
+            GetComponent<MeshCollider>().enabled = false;
             vfx = GetComponentInChildren<VisualEffect>();
             vfx.Stop();
         }
@@ -41,6 +42,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
             active = false;
             GetComponent<MeshCollider>().enabled = false;
             vfx.Stop();
+            enemies.Clear();
         }
 
         public bool isActive()

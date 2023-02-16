@@ -43,7 +43,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile
                 //Testing aoe
                 if(!exploded && aoeEffect != null)
                 {
-                    AoeEffect.Spawn(transform.position, aoeEffect);
+                    AoeEffect.Spawn(transform.position, aoeEffect, gameObject);
                     exploded = true;
                 }
                 //Testing aoe

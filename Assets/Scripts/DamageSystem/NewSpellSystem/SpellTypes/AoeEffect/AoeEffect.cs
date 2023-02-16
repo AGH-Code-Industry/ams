@@ -11,10 +11,12 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Aoe
 {
     public class AoeEffect : MonoBehaviour
     {
-       public static AoeEffect Spawn(Vector3 position, AoeInfo aoeInfo)
+
+        public static AoeEffect Spawn(Vector3 position, AoeInfo aoeInfo, GameObject origin)
         {
             Transform aoeTransform = Instantiate(GameAssets.i.aoePrefab, position, Quaternion.identity);
             AoeEffect aoe = aoeTransform.GetComponent<AoeEffect>();
+            aoe.caster = origin;
 
             aoe.Setup(aoeInfo);
 
@@ -25,6 +27,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Aoe
         private DamageInfo damageInfo;
         private CapsuleCollider dmgTrigger;
         private float aoeRange;
+        private GameObject caster;
+
 
         private void Awake()
         {
@@ -59,7 +63,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Aoe
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<Damageable>())
+            if (other.gameObject.GetComponent<Damageable>() && other.gameObject != caster)
             {
                 other.gameObject.GetComponent<Damageable>().TakeDamage(damageInfo);
             }
