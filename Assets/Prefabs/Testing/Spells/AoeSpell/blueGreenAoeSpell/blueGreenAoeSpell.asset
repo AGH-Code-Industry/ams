@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87618eefe6f5394f82d33e7115b5f79, type: 3}
+  m_Name: blueGreenAoeSpell
+  m_EditorClassIdentifier: 
+  castTime: 1
+  cooldown: 1
+  aoeEffect: {fileID: 11400000, guid: 9d132cf4ffae4c0418c52eb87e08c599, type: 2}
