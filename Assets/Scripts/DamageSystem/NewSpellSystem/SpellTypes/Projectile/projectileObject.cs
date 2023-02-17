@@ -45,6 +45,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile
                 {
                     AoeEffect.Spawn(transform.position, aoeEffect, gameObject);
                     exploded = true;
+                    Destroy(this.gameObject);
                 }
                 //Testing aoe
             }

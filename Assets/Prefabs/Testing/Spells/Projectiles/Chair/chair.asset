@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castTime: 1
   cooldown: 3
-  force: 500
+  force: 800
   projectileLifeSpan: 2
   projectile: {fileID: -3436793938213148360, guid: 36f6898587ae4d945a5bb6b596d72875,
     type: 3}
   elementals:
   - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
+  aoe: {fileID: 11400000, guid: 9d132cf4ffae4c0418c52eb87e08c599, type: 2}
