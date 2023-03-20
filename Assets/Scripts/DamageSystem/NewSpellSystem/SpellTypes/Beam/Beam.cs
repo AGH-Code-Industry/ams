@@ -79,6 +79,20 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         {
             TickRate();
 
+            LaserVfxController();
+        }
+
+        void TickRate()
+        {
+            if(Time.time >= cooldown && target && damageInfo.elementals != null)
+            {
+                target.TakeDamage(damageInfo);
+                cooldown = Time.time + spellInfo.tickRate;
+            }
+        }
+
+        void LaserVfxController()
+        {
             if (origin)
             {
                 Quaternion rotation = Quaternion.Euler(0f, origin.transform.rotation.eulerAngles.y, 0f);
@@ -89,26 +103,19 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
             if (!casting && lr.widthMultiplier > 0)
             {
                 lr.widthMultiplier -= castingSpeed;
-            }else if(!casting && lr.widthMultiplier < 0.1f)
+            }
+            else if (!casting && lr.widthMultiplier < 0.1f)
             {
                 lr.enabled = false;
             }
-            
-            if(casting && lr.enabled == false)
+
+            if (casting && lr.enabled == false)
             {
                 lr.enabled = true;
-            }else if(casting && lr.widthMultiplier < defaultWidthMultiplier)
+            }
+            else if (casting && lr.widthMultiplier < defaultWidthMultiplier)
             {
                 lr.widthMultiplier += castingSpeed;
-            }
-        }
-
-        void TickRate()
-        {
-            if(Time.time >= cooldown && target && damageInfo.elementals != null)
-            {
-                target.TakeDamage(damageInfo);
-                cooldown = Time.time + spellInfo.tickRate;
             }
         }
     }
