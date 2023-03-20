@@ -18,16 +18,14 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         DamageInfo damageInfo;
         GameObject origin;
 
-        VisualEffect vfx;
         bool casting = false;
-        float castingSpeed = 0.5f;
+        float castingSpeed = 0.2f;
         public static float unitDistance = 0.175f;
 
-        private void Start()
-        {
-            vfx = GetComponentInChildren<VisualEffect>();
-            vfx.Stop();
-        }
+        public LineRenderer lr;
+        float defaultWidthMultiplier = 1.8f;
+        public ParticleSystem castParticles;
+
 
         public override void Cast(Transform _origin)
         {
@@ -39,22 +37,25 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
             RaycastHit hit;
             if (Physics.Raycast(_origin.position, _origin.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
             {
-
-                vfx.SetFloat("Length", unitDistance * hit.distance);
                 if(!casting)
                 {
-                    vfx.SetFloat("Life", 0f);
-                    vfx.Play();
                     casting = true;
+                    castParticles.Play();
                 }
 
-
+                lr.SetPosition(1, hit.point);
 
                 if (hit.collider.GetComponent<Damageable>())
                 { 
                     target = hit.collider.GetComponent<Damageable>();
                 }
             }
+        }
+
+        private void Start()
+        {
+            defaultWidthMultiplier = lr.widthMultiplier;
+            castParticles.Stop();
         }
 
         public override float GetCastTime()
@@ -69,10 +70,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
 
         public override void StopCast()
         {
-            Debug.Log("Stop :)");
             target = null;
             casting = false;
-            vfx.SetFloat("Life", 0.9f);
+            castParticles.Stop();
         }
 
         private void FixedUpdate()
@@ -83,18 +83,23 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
             {
                 Quaternion rotation = Quaternion.Euler(0f, origin.transform.rotation.eulerAngles.y, 0f);
                 gameObject.transform.parent.rotation = rotation;
+                lr.SetPosition(0, origin.transform.position);
             }
-            if (casting && vfx.GetFloat("Life") < 0.9f)
+
+            if (!casting && lr.widthMultiplier > 0)
             {
-                vfx.SetFloat("Life", vfx.GetFloat("Life") + (Time.deltaTime * castingSpeed));
+                lr.widthMultiplier -= castingSpeed;
+            }else if(!casting && lr.widthMultiplier < 0.1f)
+            {
+                lr.enabled = false;
             }
-            if(!casting && vfx.GetFloat("Life") >= 0.9f && vfx.GetFloat("Life") < 1f)
+            
+            if(casting && lr.enabled == false)
             {
-                vfx.SetFloat("Life", vfx.GetFloat("Life") + (Time.deltaTime * castingSpeed));
-            }
-            else if(!casting)
+                lr.enabled = true;
+            }else if(casting && lr.widthMultiplier < defaultWidthMultiplier)
             {
-                vfx.Stop();
+                lr.widthMultiplier += castingSpeed;
             }
         }
 
