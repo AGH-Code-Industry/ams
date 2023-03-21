@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71eb0b5a5fe4f45468e1a2335788cb28, type: 3}
-  m_Name: testBeamInfo
+  m_Name: templateBeamInfo
   m_EditorClassIdentifier: 
   tickRate: 0.5
   elementals:
