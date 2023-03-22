@@ -10,7 +10,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
 {
     public class Beam : SpellType
     {
-        // public beamTriggerEntity trigger;
+        //Variable used for the damage ball at the tip of the laser (not implemented at the moment)
+        //public beamTriggerEntity trigger;
         public beamSpellInfo spellInfo;
         private Damageable target;
 
@@ -19,17 +20,23 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         GameObject origin;
 
         bool casting = false;
-        float castingSpeed = 0.2f;
-        public static float unitDistance = 0.175f;
 
 
+        //Deprecated implementation of handling Laser VFX
         //Various VFX elements of the laser
-        public LineRenderer lr;
-            //Width multiplier of the line Renderer (for laser fade in & fade out)
+        /*public LineRenderer lr;
+        float castingSpeed = 0.2f;
+        //Width multiplier of the line Renderer (for laser fade in & fade out)
         float defaultWidthMultiplier = 1.8f;
         public ParticleSystem castParticles;
-        public ParticleSystem collisionParticles;
+        public ParticleSystem collisionParticles;*/
 
+        //The position of the end of the laser
+        Vector3 hitPoint;
+
+        //The Vfx implementation of the laser
+        [SerializeField, SerializeReference]
+        public BeamFx beamVfx;
 
         public override void Cast(Transform _origin)
         {
@@ -47,12 +54,16 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
                 if(!casting)
                 {
                     casting = true;
-                    castParticles.Play();
-                    collisionParticles.Play();
+                    //Deprecated implementation of handling Laser VFX
+                    //castParticles.Play();
+                    //collisionParticles.Play();
                 }
-
+                //Deprecated implementation of handling Laser VFX
                 //Set the destination of the laser (line renderer)
-                lr.SetPosition(1, hit.point);
+                // lr.SetPosition(1, hit.point);
+
+                //assign the end point of the laser to hitPoint
+                hitPoint = hit.point;
 
                 //Assigning the target (what the laser hit) as the target, which will be dealt damage via TickRate()
                 if (hit.collider.GetComponent<Damageable>())
@@ -64,9 +75,10 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
 
         private void Start()
         {
-            defaultWidthMultiplier = lr.widthMultiplier;
-            castParticles.Stop();
-            collisionParticles.Stop();
+            //Deprecated implementation of handling Laser VFX
+            //defaultWidthMultiplier = lr.widthMultiplier;
+            //castParticles.Stop();
+            //collisionParticles.Stop();
         }
 
         public override float GetCastTime()
@@ -83,15 +95,20 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         {
             target = null;
             casting = false;
-            castParticles.Stop();
-            collisionParticles.Stop();
+            //Deprecated implementation of handling Laser VFX
+            //castParticles.Stop();
+            //collisionParticles.Stop();
         }
 
         private void FixedUpdate()
         {
             TickRate();
 
-            LaserVfxController();
+            //Called for updating the Visual Effects of the laser
+            if(origin && hitPoint != null)
+                beamVfx.UpdateFx(casting, origin.transform, hitPoint);
+            //Deprecated implementation of handling Laser VFX
+            //LaserVfxController();
         }
 
 
@@ -105,6 +122,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
             }
         }
 
+
+        //Deprecated implementation of handling Laser VFX
+        /*
         void LaserVfxController()
         {
             //Set the proper rotation for the Laser (to match player's rotation)
@@ -141,6 +161,6 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
             {
                 collisionParticles.gameObject.transform.position = lr.GetPosition(1);
             }
-        }
+        }*/
     }
 }

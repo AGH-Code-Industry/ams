@@ -7,6 +7,8 @@ using DamageSystem.ReceiveDamage.Elementals.Elementals;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
 {
+
+    //Class not used (was supposed to be a trigger at the end of the beam)
     public class beamTriggerEntity : MonoBehaviour
     {
         float tickRate = 0.5f;
