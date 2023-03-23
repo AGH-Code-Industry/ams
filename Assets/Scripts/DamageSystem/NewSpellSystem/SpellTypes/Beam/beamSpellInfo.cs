@@ -11,5 +11,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         //the time between every tick of damage of the beam
         public float tickRate = 0.5f;
         public List<AttackElemental> elementals;
+        public bool isPrimary;
+        public bool isSecondary;
     }
 }

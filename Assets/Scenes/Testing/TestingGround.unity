@@ -12524,6 +12524,10 @@ MonoBehaviour:
   secondarySpells:
   - {fileID: 1517852122}
   - {fileID: 817885557}
+  maxPrimarySpells: 3
+  maxSecondarySpells: 3
+  primarySpellParent: {fileID: 2072131397}
+  secondarySpellParent: {fileID: 211635502}
   queuedSecondarySpell: {fileID: 0}
   secondaryCastTime: 0
 --- !u!1 &452900140

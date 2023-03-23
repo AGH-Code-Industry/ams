@@ -9,6 +9,15 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
     public class Cone : SpellType
     {
         public coneInfo spellInfo;
+        public override bool isPrimarySpell()
+        {
+            return spellInfo.isPrimary;
+        }
+        public override bool isSecondarySpell()
+        {
+            return spellInfo.isSecondary;
+        }
+
         bool setup = false;
 
         public coneEntity coneTrigger;

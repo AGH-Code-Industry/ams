@@ -19,5 +19,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         //public float rotationX = -90f;
         public VisualEffectAsset particles;
         public List<AttackElemental> elementals;
+        public bool isPrimary = true;
+        public bool isSecondary = false;
     }
 }

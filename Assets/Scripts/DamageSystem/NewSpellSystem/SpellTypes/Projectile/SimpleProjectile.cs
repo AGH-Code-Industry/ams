@@ -9,6 +9,15 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
 
         public SimpleProjectileInfo spellInfo;
 
+        public override bool isPrimarySpell()
+        {
+            return spellInfo.isPrimary;
+        }
+        public override bool isSecondarySpell()
+        {
+            return spellInfo.isSecondary;
+        }
+
         public override void Cast(Transform origin) {
             Rigidbody temp;
             temp = Instantiate(spellInfo.projectile, origin.position, origin.rotation) as Rigidbody;

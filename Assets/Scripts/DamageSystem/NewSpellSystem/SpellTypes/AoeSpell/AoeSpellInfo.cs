@@ -10,5 +10,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Aoe
         public float castTime;
         public float cooldown;
         public AoeInfo aoeEffect;
+        public bool isPrimary;
+        public bool isSecondary;
     }
 }

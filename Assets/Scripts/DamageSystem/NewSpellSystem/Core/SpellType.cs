@@ -7,6 +7,10 @@ namespace DamageSystem.NewSpellSystem.Core
 {
     public abstract class SpellType : MonoBehaviour
     {
+        //Bools used for determining if a spell is supposed to be a primary spell, secondary spell, or both
+        public abstract bool isPrimarySpell();
+        public abstract bool isSecondarySpell();
+
         public abstract void Cast(Transform origin);
         public abstract float GetCooldown();
         public abstract float GetCastTime();

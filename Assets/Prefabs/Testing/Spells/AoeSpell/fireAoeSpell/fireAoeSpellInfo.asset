@@ -15,3 +15,5 @@ MonoBehaviour:
   castTime: 0.5
   cooldown: 3
   aoeEffect: {fileID: 11400000, guid: 8d8f54bdb0355d24293d24166a1bb5cf, type: 2}
+  isPrimary: 0
+  isSecondary: 1

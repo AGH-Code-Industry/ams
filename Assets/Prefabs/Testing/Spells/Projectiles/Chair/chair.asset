@@ -21,3 +21,5 @@ MonoBehaviour:
   elementals:
   - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
   aoe: {fileID: 11400000, guid: 9d132cf4ffae4c0418c52eb87e08c599, type: 2}
+  isPrimary: 0
+  isSecondary: 1

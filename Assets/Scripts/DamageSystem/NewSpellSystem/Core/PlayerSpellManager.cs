@@ -9,11 +9,19 @@ namespace DamageSystem.NewSpellSystem.Core
         public bool canCast = true;
         public Transform spellOrigin;
 
-        public KeyCode[] primaryBinds = { KeyCode.Mouse0, KeyCode.Mouse1 };
-        public KeyCode[] secondaryBinds = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3};
+        public List<KeyCode> primaryBinds = new List<KeyCode>{ KeyCode.Mouse0, KeyCode.Mouse1 };
+        public List<KeyCode> secondaryBinds = new List<KeyCode>{KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3};
 
-        public GameObject[] primarySpells;
-        public GameObject[] secondarySpells;
+        public List<GameObject> primarySpells = new List<GameObject>();
+        public List<GameObject> secondarySpells = new List<GameObject>();
+
+        //The amount of spells that you can carry at one time
+        public int maxPrimarySpells = 3;
+        public int maxSecondarySpells = 3;
+
+        //Parents under which new spells will be attached
+        public GameObject primarySpellParent;
+        public GameObject secondarySpellParent;
 
         Dictionary<KeyCode, SpellType> primarySpellsDict;
         Dictionary<KeyCode, SpellType> secondarySpellsDict;
@@ -40,14 +48,14 @@ namespace DamageSystem.NewSpellSystem.Core
             secondarySpellsDict = new Dictionary<KeyCode, SpellType>();
             spellCooldowns = new Dictionary<SpellType, float>();
             Debug.Log("PRIMARY SPELLS:");
-            for(int i=0; i<primarySpells.Length && i<primaryBinds.Length; i++)
+            for(int i=0; i<primarySpells.Count && i<primaryBinds.Count; i++)
             {
                 primarySpellsDict.Add(primaryBinds[i], primarySpells[i].GetComponent<SpellType>());
                 Debug.Log(primaryBinds[i] + " - " + primarySpells[i].name);
             }
 
             Debug.Log("SECONDARY SPELLS:");
-            for (int i = 0; i < secondarySpells.Length && i < secondaryBinds.Length; i++)
+            for (int i = 0; i < secondarySpells.Count && i < secondaryBinds.Count; i++)
             {
                 secondarySpellsDict.Add(secondaryBinds[i], secondarySpells[i].GetComponent<SpellType>());
                 spellCooldowns.Add(secondarySpells[i].GetComponent<SpellType>(), Time.time);
@@ -181,6 +189,42 @@ namespace DamageSystem.NewSpellSystem.Core
             secondaryCasting = false;
             Debug.Log("Can cast again");
         }*/
+
+        //Initial implementation of adding spells to the player
+        public bool AddSpell(GameObject spell)
+        {
+            if (spell.GetComponent<SpellType>())
+            {
+                //Replace this with instantiating a spell under the player or something
+                SpellType addedSpell = spell.GetComponent<SpellType>();
+                //Check whether the spell should be added to the primary spell list or the secondary spell list
+                if (addedSpell.isPrimarySpell())
+                {
+                    //Add the spell to primary Spells if there's room for that
+                    if(primarySpells.Count < maxPrimarySpells)
+                    {
+                        primarySpells.Add(spell);
+                        primarySpellsDict.Add(primaryBinds[primarySpells.Count - 1], addedSpell);
+                        //Changing parent to the player
+                        spell.transform.parent = primarySpellParent.transform;
+                        Debug.Log("Spell added to primary spells! - " + spell.name);
+                        return true;
+                    }
+                }else if (addedSpell.isSecondarySpell())
+                {
+                    if(secondarySpells.Count < maxSecondarySpells)
+                    {
+                        secondarySpells.Add(spell);
+                        secondarySpellsDict.Add(secondaryBinds[primarySpells.Count - 1], addedSpell);
+                        //Changing parent to the player
+                        spell.transform.parent = secondarySpellParent.transform;
+                        Debug.Log("Spell added to secondary spells! - " + spell.name);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 
 }

@@ -48,9 +48,10 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
                 }
 
                 //Change the rotation of the parent gameObject (to make the particles rotate along the player)
-                Quaternion rotation = Quaternion.Euler(0f, origin.transform.rotation.eulerAngles.y, 0f);
-                gameObject.transform.parent.rotation = rotation;
+                /*Quaternion rotation = Quaternion.Euler(0f, origin.transform.rotation.eulerAngles.y, 0f);
+                gameObject.transform.parent.rotation = rotation;*/
                 //Set the position of the particles at the tip of the laser
+                castParticles.gameObject.transform.position = lr.GetPosition(0);
                 collisionParticles.gameObject.transform.position = lr.GetPosition(1);
             }
 

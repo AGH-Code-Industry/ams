@@ -22,3 +22,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
   - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
   aoe: {fileID: 11400000, guid: 8d8f54bdb0355d24293d24166a1bb5cf, type: 2}
+  isPrimary: 0
+  isSecondary: 1
