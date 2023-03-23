@@ -46,9 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellInfo: {fileID: 11400000, guid: 60f540c167a7f7c42b261e26e55259e9, type: 2}
-  lr: {fileID: 6122711802560017082}
-  castParticles: {fileID: 6122711802088243002}
-  collisionParticles: {fileID: 6122711802371773583}
   beamVfx: {fileID: 6807544290243769147}
 --- !u!1 &6122711802088243001
 GameObject:
@@ -100,7 +97,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4912,7 +4909,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

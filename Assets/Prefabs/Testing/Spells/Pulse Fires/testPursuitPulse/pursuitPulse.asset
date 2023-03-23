@@ -20,3 +20,5 @@ MonoBehaviour:
   pelletBehaviour: 1
   elementals:
   - {fileID: 11400000, guid: cccfda47411e18d4d8a724e75c61c199, type: 2}
+  isPrimary: 1
+  isSecondary: 0

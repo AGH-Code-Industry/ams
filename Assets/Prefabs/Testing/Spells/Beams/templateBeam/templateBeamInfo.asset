@@ -15,3 +15,5 @@ MonoBehaviour:
   tickRate: 0.5
   elementals:
   - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
+  isPrimary: 1
+  isSecondary: 0

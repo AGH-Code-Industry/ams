@@ -13,6 +13,15 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         //Variable used for the damage ball at the tip of the laser (not implemented at the moment)
         //public beamTriggerEntity trigger;
         public beamSpellInfo spellInfo;
+        public override bool isPrimarySpell()
+        {
+            return spellInfo.isPrimary;
+        }
+        public override bool isSecondarySpell()
+        {
+            return spellInfo.isSecondary;
+        }
+
         private Damageable target;
 
         float cooldown = 0f;
@@ -69,6 +78,10 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
                 if (hit.collider.GetComponent<Damageable>())
                 { 
                     target = hit.collider.GetComponent<Damageable>();
+                }
+                else
+                {
+                    target = null;
                 }
             }
         }

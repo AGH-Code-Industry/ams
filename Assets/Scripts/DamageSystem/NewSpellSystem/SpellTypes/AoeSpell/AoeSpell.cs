@@ -9,6 +9,15 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Aoe
     {
         public AoeSpellInfo spellInfo;
 
+        public override bool isPrimarySpell()
+        {
+            return spellInfo.isPrimary;
+        }
+        public override bool isSecondarySpell()
+        {
+            return spellInfo.isSecondary;
+        }
+
         public override void Cast(Transform origin)
         {
             AoeEffect.Spawn(origin.position, spellInfo.aoeEffect, origin.gameObject);

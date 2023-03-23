@@ -28,6 +28,14 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         [System.Serializable]
         public enum CastType { CONSTANT, BURSTS }
 
+        public override bool isPrimarySpell()
+        {
+            return spellInfo.isPrimary;
+        }
+        public override bool isSecondarySpell()
+        {
+            return spellInfo.isSecondary;
+        }
         public override void Cast(Transform _origin) {
             switch (spellInfo.castBehaviour) {
                 case CastType.CONSTANT:

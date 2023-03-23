@@ -15,5 +15,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         public PulseFire.CastType castBehaviour;
         public PulseFire.PelletType pelletBehaviour;
         public List<AttackElemental> elementals;
+        public bool isPrimary;
+        public bool isSecondary;
     }
 }

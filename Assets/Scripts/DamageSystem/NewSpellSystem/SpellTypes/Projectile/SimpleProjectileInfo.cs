@@ -15,5 +15,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
         public Rigidbody projectile;
         public List<AttackElemental> elementals;
         public AoeInfo aoe;
+        public bool isPrimary;
+        public bool isSecondary;
     }
 }
