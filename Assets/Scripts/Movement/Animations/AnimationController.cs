@@ -36,7 +36,7 @@ public class AnimationController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         sprintInput = Input.GetKey(KeyCode.LeftShift);
         attackInput = Input.GetKey(KeyCode.Mouse0);
-        dashInput = Input.GetKey(KeyCode.Space);
+        dashInput = Input.GetKey(KeyCode.LeftAlt);
         
         moveDir = new Vector3(horizontalInput, 0f,verticalInput);  
         mousePos = Input.mousePosition;
