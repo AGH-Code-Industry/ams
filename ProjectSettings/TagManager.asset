@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Coin
+  - Pickable
   - Enemy
   - Bullet
   - Enemy

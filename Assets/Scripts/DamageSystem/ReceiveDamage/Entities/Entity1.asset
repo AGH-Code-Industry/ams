@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInvincible: 0
   isImmortal: 0
-  maxHealth: 100
+  maxHealth: 20
