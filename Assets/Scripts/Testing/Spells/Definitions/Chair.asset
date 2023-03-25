@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a78d5d361143e4588e80ef8a9d05aa, type: 3}
   m_Name: Chair
   m_EditorClassIdentifier: 
+  Id: aeef5106-b402-4ef8-8f29-f83f21ecd025
   _manaCost: 15
   _cooldown: 2.5
   model: {fileID: 4852549134588170221, guid: ca1ab117342c7e64cac2a8737134e265, type: 3}
