@@ -7,6 +7,13 @@ TagManager:
   - Coin
   - Pickable
   - Enemy
+  - Bullet
+  - Enemy
+  - Chest
+  - Item
+  - Wall
+  - Door
+  - Floor
   layers:
   - Default
   - TransparentFX
