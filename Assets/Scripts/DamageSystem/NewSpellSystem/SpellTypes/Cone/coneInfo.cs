@@ -9,6 +9,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Spells/Cone", order = 4)]
     public class coneInfo : ScriptableObject
     {
+        public string spellName;
+        public string description;
        // public float cooldown;
        // public float castTime;
         public float tickRate = 0.5f;
