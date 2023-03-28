@@ -8,6 +8,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
 
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Spells/SimpleProjectile", order = 3)]
     public class SimpleProjectileInfo : ScriptableObject {
+        public string spellName = "default";
+        public string description = "default";
         public float castTime;
         public float cooldown;
         public float force;

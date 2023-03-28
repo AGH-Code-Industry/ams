@@ -8,6 +8,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
     public class PulseFire : SpellType {
         public PulseFireInfo spellInfo;
 
+        public override string spellName { get => spellInfo.spellName; }
+        public override string spellDescription { get => spellInfo.description; }
+
         [System.Serializable]
         public enum PelletType { SIMPLE, PURSUIT }
         /*Bug log for pursuit behaviour:

@@ -9,6 +9,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
 
         public SimpleProjectileInfo spellInfo;
 
+        public override string spellName { get => spellInfo.spellName; }
+        public override string spellDescription { get => spellInfo.description; }
+
         public override bool isPrimarySpell()
         {
             return spellInfo.isPrimary;

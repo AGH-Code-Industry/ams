@@ -8,6 +8,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
 
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Spells/PulseFire", order = 2)]
     public class PulseFireInfo : ScriptableObject {
+        public string spellName;
+        public string description;
         public float castTime;
         public float cooldown;
         public Rigidbody pellet;
