@@ -27,7 +27,7 @@ namespace DamageSystem.NewSpellSystem.Core
         Dictionary<KeyCode, SpellType> secondarySpellsDict;
         
         [HideInInspector]
-        public Dictionary<SpellType, float> spellCooldowns;
+        public Dictionary<SpellType, float> secondarySpellCooldowns;
 
         KeyValuePair<KeyCode, SpellType> activePrimarySpell;
         KeyValuePair<KeyCode, SpellType> queuedPrimarySpell;
@@ -46,7 +46,7 @@ namespace DamageSystem.NewSpellSystem.Core
         {
             primarySpellsDict = new Dictionary<KeyCode, SpellType>();
             secondarySpellsDict = new Dictionary<KeyCode, SpellType>();
-            spellCooldowns = new Dictionary<SpellType, float>();
+            secondarySpellCooldowns = new Dictionary<SpellType, float>();
             Debug.Log("PRIMARY SPELLS:");
             for(int i=0; i<primarySpells.Count && i<primaryBinds.Count; i++)
             {
@@ -58,7 +58,7 @@ namespace DamageSystem.NewSpellSystem.Core
             for (int i = 0; i < secondarySpells.Count && i < secondaryBinds.Count; i++)
             {
                 secondarySpellsDict.Add(secondaryBinds[i], secondarySpells[i].GetComponent<SpellType>());
-                spellCooldowns.Add(secondarySpells[i].GetComponent<SpellType>(), Time.time);
+                secondarySpellCooldowns.Add(secondarySpells[i].GetComponent<SpellType>(), Time.time);
                 Debug.Log(secondaryBinds[i] + " - " + secondarySpells[i].name);
             }
         }
@@ -146,7 +146,7 @@ namespace DamageSystem.NewSpellSystem.Core
             if (canCast && !secondaryCasting) {
                 foreach (KeyValuePair<KeyCode, SpellType> entry in secondarySpellsDict)
                 {
-                    if (Input.GetKeyDown(entry.Key) && spellCooldowns[entry.Value] < Time.time)
+                    if (Input.GetKeyDown(entry.Key) && secondarySpellCooldowns[entry.Value] < Time.time)
                     {
                         secondaryCasting = true;
                         //SecondaryCast(entry.Value);
@@ -166,7 +166,7 @@ namespace DamageSystem.NewSpellSystem.Core
                 spell.Cast(spellOrigin);
                 secondaryCasting = false;
                 queuedSecondarySpell = null; //Is it necessary?
-                spellCooldowns[spell] = Time.time + spell.GetCooldown();
+                secondarySpellCooldowns[spell] = Time.time + spell.GetCooldown();
             }
         }
 

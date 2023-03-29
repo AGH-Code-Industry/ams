@@ -32,7 +32,7 @@ namespace DamageSystem.NewSpellSystem.Core
         // Update is called once per frame
         void Update()
         {
-            trackedCooldown = playerSpellManager.spellCooldowns[spellToTrack];
+            trackedCooldown = playerSpellManager.secondarySpellCooldowns[spellToTrack];
             cooldownBar.value = Mathf.Clamp(trackedCooldown - Time.time, cooldownBar.minValue, cooldownBar.maxValue);
             if (cooldownBar.value == 0f)
             {
