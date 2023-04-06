@@ -5288,8 +5288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baa421ef107770418e8ad896b19884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRadius: 3
   chaseRadius: 10
   patrolRadius: 30
+  attackCooldown: 4
+  projectile: {fileID: -3436793938213148360, guid: 36f6898587ae4d945a5bb6b596d72875,
+    type: 3}
 --- !u!1 &7258600378676356205
 GameObject:
   m_ObjectHideFlags: 0
