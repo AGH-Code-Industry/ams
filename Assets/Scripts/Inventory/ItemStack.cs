@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 namespace team4.equipment {
 
     public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
 
         [SerializeField] private Image iconImage;
-        [SerializeField] private Text countText;
+        [SerializeField] private TMP_Text countText;
         [SerializeField] private Item _item;
         [SerializeField] private int _count = 0;
 

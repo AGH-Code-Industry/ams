@@ -146,6 +146,11 @@ PrefabInstance:
       propertyPath: _count
       value: 42
       objectReference: {fileID: 0}
+    - target: {fileID: 3006613764970304948, guid: e81a1e76cceedba49b53ea4c0271d32a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5099945
+      objectReference: {fileID: 0}
     - target: {fileID: 6849072432126256195, guid: e81a1e76cceedba49b53ea4c0271d32a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -253,18 +258,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81a1e76cceedba49b53ea4c0271d32a, type: 3}
---- !u!114 &768198753 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6122479140825104840, guid: 45c127cff6abce545a0294f6e4204a15,
-    type: 3}
-  m_PrefabInstance: {fileID: 1038947677}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a3b34a837b4fd42ba4da41d8e70b39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &868826231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1441,11 +1434,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6978694653087155860, guid: 45c127cff6abce545a0294f6e4204a15,
-        type: 3}
-      propertyPath: hoverWindow
-      value: 
-      objectReference: {fileID: 768198753}
     - target: {fileID: 6978694653087155861, guid: 45c127cff6abce545a0294f6e4204a15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1852,6 +1840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _count
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3006613764970304948, guid: e81a1e76cceedba49b53ea4c0271d32a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5099945
       objectReference: {fileID: 0}
     - target: {fileID: 6074151746046143110, guid: e81a1e76cceedba49b53ea4c0271d32a,
         type: 3}
