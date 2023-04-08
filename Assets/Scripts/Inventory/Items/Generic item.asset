@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ad8e6ee83bc24408d76e4944011b21, type: 3}
+  m_Name: Generic item
+  m_EditorClassIdentifier: 
+  description: Generic description
+  icon: {fileID: 21300000, guid: 18d5690f01f7cee4aa3ce0c69a27da44, type: 3}
+  stackSize: 64

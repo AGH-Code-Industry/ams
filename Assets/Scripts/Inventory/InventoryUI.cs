@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace team4.equipment {
 
-    public class ItemStack : MonoBehaviour
+    public class InventoryUI : MonoBehaviour
     {
+        [SerializeField] private Inventory inventory;
 
-        private Item item;
-        private int count;
-
+        private int width = 9;
+        private int height = 4;
+        
         void Start()
         {
             
