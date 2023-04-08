@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 namespace team4.equipment {
 
-    public class ItemStack : MonoBehaviour
+    public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
 
         [SerializeField] private Image iconImage;
         [SerializeField] private Text countText;
         [SerializeField] private Item _item;
         [SerializeField] private int _count = 0;
+
         public Item item 
         {
             get => _item;
@@ -19,6 +21,7 @@ namespace team4.equipment {
                 iconImage.sprite = _item.icon;
             }
         }
+
         public int count 
         {
             get => _count;
@@ -40,6 +43,16 @@ namespace team4.equipment {
                 iconImage.sprite = _item.icon;
             } 
             countText.text = count.ToString();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            InventoryUI.ShowHoverWindow(this);
+        }       
+        
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            InventoryUI.HideHoverWindow();
         }
     }
 
