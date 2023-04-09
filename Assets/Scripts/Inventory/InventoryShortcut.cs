@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace team4.equipment {
 
-    public class InventoryShortcut : MonoBehaviour
+public class InventoryShortcut : MonoBehaviour
+{
+    [SerializeField] private KeyCode openKey = KeyCode.I;
+    [SerializeField] private InventoryUI inventoryUI;
+
+    void Update()
     {
-        [SerializeField] private KeyCode openKey = KeyCode.I;
-        [SerializeField] private InventoryUI inventoryUI;
-
-        void Update()
+        if (Input.GetKeyDown(openKey))
         {
-            if (Input.GetKeyDown(openKey))
-            {
-                inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeInHierarchy);
-            }
+            inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeInHierarchy);
         }
     }
-
 }
