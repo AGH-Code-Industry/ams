@@ -11,13 +11,7 @@ public class HoverWindow : MonoBehaviour
     [SerializeField] private TMP_Text countText;
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private Vector2 mouseMargin = new Vector2(8, -8);
-
-    public void SetItemStack(ItemStack stack) {
-        iconImage.sprite = stack.item.icon;
-        nameText.text = stack.item.name;
-        countText.text = stack.count.ToString();
-        descriptionText.text = stack.item.description;
-    }
+    public ItemStack stack;
 
     private void Update() {
         if (gameObject.activeInHierarchy) {
@@ -25,6 +19,10 @@ public class HoverWindow : MonoBehaviour
                 Input.mousePosition.x + mouseMargin.x, 
                 Input.mousePosition.y + mouseMargin.y, 
                 0);
+            iconImage.sprite = stack.item.icon;
+            nameText.text = stack.item.name;
+            countText.text = stack.count.ToString();
+            descriptionText.text = stack.item.description;
         }
     }
 }

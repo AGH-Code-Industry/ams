@@ -558,11 +558,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6978694653087155863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c795abb9a2d4c04492e48bbe839c0b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 501f82234099e4c4dbf7612fba870c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
   hoverWindow: {fileID: 6122479140825104840}
+  itemStacksContainer: {fileID: 6978694651358738278}
+  itemStackPrefab: {fileID: 2546996484552572523, guid: e81a1e76cceedba49b53ea4c0271d32a,
+    type: 3}
 --- !u!1001 &1686269868301682453
 PrefabInstance:
   m_ObjectHideFlags: 0

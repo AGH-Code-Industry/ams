@@ -11,7 +11,7 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text countText;
     [SerializeField] private Item _item;
-    [SerializeField] private int _count = 0;
+    [SerializeField] private int _count = 1;
 
     public Item item 
     {
@@ -31,11 +31,6 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
-    public ItemStack(Item item) 
-    {
-        _item = item;
-    }
-
     void Start()
     {
         if (_item) {
@@ -45,13 +40,17 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         countText.text = count.ToString();
     }
 
+    public bool CanAdd(int amount = 1) {
+        return count + amount <= item.stackSize;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        InventoryUI.ShowHoverWindow(this);
+        Inventory.ShowHoverWindow(this);
     }       
     
     public void OnPointerExit(PointerEventData eventData)
     {
-        InventoryUI.HideHoverWindow();
+        Inventory.HideHoverWindow();
     }
 }

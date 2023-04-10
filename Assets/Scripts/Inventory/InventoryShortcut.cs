@@ -5,13 +5,18 @@ using UnityEngine;
 public class InventoryShortcut : MonoBehaviour
 {
     [SerializeField] private KeyCode openKey = KeyCode.I;
-    [SerializeField] private InventoryUI inventoryUI;
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private Item item;
 
     void Update()
     {
         if (Input.GetKeyDown(openKey))
         {
-            inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeInHierarchy);
+            inventory.gameObject.SetActive(!inventory.gameObject.activeInHierarchy);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            inventory.AddItem(item);
         }
     }
 }

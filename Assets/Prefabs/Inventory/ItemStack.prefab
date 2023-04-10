@@ -190,7 +190,7 @@ MonoBehaviour:
   iconImage: {fileID: 6755801513353309893}
   countText: {fileID: 570267971236527502}
   _item: {fileID: 0}
-  _count: 0
+  _count: 1
 --- !u!222 &5894334667372852390
 CanvasRenderer:
   m_ObjectHideFlags: 0
