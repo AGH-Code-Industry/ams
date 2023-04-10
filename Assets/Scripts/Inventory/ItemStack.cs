@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Linq;
 
-public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IEndDragHandler
 {
 
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text countText;
     [SerializeField] private Item _item;
     [SerializeField] private int _count = 1;
+    private RectTransform rectTransform;
 
     public Item item 
     {
@@ -38,6 +40,7 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             iconImage.sprite = _item.icon;
         } 
         countText.text = count.ToString();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public bool CanAdd(int amount = 1) {
@@ -54,5 +57,36 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         Inventory.HideHoverWindow();
         Cursor.SetCursor(CursorTextures.instance.cursorDefault, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        rectTransform.anchoredPosition += eventData.delta;
+        Inventory.HideHoverWindow();
+    }
+
+    public List<RaycastResult> RaycastMouse(){
+        PointerEventData pointerData = new PointerEventData (EventSystem.current)
+        {
+            pointerId = -1,
+        };
+        pointerData.position = Input.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+        // Debug.Log( results.Count);
+        // results.ForEach(el=>Debug.Log(el.gameObject));
+        return results;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Inventory.ShowHoverWindow(this);
+        RaycastResult defaultRaycastResult = new RaycastResult();
+        RaycastResult newSlotRaycastResult = RaycastMouse().FirstOrDefault(raycastResult => raycastResult.gameObject.GetComponent<InventorySlot>());
+        if (!newSlotRaycastResult.Equals(defaultRaycastResult) && !newSlotRaycastResult.gameObject.GetComponent<InventorySlot>().isTaken) {
+            transform.SetParent(newSlotRaycastResult.gameObject.transform);
+        }
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;   
     }
 }
