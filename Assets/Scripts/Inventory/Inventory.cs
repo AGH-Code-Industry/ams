@@ -9,6 +9,9 @@ public class Inventory : MonoBehaviour
     [SerializeField] private HoverWindow hoverWindow;
     [SerializeField] private GameObject itemStacksContainer;
     [SerializeField] private ItemStack itemStackPrefab;
+    [SerializeField] private GameObject slotsContainer;
+    private List<InventorySlot> slots;
+
     public void AddItem(Item item)
     {
         List<ItemStack> foundStacks = GetStacksWithFreeSpace(item);
@@ -18,16 +21,34 @@ public class Inventory : MonoBehaviour
         } 
         else 
         {
-            ItemStack newStack = Instantiate(itemStackPrefab);
-            newStack.item = item;
-            newStack.transform.SetParent(itemStacksContainer.transform);
+            InventorySlot slot = GetFreeSlot();
+            if (slot) {
+                ItemStack newStack = Instantiate(itemStackPrefab);
+                newStack.item = item;
+                // newStack.transform.
+                newStack.transform.SetParent(slot.transform, false);
+                Debug.Log("added");
+                Debug.Log(slot.transform);
+            } else {
+                Debug.Log("Przedmiot nie zmieścił się w inventory");
+            }
         }
     }
 
     private List<ItemStack> GetStacksWithFreeSpace(Item item, int count = 1)
     {
-        List<ItemStack> itemStacks = new List<ItemStack>(instance.itemStacksContainer.GetComponentsInChildren<ItemStack>());
+        List<ItemStack> itemStacks = new List<ItemStack>(instance.slotsContainer.GetComponentsInChildren<ItemStack>());
         return itemStacks.FindAll(s => s.item.name == item.name && s.CanAdd(count));
+    }
+
+    private List<InventorySlot> GetSlots()
+    {
+        return new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
+    }
+
+    private InventorySlot GetFreeSlot()
+    {
+        return GetSlots().FirstOrDefault(slot => !slot.isTaken);
     }
 
     private static Inventory instance;
@@ -37,6 +58,7 @@ public class Inventory : MonoBehaviour
 
     void Awake() {
         instance = this;
+        slots = new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
     }
 
     public static void ShowHoverWindow(ItemStack stack)
