@@ -2590,6 +2590,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81a1e76cceedba49b53ea4c0271d32a, type: 3}
+--- !u!1001 &4504132081599059957
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4504132081636113113, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_Name
+      value: CursorTexture
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504132081636113115, guid: 551cc72e85228104ebabc85fa02b1bc9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 551cc72e85228104ebabc85fa02b1bc9, type: 3}
 --- !u!114 &6978694652476036046 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6978694653087155860, guid: 45c127cff6abce545a0294f6e4204a15,

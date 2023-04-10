@@ -47,10 +47,12 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerEnter(PointerEventData eventData)
     {
         Inventory.ShowHoverWindow(this);
+        Cursor.SetCursor(CursorTextures.instance.cursorPointer, Vector2.zero, CursorMode.Auto);
     }       
     
     public void OnPointerExit(PointerEventData eventData)
     {
         Inventory.HideHoverWindow();
+        Cursor.SetCursor(CursorTextures.instance.cursorDefault, Vector2.zero, CursorMode.Auto);
     }
 }
