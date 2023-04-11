@@ -4,16 +4,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMoth : MonoBehaviour
 {
-    public float attackRadius = 3f;
+    public float attackRadius = 12f;
     public float chaseRadius = 10f;
     public float patrolRadius = 30f;
-    public float attackCooldown = 4f;
+    public float attackCooldown = 1f;
     public Rigidbody projectile;
-    public float ForwardStrength = 20f;
-    public float UpwardStrength = 2;
-    public float ChaseSpeed = 5f;
+    public float ForwardStrength = 25f;
+    public float UpwardStrength = 8;
+    public float ChaseSpeed;
+    
 
     public delegate void AttackTest();
     public AttackTest AttackMethod;
@@ -26,12 +27,13 @@ public class EnemyMovement : MonoBehaviour
     private Transform player;
     private NavMeshAgent agent;
     
+    
+    
     // Start is called before the first frame update
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(player.position);
     }
 
     // Update is called once per frame
@@ -66,9 +68,9 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void Chase() {
-        isPatrolling = false;
-        agent.SetDestination(player.position);
         agent.speed = ChaseSpeed;
+        agent.SetDestination(player.position);
+        transform.LookAt(player);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -84,10 +86,7 @@ public class EnemyMovement : MonoBehaviour
             Invoke(nameof(ResetAttack), attackCooldown);
         }
         
-        Rigidbody rb = Instantiate(projectile , transform.position + transform.forward + transform.up, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * ForwardStrength, ForceMode.Impulse);
-        rb.AddForce(transform.up * UpwardStrength, ForceMode.Impulse);
-        Destroy(rb.gameObject, ProjectileLifetime);
+        Destroy(gameObject);
     }
 
     private void Attacking(AttackTest method)
@@ -103,5 +102,20 @@ public class EnemyMovement : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void OnDestroy()
+    {
+    
+        for(int i = 0; i < 10; i++)
+        {
+            float randomX = Random.Range(-2f, 2f);
+            float randomZ = Random.Range(-2f, 2f);
+
+            Rigidbody rb = Instantiate(projectile , transform.position + (transform.forward + new Vector3(randomX, 0, randomZ)) + transform.up, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * ForwardStrength, ForceMode.Impulse);
+            rb.AddForce(transform.up * UpwardStrength, ForceMode.Impulse);
+            Destroy(rb.gameObject, ProjectileLifetime);
+        }
     }
 }
