@@ -25,10 +25,7 @@ public class Inventory : MonoBehaviour
             if (slot) {
                 ItemStack newStack = Instantiate(itemStackPrefab);
                 newStack.item = item;
-                // newStack.transform.
                 newStack.transform.SetParent(slot.transform, false);
-                Debug.Log("added");
-                Debug.Log(slot.transform);
             } else {
                 Debug.Log("Przedmiot nie zmieścił się w inventory");
             }
@@ -53,9 +50,6 @@ public class Inventory : MonoBehaviour
 
     private static Inventory instance;
 
-    // private int width = 9;
-    // private int height = 4;
-
     void Awake() {
         instance = this;
         slots = new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
@@ -63,12 +57,14 @@ public class Inventory : MonoBehaviour
 
     public static void ShowHoverWindow(ItemStack stack)
     {
-        instance.hoverWindow.gameObject.SetActive(true);
-        instance.hoverWindow.stack = stack;
+        instance.hoverWindow.Show(stack);
+        // instance.hoverWindow.gameObject.SetActive(true);
+        // instance.hoverWindow.stack = stack;
     }
 
     public static void HideHoverWindow()
     {
-        instance.hoverWindow.gameObject.SetActive(false);
+        instance.hoverWindow.Hide();
+        // instance.hoverWindow.gameObject.SetActive(false);
     }
 }
