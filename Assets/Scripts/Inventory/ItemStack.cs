@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using System.Linq;
 
-public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IEndDragHandler
+public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
 
     [SerializeField] private Image iconImage;
@@ -59,10 +59,19 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Cursor.SetCursor(CursorTextures.instance.cursorDefault, Vector2.zero, CursorMode.Auto);
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        DraggingSlot.instance.transform.position = transform.position;
+        DraggingSlot.startDragSlot = transform.parent;
+        transform.SetParent(DraggingSlot.instance.transform);
+        rectTransform.offsetMin = Vector2.zero;
+        rectTransform.offsetMax = Vector2.zero;   
+        Inventory.HideHoverWindow();
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
-        Inventory.HideHoverWindow();
+        DraggingSlot.instance.rectTransform.anchoredPosition += eventData.delta;
     }
 
     public List<RaycastResult> RaycastMouse(){
@@ -73,8 +82,6 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         pointerData.position = Input.mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, results);
-        // Debug.Log( results.Count);
-        // results.ForEach(el=>Debug.Log(el.gameObject));
         return results;
     }
 
@@ -85,6 +92,8 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         RaycastResult newSlotRaycastResult = RaycastMouse().FirstOrDefault(raycastResult => raycastResult.gameObject.GetComponent<InventorySlot>());
         if (!newSlotRaycastResult.Equals(defaultRaycastResult) && !newSlotRaycastResult.gameObject.GetComponent<InventorySlot>().isTaken) {
             transform.SetParent(newSlotRaycastResult.gameObject.transform);
+        } else {
+            transform.SetParent(DraggingSlot.startDragSlot);
         }
         rectTransform.offsetMin = Vector2.zero;
         rectTransform.offsetMax = Vector2.zero;   

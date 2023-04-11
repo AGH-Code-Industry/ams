@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private ItemStack itemStackPrefab;
     [SerializeField] private GameObject slotsContainer;
     private List<InventorySlot> slots;
+    private static Inventory instance;
 
     public void AddItem(Item item)
     {
@@ -48,8 +49,6 @@ public class Inventory : MonoBehaviour
         return GetSlots().FirstOrDefault(slot => !slot.isTaken);
     }
 
-    private static Inventory instance;
-
     void Awake() {
         instance = this;
         slots = new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
@@ -58,13 +57,10 @@ public class Inventory : MonoBehaviour
     public static void ShowHoverWindow(ItemStack stack)
     {
         instance.hoverWindow.Show(stack);
-        // instance.hoverWindow.gameObject.SetActive(true);
-        // instance.hoverWindow.stack = stack;
     }
 
     public static void HideHoverWindow()
     {
         instance.hoverWindow.Hide();
-        // instance.hoverWindow.gameObject.SetActive(false);
     }
 }
