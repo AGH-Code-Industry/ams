@@ -19,7 +19,7 @@ public class PlayerRotation : MonoBehaviour
         if (groundPlane.Raycast(cameraRay, out rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z - 1));
         }   
     }
 }
