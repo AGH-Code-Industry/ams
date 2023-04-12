@@ -187,10 +187,15 @@ MonoBehaviour:
   sprintKey: 304
   baseSpeed: 4
   sprintSpeed: 6
-  dashKey: 32
+  dashKey: 308
   dashSpeed: 10
   dashTime: 0.2
   dashCooldown: 4
+  levitationSpeed: 7
+  maxHeight: 5
+  currentHeight: 0
+  canLevitate: 1
+  levitationKey: 32
 --- !u!143 &9152802754467829293
 CharacterController:
   m_ObjectHideFlags: 0
@@ -245,6 +250,10 @@ MonoBehaviour:
   - {fileID: 4311425805152097550}
   - {fileID: 4464257660751021347}
   secondarySpells: []
+  maxPrimarySpells: 3
+  maxSecondarySpells: 3
+  primarySpellParent: {fileID: 0}
+  secondarySpellParent: {fileID: 0}
   queuedSecondarySpell: {fileID: 0}
   secondaryCastTime: 0
 --- !u!1001 &273624704813222316

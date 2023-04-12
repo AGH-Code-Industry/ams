@@ -5164,7 +5164,7 @@ GameObject:
   - component: {fileID: -5513186748648968151}
   - component: {fileID: 1474699156096549100}
   m_Layer: 0
-  m_Name: DummyEnemy
+  m_Name: Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

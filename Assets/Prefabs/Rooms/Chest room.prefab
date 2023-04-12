@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4086554099616450954}
   m_Layer: 0
-  m_Name: SpellRoom
+  m_Name: Chest room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

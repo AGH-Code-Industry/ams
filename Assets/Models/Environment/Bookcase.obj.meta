@@ -33,6 +33,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Almera_M
     second: {fileID: 2100000, guid: b7dde53420cc70a419b98bdf15b50583, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Almira_AlmiraMat
+    second: {fileID: 2100000, guid: b7dde53420cc70a419b98bdf15b50583, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
