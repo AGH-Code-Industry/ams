@@ -5160,6 +5160,9 @@ GameObject:
   - component: {fileID: 6285986498145795863}
   - component: {fileID: 3691780297689014248}
   - component: {fileID: 3578681978938696903}
+  - component: {fileID: -4536317352630296776}
+  - component: {fileID: -5513186748648968151}
+  - component: {fileID: 1474699156096549100}
   m_Layer: 0
   m_Name: DummyEnemy
   m_TagString: Untagged
@@ -5252,6 +5255,72 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!195 &-4536317352630296776
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017696525455545317}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 3
+--- !u!114 &-5513186748648968151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017696525455545317}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5baa421ef107770418e8ad896b19884c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 3
+  chaseRadius: 10
+  patrolRadius: 30
+  attackCooldown: 4
+  projectile: {fileID: -3436793938213148360, guid: 36f6898587ae4d945a5bb6b596d72875,
+    type: 3}
+  ForwardStrength: 20
+  UpwardStrength: 2
+  ChaseSpeed: 5
+  ProjectileLifetime: 3
+--- !u!114 &1474699156096549100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017696525455545317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a12064a816584b2b88048fbe021d819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 3
+  chaseRadius: 10
+  patrolRadius: 30
+  attackCooldown: 4
+  projectile: {fileID: -3154055617728312617, guid: 7db1eb6a9fa4a4e5ba4319a376cef4d4,
+    type: 3}
+  ForwardStrength: 25
+  UpwardStrength: 2
+  ChaseSpeed: 6
+  ProjectileLifetime: 3
 --- !u!1 &7258600378676356205
 GameObject:
   m_ObjectHideFlags: 0
