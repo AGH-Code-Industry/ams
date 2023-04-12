@@ -9,6 +9,10 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
     public class Cone : SpellType
     {
         public coneInfo spellInfo;
+
+        public override string spellName { get => spellInfo.spellName; }
+        public override string spellDescription { get => spellInfo.description; }
+
         public override bool isPrimarySpell()
         {
             return spellInfo.isPrimary;
@@ -21,6 +25,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
         bool setup = false;
 
         public coneEntity coneTrigger;
+
+
         public override void Cast(Transform origin)
         {
             if (!coneTrigger.isActive())

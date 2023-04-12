@@ -13,6 +13,10 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         //Variable used for the damage ball at the tip of the laser (not implemented at the moment)
         //public beamTriggerEntity trigger;
         public beamSpellInfo spellInfo;
+
+        public override string spellName { get => spellInfo.spellName; }
+        public override string spellDescription { get => spellInfo.description; }
+
         public override bool isPrimarySpell()
         {
             return spellInfo.isPrimary;
@@ -46,6 +50,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
         //The Vfx implementation of the laser
         [SerializeField, SerializeReference]
         public BeamFx beamVfx;
+
 
         public override void Cast(Transform _origin)
         {
