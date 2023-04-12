@@ -1,32 +1,38 @@
 fileFormatVersion: 2
-guid: 770bdcece52ec4c88b5f2bd349f4dba5
+guid: 8979467c96326ee40bae920cddee803f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       1: 100000
+    second: Almira_Almira
+  - first:
+      1: 100002
     second: //RootNode
   - first:
       4: 400000
+    second: Almira_Almira
+  - first:
+      4: 400002
     second: //RootNode
   - first:
       21: 2100000
-    second: Material.001
+    second: Almera_M
   - first:
       23: 2300000
-    second: //RootNode
+    second: Almira_Almira
   - first:
       33: 3300000
-    second: //RootNode
+    second: Almira_Almira
   - first:
       43: 4300000
-    second: Cylinder.002
+    second: Almira_Almira
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 3ed937c7b113645dbad3d4abe729aab3, type: 2}
+      name: Almera_M
+    second: {fileID: 2100000, guid: b7dde53420cc70a419b98bdf15b50583, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
