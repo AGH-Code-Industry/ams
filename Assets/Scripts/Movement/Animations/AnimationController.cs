@@ -46,9 +46,9 @@ public class AnimationController : MonoBehaviour
         float angle = Vector3.SignedAngle(moveDir, mouseOffset, Vector3.up);
 
         
-        Debug.Log(angle);
-        Debug.Log("VelocityX" + velocityX);
-        Debug.Log("VelocityY" + velocityY);
+        //Debug.Log(angle);
+        //Debug.Log("VelocityX" + velocityX);
+        //Debug.Log("VelocityY" + velocityY);
         velocityX = -Mathf.Sin(angle * Mathf.Deg2Rad) * moveDir.magnitude / temporaryMultiplier;    
         velocityY = Mathf.Cos(angle * Mathf.Deg2Rad) * moveDir.magnitude / temporaryMultiplier;
         if (sprintInput) {
