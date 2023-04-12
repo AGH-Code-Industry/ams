@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Coin
   - Pickable
-  - Enemy
   - Bullet
   - Enemy
   - Chest

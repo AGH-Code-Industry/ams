@@ -47,19 +47,19 @@ namespace DamageSystem.NewSpellSystem.Core
             primarySpellsDict = new Dictionary<KeyCode, SpellType>();
             secondarySpellsDict = new Dictionary<KeyCode, SpellType>();
             spellCooldowns = new Dictionary<SpellType, float>();
-            Debug.Log("PRIMARY SPELLS:");
+            //Debug.Log("PRIMARY SPELLS:");
             for(int i=0; i<primarySpells.Count && i<primaryBinds.Count; i++)
             {
                 primarySpellsDict.Add(primaryBinds[i], primarySpells[i].GetComponent<SpellType>());
-                Debug.Log(primaryBinds[i] + " - " + primarySpells[i].name);
+                //Debug.Log(primaryBinds[i] + " - " + primarySpells[i].name);
             }
 
-            Debug.Log("SECONDARY SPELLS:");
+            //Debug.Log("SECONDARY SPELLS:");
             for (int i = 0; i < secondarySpells.Count && i < secondaryBinds.Count; i++)
             {
                 secondarySpellsDict.Add(secondaryBinds[i], secondarySpells[i].GetComponent<SpellType>());
                 spellCooldowns.Add(secondarySpells[i].GetComponent<SpellType>(), Time.time);
-                Debug.Log(secondaryBinds[i] + " - " + secondarySpells[i].name);
+                //Debug.Log(secondaryBinds[i] + " - " + secondarySpells[i].name);
             }
         }
         private void Update()
@@ -152,7 +152,7 @@ namespace DamageSystem.NewSpellSystem.Core
                         //SecondaryCast(entry.Value);
                         queuedSecondarySpell = entry.Value;
                         secondaryCastTime = Time.time + entry.Value.GetCastTime();
-                        Debug.Log("Casting " + entry.Value.name);
+                        //Debug.Log("Casting " + entry.Value.name);
                     }
                 }
             }
@@ -207,7 +207,7 @@ namespace DamageSystem.NewSpellSystem.Core
                         primarySpellsDict.Add(primaryBinds[primarySpells.Count - 1], addedSpell);
                         //Changing parent to the player
                         spell.transform.parent = primarySpellParent.transform;
-                        Debug.Log("Spell added to primary spells! - " + spell.name);
+                        //Debug.Log("Spell added to primary spells! - " + spell.name);
                         return true;
                     }
                 }else if (addedSpell.isSecondarySpell())
@@ -218,7 +218,7 @@ namespace DamageSystem.NewSpellSystem.Core
                         secondarySpellsDict.Add(secondaryBinds[primarySpells.Count - 1], addedSpell);
                         //Changing parent to the player
                         spell.transform.parent = secondarySpellParent.transform;
-                        Debug.Log("Spell added to secondary spells! - " + spell.name);
+                        //Debug.Log("Spell added to secondary spells! - " + spell.name);
                         return true;
                     }
                 }

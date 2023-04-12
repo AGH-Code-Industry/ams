@@ -34,7 +34,7 @@ namespace DamageSystem.ReceiveDamage.Elementals {
             DamageNumbers.DamagePopup.Create(popupOrigin, damageTaken);
 
             if (_currentHealth == 0) {
-                Debug.Log("Dead");
+                //Debug.Log("Dead");
                 Died.Invoke();
             };
 
