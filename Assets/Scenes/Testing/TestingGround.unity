@@ -47988,6 +47988,11 @@ PrefabInstance:
       propertyPath: content
       value: 
       objectReference: {fileID: 1816913667}
+    - target: {fileID: 3840629326029981464, guid: c4ad18aa0883e744cb1606deec40572d,
+        type: 3}
+      propertyPath: itemsPath
+      value: Spells
+      objectReference: {fileID: 0}
     - target: {fileID: 3840629326029981465, guid: c4ad18aa0883e744cb1606deec40572d,
         type: 3}
       propertyPath: m_Pivot.x
