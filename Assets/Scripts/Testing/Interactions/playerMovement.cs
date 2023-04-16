@@ -23,8 +23,8 @@ public class playerMovement : MonoBehaviour
 
     public void Move()
     {
-
-        Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector2 moveVector = InputManager.actions.Player.Move.ReadValue<Vector2>();
+        Vector3 Movement = new Vector3(moveVector.x, 0, moveVector.y);
 
         transform.position += Movement * speed * Time.deltaTime;
 

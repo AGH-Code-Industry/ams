@@ -27,16 +27,20 @@ public class RoomController : MonoBehaviour
     private void Start()
     {
         OpenAllDoors();
+        InputManager.actions.Player.Interact.started += _ => TryInverseDoorState();
     }
 
-    private void Update()
+    private void TryInverseDoorState()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _doorCooldown <= 0)
+        if (_doorCooldown <= 0)
         {
             InverseDoorState();
             _doorCooldown = 2f;
         }
+    }
 
+    private void Update()
+    {
         _doorCooldown -= Time.deltaTime;
     }
 

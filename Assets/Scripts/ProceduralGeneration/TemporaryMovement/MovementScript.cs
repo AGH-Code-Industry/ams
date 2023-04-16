@@ -25,8 +25,9 @@ public class MovementScript : MonoBehaviour
 
     void Update()
     {
-        _horizontalMovement = Input.GetAxisRaw("Horizontal");
-        _verticalMovement = Input.GetAxisRaw("Vertical");
+        Vector2 moveVector = InputManager.actions.Player.Move.ReadValue<Vector2>();
+        _horizontalMovement = moveVector.x;
+        _verticalMovement = moveVector.y;
     }
 
     private void LookAtCursor() {

@@ -6,7 +6,7 @@ public class InputManager : MonoBehaviour
 {
     static public PlayerInputActions actions;
 
-    private void Start() {
+    private void Awake() {
         actions = new PlayerInputActions();
         actions.Enable();
     }

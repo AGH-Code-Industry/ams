@@ -462,7 +462,6 @@ GameObject:
   - component: {fileID: 6978694653087155862}
   - component: {fileID: 8168842389988388554}
   - component: {fileID: 8958119647755132335}
-  - component: {fileID: 6978694653087155860}
   m_Layer: 0
   m_Name: InventoryUICanvas
   m_TagString: Untagged
@@ -553,23 +552,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6978694653087155860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6978694653087155863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501f82234099e4c4dbf7612fba870c4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverWindow: {fileID: 6122479140825104840}
-  itemStacksContainer: {fileID: 0}
-  itemStackPrefab: {fileID: 2546996484552572523, guid: e81a1e76cceedba49b53ea4c0271d32a,
-    type: 3}
-  slotsContainer: {fileID: 6978694653066513171}
 --- !u!1001 &1686269868301682453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -695,18 +677,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1686269868301682453}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6122479140825104840 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4868883597237389021, guid: 2a28d51fa7e154e409737cb23dea1b51,
-    type: 3}
-  m_PrefabInstance: {fileID: 1686269868301682453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54a3b34a837b4fd42ba4da41d8e70b39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6170973426924638801
 PrefabInstance:
   m_ObjectHideFlags: 0

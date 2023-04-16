@@ -7,11 +7,27 @@ using System.Linq;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private HoverWindow hoverWindow;
-    [SerializeField] private GameObject itemStacksContainer;
     [SerializeField] private ItemStack itemStackPrefab;
     [SerializeField] private GameObject slotsContainer;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private Item addItemTestItem;
     private List<InventorySlot> slots;
     private static Inventory instance;
+
+    private void Start() {
+        instance = this;
+        slots = new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
+        InputManager.actions.Player.Inventory.started += _ => Toggle();
+        InputManager.actions.Player.AddInventoryItemTest.started += _ => AddItemTest();
+    }
+
+    private void Toggle() {
+        canvas.gameObject.SetActive(!canvas.gameObject.activeInHierarchy);
+    }
+
+    private void AddItemTest() {
+        AddItem(addItemTestItem);
+    }
 
     public void AddItem(Item item)
     {
@@ -47,11 +63,6 @@ public class Inventory : MonoBehaviour
     private InventorySlot GetFreeSlot()
     {
         return GetSlots().FirstOrDefault(slot => !slot.isTaken);
-    }
-
-    void Awake() {
-        instance = this;
-        slots = new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
     }
 
     public static void ShowHoverWindow(ItemStack stack)

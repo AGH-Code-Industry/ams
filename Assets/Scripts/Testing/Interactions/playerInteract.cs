@@ -42,17 +42,17 @@ namespace testing {
 
             messageLog.text = "";
             inventory = GetComponent<Inventory>();
+            InputManager.actions.Player.Interact.started += _ => Interact();
         }
 
-        // Update is called once per frame
-        void Update()
+        void Interact()
         {
-            if(canInteract && Input.GetKeyDown(KeyCode.E))
+            if(canInteract)
             {
                 interaction.Use();
                 interactTooltip.SetActive(false);
                 interaction.Outline(false);
-            }else if(canObtain && Input.GetKeyDown(KeyCode.E))
+            }else if(canObtain)
             {
                 equipmentItem temp = equipment.Collect();
                 interactTooltip.SetActive(false);
