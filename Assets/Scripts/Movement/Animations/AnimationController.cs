@@ -32,11 +32,12 @@ public class AnimationController : MonoBehaviour
     
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        sprintInput = Input.GetKey(KeyCode.LeftShift);
-        attackInput = Input.GetKey(KeyCode.Mouse0);
-        dashInput = Input.GetKey(KeyCode.LeftAlt);
+        Vector2 moveVector = InputManager.actions.Player.Move.ReadValue<Vector2>();
+        horizontalInput = moveVector.x;
+        verticalInput = moveVector.y;
+        sprintInput = InputManager.actions.Player.Sprint.IsPressed();
+        attackInput = InputManager.actions.Player.Attack.IsPressed();
+        dashInput = InputManager.actions.Player.Dash.IsPressed();
         
         moveDir = new Vector3(horizontalInput, 0f,verticalInput);  
         mousePos = Input.mousePosition;

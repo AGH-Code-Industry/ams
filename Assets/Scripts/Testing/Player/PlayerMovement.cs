@@ -6,10 +6,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float _movementSpeed = 6f;
 
     void Update() {
-        float mvX = Input.GetAxis("Horizontal");
-        float mvZ = Input.GetAxis("Vertical");
+        Vector2 moveVector = InputManager.actions.Player.Move.ReadValue<Vector2>();
 
-        Vector3 direction = new Vector3(mvX, 0, mvZ);
+        Vector3 direction = new Vector3(moveVector.x, 0, moveVector.y);
 
         if(direction.sqrMagnitude > 1) {
             direction = direction.normalized;

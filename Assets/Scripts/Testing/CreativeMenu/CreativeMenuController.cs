@@ -24,12 +24,7 @@ namespace Testing.CreativeMenu {
             ToggleMenu(false);
             CreateItemMatrix();
             PopulateMenu();
-        }
-
-        private void Update() {
-            if(Input.GetKeyDown(KeyCode.F1)) {
-                ToggleMenu();
-            }
+            InputManager.actions.Player.CreativeMenuToggle.started += _ => ToggleMenu();
         }
 
         /// <summary>

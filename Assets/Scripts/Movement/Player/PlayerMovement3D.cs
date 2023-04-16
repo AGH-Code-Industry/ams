@@ -11,15 +11,13 @@ public class PlayerMovement3D : MonoBehaviour
     private CharacterController characterController;
 
     [SerializeField] private LayerMask aimLayerMask;
-    private bool isSprinting => canSprint && Input.GetKey(sprintKey);
+    private bool isSprinting => canSprint && InputManager.actions.Player.Sprint.IsPressed();
 
     [SerializeField] private bool canSprint = true;
-    [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] float baseSpeed = 6.0f;
     [SerializeField] private float sprintSpeed = 12.0f;
 
     private float nextDash = 0.0f;
-    [SerializeField] private KeyCode dashKey = KeyCode.LeftAlt;
     [SerializeField] float dashSpeed = 40.0f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 4.0f;
@@ -28,9 +26,8 @@ public class PlayerMovement3D : MonoBehaviour
     [SerializeField] float maxHeight = 5.0f; // Maximum height to levitate
 
     [SerializeField] private float currentHeight = 0.0f; // Current levitation height
-    private bool isLevitating => canLevitate && Input.GetKey(levitationKey); 
+    private bool isLevitating => canLevitate && InputManager.actions.Player.Levitate.IsPressed(); 
     [SerializeField] private bool canLevitate = true; // Whether or not the player is currently levitating
-    [SerializeField] private KeyCode levitationKey = KeyCode.Space;
 
     private void Awake()
     {
@@ -39,10 +36,10 @@ public class PlayerMovement3D : MonoBehaviour
 
     void Update()
     {
-
         //getting input
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        Vector2 moveVector = InputManager.actions.Player.Move.ReadValue<Vector2>();
+        horizontalInput = moveVector.x;
+        verticalInput = moveVector.y;
 
 
         //direction Vector
@@ -57,7 +54,7 @@ public class PlayerMovement3D : MonoBehaviour
         //dash cooldown check
         if (Time.time > nextDash)
         {
-            if (Input.GetKey(dashKey))
+            if (InputManager.actions.Player.Dash.IsPressed())
             {
                 StartCoroutine(Dash(moveDir));
                 nextDash = Time.time + dashCooldown;
