@@ -11,7 +11,7 @@ namespace DamageSystem.NewSpellSystem.Core
 
         public GameObject player;
         PlayerSpellManager playerSpellManager;
-        SpellType spellToTrack;
+        Spell spellToTrack;
         Slider castBar;
         public TextMeshProUGUI spellText;
 
@@ -38,7 +38,7 @@ namespace DamageSystem.NewSpellSystem.Core
                 castBar.maxValue = spellToTrack.GetCastTime();
                 trackedCastTime = playerSpellManager.secondaryCastTime;
                 castBar.value = Mathf.Clamp(trackedCastTime - Time.time, castBar.minValue, castBar.maxValue);
-                spellText.text = playerSpellManager.queuedSecondarySpell.name;
+                spellText.text = spellToTrack.name;
             }
             else {
                 SetChildrenActive(false);

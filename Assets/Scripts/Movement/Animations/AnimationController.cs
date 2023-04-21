@@ -36,7 +36,10 @@ public class AnimationController : MonoBehaviour
         horizontalInput = moveVector.x;
         verticalInput = moveVector.y;
         sprintInput = InputManager.actions.Player.Sprint.IsPressed();
-        attackInput = InputManager.actions.Player.Attack.IsPressed();
+        attackInput = 
+            InputManager.actions.Player.PrimarySpell1.IsPressed() ||
+            InputManager.actions.Player.PrimarySpell2.IsPressed() || 
+            InputManager.actions.Player.PrimarySpell3.IsPressed();
         dashInput = InputManager.actions.Player.Dash.IsPressed();
         
         moveDir = new Vector3(horizontalInput, 0f,verticalInput);  

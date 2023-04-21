@@ -1,230 +1,133 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DamageSystem.NewSpellSystem.Core
 {
     public class PlayerSpellManager : MonoBehaviour
     {
         public bool canCast = true;
-        public Transform spellOrigin;
+        [SerializeField] Transform spellOrigin;
 
-        public List<KeyCode> primaryBinds = new List<KeyCode>{ KeyCode.Mouse0, KeyCode.Mouse1 };
-        public List<KeyCode> secondaryBinds = new List<KeyCode>{KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3};
+        [SerializeField] int maxPrimarySpells = 3;
+        [SerializeField] int maxSecondarySpells = 3;
 
-        public List<GameObject> primarySpells = new List<GameObject>();
-        public List<GameObject> secondarySpells = new List<GameObject>();
+        [SerializeField] GameObject primarySpellParent;
+        [SerializeField] GameObject secondarySpellParent;
 
-        //The amount of spells that you can carry at one time
-        public int maxPrimarySpells = 3;
-        public int maxSecondarySpells = 3;
-
-        //Parents under which new spells will be attached
-        public GameObject primarySpellParent;
-        public GameObject secondarySpellParent;
-
-        Dictionary<KeyCode, SpellType> primarySpellsDict;
-        Dictionary<KeyCode, SpellType> secondarySpellsDict;
-        
         [HideInInspector]
-        public Dictionary<SpellType, float> spellCooldowns;
-
-        KeyValuePair<KeyCode, SpellType> activePrimarySpell;
-        KeyValuePair<KeyCode, SpellType> queuedPrimarySpell;
+        public Dictionary<Spell, float> secondarySpellCooldowns = new Dictionary<Spell, float>();
         
+        Dictionary<Spell, InputAction> primarySpellActions = new Dictionary<Spell, InputAction>();
+        Dictionary<Spell, InputAction> secondarySpellActions = new Dictionary<Spell, InputAction>();
+
+        List<Spell> primarySpells;
+        List<Spell> secondarySpells;
+
+        Spell activePrimarySpell;
+        Spell queuedPrimarySpell;
+
         [HideInInspector]
-        public SpellType queuedSecondarySpell;
+        public Spell queuedSecondarySpell;
         [HideInInspector]
         public float secondaryCastTime = 0f;
-
         float activeSpellCooldown = 0f;
 
         bool primaryCasting = false;
         bool secondaryCasting = false;
 
-        private void Start()
-        {
-            primarySpellsDict = new Dictionary<KeyCode, SpellType>();
-            secondarySpellsDict = new Dictionary<KeyCode, SpellType>();
-            spellCooldowns = new Dictionary<SpellType, float>();
-            //Debug.Log("PRIMARY SPELLS:");
-            for(int i=0; i<primarySpells.Count && i<primaryBinds.Count; i++)
-            {
-                primarySpellsDict.Add(primaryBinds[i], primarySpells[i].GetComponent<SpellType>());
-                //Debug.Log(primaryBinds[i] + " - " + primarySpells[i].name);
+        void Start() {
+            primarySpells = new List<Spell>(primarySpellParent.GetComponentsInChildren<Spell>());
+            secondarySpells = new List<Spell>(secondarySpellParent.GetComponentsInChildren<Spell>());
+
+            for (int i = 0; i < primarySpells.Count && i < InputManager.primaryCastActions.Count; i++) {
+                primarySpellActions.Add(primarySpells[i], InputManager.primaryCastActions[i]);
             }
 
-            //Debug.Log("SECONDARY SPELLS:");
-            for (int i = 0; i < secondarySpells.Count && i < secondaryBinds.Count; i++)
-            {
-                secondarySpellsDict.Add(secondaryBinds[i], secondarySpells[i].GetComponent<SpellType>());
-                spellCooldowns.Add(secondarySpells[i].GetComponent<SpellType>(), Time.time);
-                //Debug.Log(secondaryBinds[i] + " - " + secondarySpells[i].name);
+            for (int i = 0; i < secondarySpells.Count && i < InputManager.secondaryCastActions.Count; i++) {
+                secondarySpellActions.Add(secondarySpells[i], InputManager.secondaryCastActions[i]);
+                secondarySpellCooldowns.Add(secondarySpells[i], Time.time);
             }
-        }
-        private void Update()
-        {
-            AssignActivePrimarySpell();
-            UsePrimarySpell(activePrimarySpell.Value, activePrimarySpell.Key);
-            QueueNextSecondarySpell();
-            UseSecondarySpell(queuedSecondarySpell);
-        }
 
-        void AssignActivePrimarySpell()
-        {
-            if (canCast)
-            {
-                foreach (KeyValuePair<KeyCode, SpellType> entry in primarySpellsDict) {
-                    if (Input.GetKeyDown(entry.Key))
-                    {
-                        if (!primaryCasting)
-                        {
-                            primaryCasting = true;
-                            //StartCoroutine(primaryCooldown(entry.Value, entry.Key));
-                            //newPrimaryCooldown(entry.Value, entry.Key);
-                            activePrimarySpell = new KeyValuePair<KeyCode, SpellType>(entry.Key, entry.Value);
-                        }
-                        else {
-                            queuedPrimarySpell = new KeyValuePair<KeyCode, SpellType>(entry.Key, entry.Value);
-                        }
-                    }
-                }
+            foreach (var (spell, action) in primarySpellActions) {
+                action.started += _ => OnPrimarySpellDown(spell);
+                action.canceled += _ => OnPrimarySpellUp();
             }
-        }
-        /*
-         * Stara Kurutynka do starej implementacji castowania spelli
-        IEnumerator primaryCooldown(SpellType spell, KeyCode key)
-        {
-            while (primaryCasting)
-            {
-                spell.Cast(spellOrigin);
-                yield return new WaitForSeconds(spell.GetCooldown());
 
-                if (!Input.GetKey(key))
-                {
-                    primaryCasting = false;
-                    spell.StopCast();
-                   
-                }
-            }
-            if (queuedSpell.Value && queuedSpell.Value != spell)
-            {
-                primaryCasting = true;
-                StartCoroutine(primaryCooldown(queuedSpell.Value, queuedSpell.Key));
-            }
-            else
-            {
-                queuedSpell = new KeyValuePair<KeyCode, SpellType>(KeyCode.None, null);
-            }
-        }*/
-
-        void UsePrimarySpell(SpellType spell, KeyCode key) {
-            if (Input.GetKey(key) && Time.time > activeSpellCooldown)
-            {
-                spell.Cast(spellOrigin);
-                activeSpellCooldown = Time.time + spell.GetCooldown();
-            }
-            else if (Input.GetKeyUp(key))
-            {
-                primaryCasting = false;
-                spell.StopCast();
-
-                if (queuedPrimarySpell.Value && queuedPrimarySpell.Value != spell)
-                {
-                    primaryCasting = true;
-                    activePrimarySpell = new KeyValuePair<KeyCode, SpellType>(queuedPrimarySpell.Key, queuedPrimarySpell.Value);
-                }
-                else
-                {
-                    queuedPrimarySpell = new KeyValuePair<KeyCode, SpellType>(KeyCode.None, null);
-                }
+            foreach (var (spell, action) in secondarySpellActions) {
+                action.started += _ => OnSecondarySpellDown(spell);
             }
         }
 
-        void QueueNextSecondarySpell()
-        {
-            if (canCast && !secondaryCasting) {
-                foreach (KeyValuePair<KeyCode, SpellType> entry in secondarySpellsDict)
-                {
-                    if (Input.GetKeyDown(entry.Key) && spellCooldowns[entry.Value] < Time.time)
-                    {
-                        secondaryCasting = true;
-                        //SecondaryCast(entry.Value);
-                        queuedSecondarySpell = entry.Value;
-                        secondaryCastTime = Time.time + entry.Value.GetCastTime();
-                        //Debug.Log("Casting " + entry.Value.name);
-                    }
-                }
+        void Update() {
+            TryCastPrimarySpell();
+            TryCastSecondarySpell();
+        }
+
+        void TryCastPrimarySpell() {
+            if (activePrimarySpell && primarySpellActions[activePrimarySpell].IsPressed() && activeSpellCooldown < Time.time) {
+                activePrimarySpell.Cast(spellOrigin);
+                activeSpellCooldown = Time.time + activePrimarySpell.GetCooldown();
             }
         }
 
-        void UseSecondarySpell(SpellType spell) 
-        {
-            //StartCoroutine(DelayedCast(spell.GetCastTime(), spell));
-            if (spell && secondaryCasting && secondaryCastTime < Time.time)
-            {
-                spell.Cast(spellOrigin);
+        void TryCastSecondarySpell() {
+            if (queuedSecondarySpell && secondaryCasting && secondaryCastTime < Time.time) { 
+                queuedSecondarySpell.Cast(spellOrigin);
                 secondaryCasting = false;
-                queuedSecondarySpell = null; //Is it necessary?
-                spellCooldowns[spell] = Time.time + spell.GetCooldown();
+                secondarySpellCooldowns[queuedSecondarySpell] = Time.time + queuedSecondarySpell.GetCooldown();
+                queuedSecondarySpell = null;
             }
         }
 
-        //Stara implementacja castTime
+        void OnPrimarySpellDown(Spell spell) {
+            if (!canCast) return;
+            if (primaryCasting) {
+                queuedPrimarySpell = spell;
+            } else {
+                primaryCasting = true;
+                activePrimarySpell = spell;
+            }
+        }
 
-        //IEnumerator DelayedCast(float delay, SpellType spell)
-        //{
-        //    Debug.Log("Casting " + spell);
-        //    yield return new WaitForSeconds(delay);
-        //    spell.Cast(spellOrigin);
-        //    secondaryCasting = false;
-        //    spellCooldowns[spell] = Time.time + spell.GetCooldown();
-        //}
+        void OnPrimarySpellUp() {
+            primaryCasting = false;
+            activePrimarySpell.StopCast();
+            if (queuedPrimarySpell && queuedPrimarySpell != activePrimarySpell) {
+                primaryCasting = true;
+                activePrimarySpell = queuedPrimarySpell;
+            } else {
+                queuedPrimarySpell = null;
+            }
+        }
 
-        /*
-         * Stara implementacja cooldownów
-        IEnumerator Cooldown(float cooldown) {
-            Debug.Log("Spell Cooldown: " + cooldown);
-            yield return new WaitForSeconds(cooldown);
-            secondaryCasting = false;
-            Debug.Log("Can cast again");
-        }*/
+        void OnSecondarySpellDown(Spell spell) {
+            if (!canCast) return;
+            if (!secondaryCasting && secondarySpellCooldowns[spell] < Time.time) {
+                secondaryCasting = true;
+                queuedSecondarySpell = spell;
+                secondaryCastTime = Time.time + spell.GetCastTime();
+            }
+        }
 
         //Initial implementation of adding spells to the player
-        public bool AddSpell(GameObject spell)
-        {
-            if (spell.GetComponent<SpellType>())
-            {
-                //Replace this with instantiating a spell under the player or something
-                SpellType addedSpell = spell.GetComponent<SpellType>();
-                //Check whether the spell should be added to the primary spell list or the secondary spell list
-                if (addedSpell.isPrimarySpell())
-                {
-                    //Add the spell to primary Spells if there's room for that
-                    if(primarySpells.Count < maxPrimarySpells)
-                    {
-                        primarySpells.Add(spell);
-                        primarySpellsDict.Add(primaryBinds[primarySpells.Count - 1], addedSpell);
-                        //Changing parent to the player
-                        spell.transform.parent = primarySpellParent.transform;
-                        //Debug.Log("Spell added to primary spells! - " + spell.name);
-                        return true;
-                    }
-                }else if (addedSpell.isSecondarySpell())
-                {
-                    if(secondarySpells.Count < maxSecondarySpells)
-                    {
-                        secondarySpells.Add(spell);
-                        secondarySpellsDict.Add(secondaryBinds[primarySpells.Count - 1], addedSpell);
-                        //Changing parent to the player
-                        spell.transform.parent = secondarySpellParent.transform;
-                        //Debug.Log("Spell added to secondary spells! - " + spell.name);
-                        return true;
-                    }
-                }
+        //Replace this with instantiating a spell under the player or something
+        public bool AddSpell(Spell spell) {
+            if (spell.isPrimarySpell() && primarySpells.Count < maxPrimarySpells) {
+                primarySpells.Add(spell);
+                primarySpellActions.Add(spell, InputManager.primaryCastActions[primarySpells.Count - 1]);
+                spell.transform.parent = primarySpellParent.transform;
+                //Debug.Log("Spell added to primary spells! - " + spell.name);
+                return true;
+            } else if (spell.isSecondarySpell() && secondarySpells.Count < maxSecondarySpells) {
+                secondarySpells.Add(spell);
+                secondarySpellActions.Add(spell, InputManager.secondaryCastActions[primarySpells.Count - 1]);
+                spell.transform.parent = secondarySpellParent.transform;
+                //Debug.Log("Spell added to secondary spells! - " + spell.name);
+                return true;
             }
             return false;
         }
     }
-
 }

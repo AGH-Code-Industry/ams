@@ -8,7 +8,7 @@ using DamageSystem.ReceiveDamage.Elementals.Elementals;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Beam
 {
-    public class Beam : SpellType
+    public class Beam : Core.Spell
     {
         //Variable used for the damage ball at the tip of the laser (not implemented at the moment)
         //public beamTriggerEntity trigger;

@@ -7,7 +7,7 @@ namespace DamageSystem.NewSpellSystem.Core.Temp
     [RequireComponent(typeof(Collider))]
     public class SpellBook : MonoBehaviour
     {
-        public GameObject spell;
+        public Spell spell;
 
         // Start is called before the first frame update
         void Start()

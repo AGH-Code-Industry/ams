@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
-    public class PulseFire : SpellType {
+    public class PulseFire : Core.Spell {
         public PulseFireInfo spellInfo;
 
         public override string spellName { get => spellInfo.spellName; }
@@ -14,18 +14,18 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         [System.Serializable]
         public enum PelletType { SIMPLE, PURSUIT }
         /*Bug log for pursuit behaviour:
-            Postaæ siê dziwnie obraca podczas u¿ywania pulse Fire typu PURSUIT
+            Postaï¿½ siï¿½ dziwnie obraca podczas uï¿½ywania pulse Fire typu PURSUIT
 
-            Prawdopodobny powód:
-                Skrypt od obracania siê "trafia" w trigger u¿ywany przy detekcji magnetyzmu pocisków, przez co postaæ siê 
-                próbuje odbiæ w jego stronê.
+            Prawdopodobny powï¿½d:
+                Skrypt od obracania siï¿½ "trafia" w trigger uï¿½ywany przy detekcji magnetyzmu pociskï¿½w, przez co postaï¿½ siï¿½ 
+                prï¿½buje odbiï¿½ w jego stronï¿½.
 
-                Nie powinno byæ to problemem przy lepszej implementacji systemu obracania siê, ale jest to rzecz o której
-                warto pamiêtaæ na przysz³oœæ gdyby to nadal nie dzia³a³o.
+                Nie powinno byï¿½ to problemem przy lepszej implementacji systemu obracania siï¿½, ale jest to rzecz o ktï¿½rej
+                warto pamiï¿½taï¿½ na przyszï¿½oï¿½ï¿½ gdyby to nadal nie dziaï¿½aï¿½o.
             
-            Tymczasowe rozwi¹zanie:
-                w void AddPelletBehaviour, nadaje pelletom z PURSUIT layer Ignore Raycast, w przysz³oœci (gdy bêdziemy u¿ywaæ innego
-                    sposobu na obracanie postaci) j¹ wywaliæ.
+            Tymczasowe rozwiï¿½zanie:
+                w void AddPelletBehaviour, nadaje pelletom z PURSUIT layer Ignore Raycast, w przyszï¿½oï¿½ci (gdy bï¿½dziemy uï¿½ywaï¿½ innego
+                    sposobu na obracanie postaci) jï¿½ wywaliï¿½.
 
          */
         [System.Serializable]
@@ -83,7 +83,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
                 col.isTrigger = true;
                 col.radius = 10; //Here we can add customizability (probably to be set in pulseFireInfo)
                 
-                //FIX dla problemu obracania postaci z uzyciem raycastowania. Ta linijka kodu nie powinna byc potrzebna póŸniej.
+                //FIX dla problemu obracania postaci z uzyciem raycastowania. Ta linijka kodu nie powinna byc potrzebna pï¿½niej.
                 pellet.gameObject.layer = 2;
             }
         }
