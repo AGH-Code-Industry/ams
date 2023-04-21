@@ -37,15 +37,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""18d320e3-019a-4d13-8f91-5f16025ee92a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Levitate"",
                     ""type"": ""Button"",
                     ""id"": ""61b4c0d0-ae74-44b2-9ec3-04982b6be488"",
@@ -103,6 +94,60 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""30cabb76-f79e-482b-8db3-4a7b613dc3f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimarySpell1"",
+                    ""type"": ""Button"",
+                    ""id"": ""72642208-ef9d-42b4-8774-3feeffd86411"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimarySpell2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d93f766d-e7d0-41cb-a667-211b16564b28"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimarySpell3"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ae25c14-cf7a-431f-9831-7c4add34b2ac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondarySpell1"",
+                    ""type"": ""Button"",
+                    ""id"": ""3af5a045-5713-4a52-bc76-6e1be547f85a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondarySpell2"",
+                    ""type"": ""Button"",
+                    ""id"": ""b51644b2-59b9-4bd4-b01d-067229165c9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondarySpell3"",
+                    ""type"": ""Button"",
+                    ""id"": ""f81315cb-310b-417e-83ec-b97ef23a260e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -244,61 +289,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8255d333-5683-4943-a58a-ccb207ff1dce"",
-                    ""path"": ""<XRController>/{PrimaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d6c7d7e6-25d5-49a0-b931-41888980a075"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -371,6 +361,72 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51d1464e-c8f2-41ea-b25b-7908be827271"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PrimarySpell1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fbc464bd-5255-48d2-b6da-be8f263f265f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PrimarySpell2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""400ee254-65ad-4766-aef0-4e781c2bbd55"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PrimarySpell3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""868e1f25-5f45-4e87-b6f0-0ca4bbc4962b"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SecondarySpell1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0022c8d-a84c-42e7-8319-80184672f084"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SecondarySpell2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c08d263-a65e-463d-bac5-4ee8f745954a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SecondarySpell3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -959,7 +1015,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Levitate = m_Player.FindAction("Levitate", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
@@ -967,6 +1022,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_AddInventoryItemTest = m_Player.FindAction("AddInventoryItemTest", throwIfNotFound: true);
         m_Player_CreativeMenuToggle = m_Player.FindAction("CreativeMenuToggle", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_PrimarySpell1 = m_Player.FindAction("PrimarySpell1", throwIfNotFound: true);
+        m_Player_PrimarySpell2 = m_Player.FindAction("PrimarySpell2", throwIfNotFound: true);
+        m_Player_PrimarySpell3 = m_Player.FindAction("PrimarySpell3", throwIfNotFound: true);
+        m_Player_SecondarySpell1 = m_Player.FindAction("SecondarySpell1", throwIfNotFound: true);
+        m_Player_SecondarySpell2 = m_Player.FindAction("SecondarySpell2", throwIfNotFound: true);
+        m_Player_SecondarySpell3 = m_Player.FindAction("SecondarySpell3", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1039,7 +1100,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Levitate;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Dash;
@@ -1047,12 +1107,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AddInventoryItemTest;
     private readonly InputAction m_Player_CreativeMenuToggle;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_PrimarySpell1;
+    private readonly InputAction m_Player_PrimarySpell2;
+    private readonly InputAction m_Player_PrimarySpell3;
+    private readonly InputAction m_Player_SecondarySpell1;
+    private readonly InputAction m_Player_SecondarySpell2;
+    private readonly InputAction m_Player_SecondarySpell3;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Levitate => m_Wrapper.m_Player_Levitate;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
@@ -1060,6 +1125,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @AddInventoryItemTest => m_Wrapper.m_Player_AddInventoryItemTest;
         public InputAction @CreativeMenuToggle => m_Wrapper.m_Player_CreativeMenuToggle;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @PrimarySpell1 => m_Wrapper.m_Player_PrimarySpell1;
+        public InputAction @PrimarySpell2 => m_Wrapper.m_Player_PrimarySpell2;
+        public InputAction @PrimarySpell3 => m_Wrapper.m_Player_PrimarySpell3;
+        public InputAction @SecondarySpell1 => m_Wrapper.m_Player_SecondarySpell1;
+        public InputAction @SecondarySpell2 => m_Wrapper.m_Player_SecondarySpell2;
+        public InputAction @SecondarySpell3 => m_Wrapper.m_Player_SecondarySpell3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1072,9 +1143,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Levitate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLevitate;
                 @Levitate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLevitate;
                 @Levitate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLevitate;
@@ -1096,6 +1164,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @PrimarySpell1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell1;
+                @PrimarySpell1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell1;
+                @PrimarySpell1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell1;
+                @PrimarySpell2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell2;
+                @PrimarySpell2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell2;
+                @PrimarySpell2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell2;
+                @PrimarySpell3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell3;
+                @PrimarySpell3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell3;
+                @PrimarySpell3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimarySpell3;
+                @SecondarySpell1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell1;
+                @SecondarySpell1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell1;
+                @SecondarySpell1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell1;
+                @SecondarySpell2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell2;
+                @SecondarySpell2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell2;
+                @SecondarySpell2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell2;
+                @SecondarySpell3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell3;
+                @SecondarySpell3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell3;
+                @SecondarySpell3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondarySpell3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1103,9 +1189,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Attack.started += instance.OnAttack;
-                @Attack.performed += instance.OnAttack;
-                @Attack.canceled += instance.OnAttack;
                 @Levitate.started += instance.OnLevitate;
                 @Levitate.performed += instance.OnLevitate;
                 @Levitate.canceled += instance.OnLevitate;
@@ -1127,6 +1210,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @PrimarySpell1.started += instance.OnPrimarySpell1;
+                @PrimarySpell1.performed += instance.OnPrimarySpell1;
+                @PrimarySpell1.canceled += instance.OnPrimarySpell1;
+                @PrimarySpell2.started += instance.OnPrimarySpell2;
+                @PrimarySpell2.performed += instance.OnPrimarySpell2;
+                @PrimarySpell2.canceled += instance.OnPrimarySpell2;
+                @PrimarySpell3.started += instance.OnPrimarySpell3;
+                @PrimarySpell3.performed += instance.OnPrimarySpell3;
+                @PrimarySpell3.canceled += instance.OnPrimarySpell3;
+                @SecondarySpell1.started += instance.OnSecondarySpell1;
+                @SecondarySpell1.performed += instance.OnSecondarySpell1;
+                @SecondarySpell1.canceled += instance.OnSecondarySpell1;
+                @SecondarySpell2.started += instance.OnSecondarySpell2;
+                @SecondarySpell2.performed += instance.OnSecondarySpell2;
+                @SecondarySpell2.canceled += instance.OnSecondarySpell2;
+                @SecondarySpell3.started += instance.OnSecondarySpell3;
+                @SecondarySpell3.performed += instance.OnSecondarySpell3;
+                @SecondarySpell3.canceled += instance.OnSecondarySpell3;
             }
         }
     }
@@ -1284,7 +1385,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
         void OnLevitate(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
@@ -1292,6 +1392,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnAddInventoryItemTest(InputAction.CallbackContext context);
         void OnCreativeMenuToggle(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnPrimarySpell1(InputAction.CallbackContext context);
+        void OnPrimarySpell2(InputAction.CallbackContext context);
+        void OnPrimarySpell3(InputAction.CallbackContext context);
+        void OnSecondarySpell1(InputAction.CallbackContext context);
+        void OnSecondarySpell2(InputAction.CallbackContext context);
+        void OnSecondarySpell3(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

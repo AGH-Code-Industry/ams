@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DamageSystem.NewSpellSystem.Core 
 {
-    public abstract class SpellType : MonoBehaviour
+    public abstract class Spell : MonoBehaviour
     {
         public abstract string spellName { get; }
         public abstract string spellDescription { get; }
