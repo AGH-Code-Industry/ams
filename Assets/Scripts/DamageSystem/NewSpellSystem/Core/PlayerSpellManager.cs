@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DamageSystem.NewSpellSystem.UI;
 
 namespace DamageSystem.NewSpellSystem.Core
 {
@@ -9,9 +10,11 @@ namespace DamageSystem.NewSpellSystem.Core
         public bool canCast = true;
         public Transform spellOrigin;
 
+        //Editable binds in inspector (maybe add [Serialize Field] and make it private?)
         public List<KeyCode> primaryBinds = new List<KeyCode>{ KeyCode.Mouse0, KeyCode.Mouse1 };
         public List<KeyCode> secondaryBinds = new List<KeyCode>{KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3};
 
+        //Lists of spells attached to player
         public List<GameObject> primarySpells = new List<GameObject>();
         public List<GameObject> secondarySpells = new List<GameObject>();
 
@@ -42,6 +45,20 @@ namespace DamageSystem.NewSpellSystem.Core
         bool primaryCasting = false;
         bool secondaryCasting = false;
 
+        //attributes used in UI elements
+        public Dictionary<KeyCode, SpellType> primaryKeybindSpellPairs { get => primarySpellsDict; }
+        public Dictionary<KeyCode, SpellType> secondaryKeybindSpellPairs { get => secondarySpellsDict; }
+        public Dictionary<SpellType, float> secondarySpellColldownDict { get => secondarySpellCooldowns; }
+        public KeyValuePair<KeyCode, SpellType> primaryActiveSpell { get => activePrimarySpell; }
+
+        //Reference to the UI script
+        [SerializeField]
+        private SpellDisplayUI spellUI;
+
+        //Reference to the UI spell selection box
+        [SerializeField]
+        private SpellSelectionBox selectionBox;
+
         private void Start()
         {
             primarySpellsDict = new Dictionary<KeyCode, SpellType>();
@@ -61,6 +78,8 @@ namespace DamageSystem.NewSpellSystem.Core
                 secondarySpellCooldowns.Add(secondarySpells[i].GetComponent<SpellType>(), Time.time);
                 Debug.Log(secondaryBinds[i] + " - " + secondarySpells[i].name);
             }
+            //Call this method to update the spell UI
+            spellUI.UpdateSpellList();
         }
         private void Update()
         {
@@ -190,8 +209,8 @@ namespace DamageSystem.NewSpellSystem.Core
             Debug.Log("Can cast again");
         }*/
 
-        //Initial implementation of adding spells to the player
-        public bool AddSpell(GameObject spell)
+        //Initial implementation of adding spells to the player, returns true for now, but the ret value is used by the SpellBook
+        public bool AddSpell(GameObject spell, SpellType ?toReplace, KeyCode replaceBind)
         {
             if (spell.GetComponent<SpellType>())
             {
@@ -203,22 +222,71 @@ namespace DamageSystem.NewSpellSystem.Core
                     //Add the spell to primary Spells if there's room for that
                     if(primarySpells.Count < maxPrimarySpells)
                     {
+                        // Adding the spell to the primarySpells List
                         primarySpells.Add(spell);
+                        // Adding the spell to the primarySpellsDict, using the first free bind in the list
                         primarySpellsDict.Add(primaryBinds[primarySpells.Count - 1], addedSpell);
                         //Changing parent to the player
                         spell.transform.parent = primarySpellParent.transform;
                         Debug.Log("Spell added to primary spells! - " + spell.name);
+                        return true;
+                    // Check whether this call of the function provides what spell is to be replaced
+                    }else if (toReplace)
+                    {
+                        // Remove the old spell from its list and add the new one
+                        primarySpells.Remove(toReplace.gameObject);
+                        primarySpells.Add(spell);
+
+                        // Change the spell that is connected with the bind (replaceBind is the bind of the spell we want to replace)
+                        primarySpellsDict[replaceBind] = addedSpell;
+                        
+                        // Change the parent of the added spell
+                        spell.transform.parent = primarySpellParent.transform;
+
+                        // Destroy the old spell
+                        Destroy(toReplace.gameObject);
+                        Debug.Log("Replaced spell " + toReplace.name + " with " + spell.name);
+                        return true;
+                    }
+                    else
+                    {
+                        // Invoke the spell selection prompt
+                        selectionBox.SpellSelection(this, addedSpell, primarySpellsDict, primaryBinds);
                         return true;
                     }
                 }else if (addedSpell.isSecondarySpell())
                 {
                     if(secondarySpells.Count < maxSecondarySpells)
                     {
+                        // Adding the spell to the secondarySpells List
                         secondarySpells.Add(spell);
+                        // Adding the spell to the secondarySpellsDict, using the first free bind in the list
                         secondarySpellsDict.Add(secondaryBinds[primarySpells.Count - 1], addedSpell);
                         //Changing parent to the player
                         spell.transform.parent = secondarySpellParent.transform;
                         Debug.Log("Spell added to secondary spells! - " + spell.name);
+                        return true;
+                    }
+                    else if (toReplace)
+                    {
+                        // Remove the old spell from its list and add the new one
+                        secondarySpells.Remove(toReplace.gameObject);
+                        secondarySpells.Add(spell);
+
+                        // Change the spell that is connected with the bind (replaceBind is the bind of the spell we want to replace)
+                        secondarySpellsDict[replaceBind] = addedSpell;
+
+                        // Change the parent of the added spell
+                        spell.transform.parent = secondarySpellParent.transform;
+
+                        // Destroy the old spell
+                        Destroy(toReplace.gameObject);
+                        Debug.Log("Replaced spell " + toReplace.name + " with " + spell.name);
+                    }
+                    else
+                    {
+                        // Invoke the spell selection prompt
+                        selectionBox.SpellSelection(this, addedSpell, secondarySpellsDict, secondaryBinds);
                         return true;
                     }
                 }
@@ -226,5 +294,7 @@ namespace DamageSystem.NewSpellSystem.Core
             return false;
         }
     }
+
+   
 
 }

@@ -21,13 +21,16 @@ namespace DamageSystem.NewSpellSystem.Core.Temp
 
         }
 
+        //WIP, still need to redo it
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent != null && other.transform.parent.GetComponent<PlayerSpellManager>())
+            if (other.transform.GetComponentInParent<PlayerSpellManager>())
             {
-                if (other.transform.parent.GetComponent<PlayerSpellManager>().AddSpell(spell))
+                if (other.transform.GetComponentInParent<PlayerSpellManager>().AddSpell(spell, null, KeyCode.None))
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
+                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    gameObject.GetComponent<Collider>().enabled = false;
                 }
             }
         }
