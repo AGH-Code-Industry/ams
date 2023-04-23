@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using DamageSystem.ReceiveDamage.Elementals;
+using DamageSystem.ReceiveDamage.Elementals.Elementals;
 using UnityEngine;
 
 public class Moth : MonoBehaviour
 {
+    [SerializeField] private List<AttackElemental> attackElementalsList; // Do zmiany, bo na razie jest ogien
     public float damage = 10f;
     //private PlayerHealth playerHealth; (for the future)
 
@@ -14,10 +17,18 @@ public class Moth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            //playerHealth.TakeDamage(damage); (for the future)
-            Destroy(gameObject);
-        }
+        PlayerTakeDamage(other);
+    }
+
+    private void PlayerTakeDamage(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        
+        //playerHealth.TakeDamage(damage); (for the future)
+        var playerDamageable = other.GetComponent<Damageable>();
+        DamageInfo damageInfo = new DamageInfo(attackElementalsList, gameObject);
+
+        playerDamageable.TakeDamage(damageInfo);
+        Destroy(gameObject);   
     }
 }

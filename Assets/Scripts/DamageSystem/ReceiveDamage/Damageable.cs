@@ -36,6 +36,14 @@ namespace DamageSystem.ReceiveDamage.Elementals {
             if (_currentHealth == 0) {
                 //Debug.Log("Dead");
                 Died.Invoke();
+                
+                // ----------------------
+                // for tests
+                // ----------------------
+                if (transform.CompareTag("Player"))
+                {
+                    Destroy(gameObject);
+                }
             };
 
             TakeEffect(damageInfo);

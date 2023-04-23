@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08364b7c639004bb491d66f960d762e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackElementalsList:
+  - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
   damage: 10
 --- !u!33 &1169507227151342502
 MeshFilter:
