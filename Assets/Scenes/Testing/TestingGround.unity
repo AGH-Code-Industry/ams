@@ -1228,7 +1228,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88812550}
-  m_LocalRotation: {x: 0.35093012, y: -0.000000027906948, z: 0.000000010458534, w: 0.93640167}
+  m_LocalRotation: {x: 0.35093012, y: 0.000000027906948, z: -0.000000010458534, w: 0.93640167}
   m_LocalPosition: {x: -3.2006226, y: 12.022979, z: 2.6887817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11117,6 +11117,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2129387841}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &470472691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470472685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1161d4a21639c3e4b85ca756e673dbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseCanvas: {fileID: 559663004}
+  GameCanvas: {fileID: 1501440442}
+  _isPaused: 0
 --- !u!43 &473193318
 Mesh:
   m_ObjectHideFlags: 0
@@ -11866,7 +11881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &559663005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24591,7 +24606,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.35093012, y: -0.000000027906948, z: 0.000000010458534, w: 0.93640167}
+  m_LocalRotation: {x: 0.35093012, y: 0.000000027906948, z: -0.000000010458534, w: 0.93640167}
   m_LocalPosition: {x: -3.2006226, y: 12.022979, z: 2.6887817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33888,69 +33903,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1376261125}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1376959279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2631346352684511195, guid: 1d1497f7afd97064ebecab8822fe55dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2129387841}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1376959282 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 953248069211690916, guid: 1d1497f7afd97064ebecab8822fe55dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2129387841}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376959279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d352f7f699eb784997b2bbc59f8f033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1376959284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376959279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1161d4a21639c3e4b85ca756e673dbc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GamePaused:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1376959282}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  GameResumed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1376959282}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  PauseCanvas: {fileID: 559663004}
-  GameCanvas: {fileID: 1501440442}
-  _isPaused: 0
 --- !u!43 &1386380567
 Mesh:
   m_ObjectHideFlags: 0
@@ -41040,7 +40992,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1376959284}
+      - m_Target: {fileID: 470472691}
         m_TargetAssemblyTypeName: PauseController, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
