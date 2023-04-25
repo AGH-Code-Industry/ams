@@ -5,7 +5,7 @@ using DamageSystem.NewSpellSystem.Core;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Aoe
 {
-    public class AoeSpell : SpellType
+    public class AoeSpell : Core.Spell
     {
         public AoeSpellInfo spellInfo;
 

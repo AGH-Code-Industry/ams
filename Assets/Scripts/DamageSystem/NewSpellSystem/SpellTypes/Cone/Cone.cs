@@ -6,7 +6,7 @@ using UnityEngine;
 namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
 {
     
-    public class Cone : SpellType
+    public class Cone : Core.Spell
     {
         public coneInfo spellInfo;
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
-    public class SimpleProjectile : SpellType {
+    public class SimpleProjectile : Core.Spell {
 
         public SimpleProjectileInfo spellInfo;
 
