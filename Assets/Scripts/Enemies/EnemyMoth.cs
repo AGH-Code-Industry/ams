@@ -39,6 +39,8 @@ public class EnemyMoth : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (player == null) return;
+
         isInChaseRadius = Vector3.Distance(transform.position, player.position) <= chaseRadius;
         isInAttackRadius = Vector3.Distance(transform.position, player.position) <= attackRadius;
 

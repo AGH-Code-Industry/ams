@@ -63,7 +63,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2631346352684020283}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6056120916226507955
 GameObject:
@@ -144,9 +144,10 @@ GameObject:
   - component: {fileID: 9152802754467829293}
   - component: {fileID: 7603795515779045637}
   - component: {fileID: 7050234134953712666}
+  - component: {fileID: 470472691}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,10 +185,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   canSprint: 1
-  sprintKey: 304
   baseSpeed: 4
   sprintSpeed: 6
-  dashKey: 308
   dashSpeed: 10
   dashTime: 0.2
   dashCooldown: 4
@@ -195,7 +194,6 @@ MonoBehaviour:
   maxHeight: 5
   currentHeight: 0
   canLevitate: 1
-  levitationKey: 32
 --- !u!143 &9152802754467829293
 CharacterController:
   m_ObjectHideFlags: 0
@@ -221,7 +219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9152802754467829290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9f44839763c1a543991e78e145557d9, type: 3}
   m_Name: 
@@ -249,13 +247,43 @@ MonoBehaviour:
   - {fileID: 4542355173133309308}
   - {fileID: 4311425805152097550}
   - {fileID: 4464257660751021347}
-  secondarySpells: []
+  secondarySpells:
+  - {fileID: 5077218825852919779}
+  - {fileID: 3234243216289807901}
   maxPrimarySpells: 3
   maxSecondarySpells: 3
   primarySpellParent: {fileID: 0}
   secondarySpellParent: {fileID: 0}
   queuedSecondarySpell: {fileID: 0}
   secondaryCastTime: 0
+--- !u!114 &470472691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152802754467829290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3098914c204217b46b7554fbf4979fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 11400000, guid: a7d75f7fbdb34d149aff1f8259c4095b, type: 2}
+  Died:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DeadScreenUI, Assembly-CSharp
+        m_MethodName: DeadScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &273624704813222316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -477,6 +505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400890, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
       propertyPath: m_Controller
       value: 
@@ -606,6 +638,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3073954164798536022}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5077218825852919779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7844433384196908725, guid: c5b55c8aca605804f972198c85b88f9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3073954164798536022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4629508587481077928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -678,6 +716,12 @@ PrefabInstance:
 --- !u!4 &3234243216289807900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7844433384196908724, guid: b141d54fd74f1aa428fa86ae072426b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4629508587481077928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3234243216289807901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7844433384196908725, guid: b141d54fd74f1aa428fa86ae072426b6,
     type: 3}
   m_PrefabInstance: {fileID: 4629508587481077928}
   m_PrefabAsset: {fileID: 0}
