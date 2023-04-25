@@ -8,5 +8,11 @@ namespace DamageSystem.ReceiveDamage.Elementals
     {
         public List<AttackElemental> elementals;
         public GameObject caster;
+
+        public DamageInfo(List<AttackElemental> elementals, GameObject caster)
+        {
+            this.elementals = elementals;
+            this.caster = caster;
+        }
     }
 }
