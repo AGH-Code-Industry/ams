@@ -13,7 +13,6 @@ public class CollectingCoins : MonoBehaviour
         {
             Debug.Log("Coin collected");
             coins = coins + 1;
-            //Col.gameObject.SetActive(false);
             Destroy(Col.gameObject);
 
         }
