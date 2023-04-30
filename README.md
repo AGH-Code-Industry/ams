@@ -1,5 +1,8 @@
 # Akademia Magiczno-Sferyczna
 
+## Game Design Document
+Zobacz [GDD/GDD.md](GDD/GDD.md)
+
 ## Szybkie info odnośnie tworzenia
 Każdy powinien pracować na swojej scenie, co pomoże uniknąć błędów scalania.
 
