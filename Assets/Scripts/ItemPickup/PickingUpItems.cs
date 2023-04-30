@@ -8,16 +8,13 @@ public class PickingUpItems : MonoBehaviour
     public EQ_CanvasController controller;
     public List<GameObject> Inventory = new List<GameObject>();
 
-    private void Update() 
+
+    // Made a small change to support the new Input system (Konrad)
+    private void Awake()
     {
-        if(itemToPickUp != null && Input.GetKeyDown(KeyCode.E))
-        {
-            Destroy(itemToPickUp);
-            controller.CloseMessagePanel();
-            Inventory.Add(itemToPickUp);
-            itemToPickUp = null;
-        }
+        InputManager.actions.Player.Interact.started += _ => PickUpAction();
     }
+
 
     private void OnTriggerEnter(Collider other) 
     {
@@ -33,6 +30,18 @@ public class PickingUpItems : MonoBehaviour
         if(other.CompareTag("Pickable"))
         {
             controller.CloseMessagePanel();
+            itemToPickUp = null;
+        }
+    }
+
+    // The new method that is called whenever the Interaction button is pressed
+    private void PickUpAction()
+    {
+        if (itemToPickUp != null)
+        {
+            Destroy(itemToPickUp);
+            controller.CloseMessagePanel();
+            Inventory.Add(itemToPickUp);
             itemToPickUp = null;
         }
     }

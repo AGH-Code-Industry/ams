@@ -111,21 +111,89 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        //Initial implementation of adding spells to the player
-        //Replace this with instantiating a spell under the player or something
-        public bool AddSpell(Spell spell) {
-            if (spell.isPrimarySpell() && primarySpells.Count < maxPrimarySpells) {
-                primarySpells.Add(spell);
-                primarySpellActions.Add(spell, InputManager.primaryCastActions[primarySpells.Count - 1]);
-                spell.transform.parent = primarySpellParent.transform;
-                //Debug.Log("Spell added to primary spells! - " + spell.name);
-                return true;
-            } else if (spell.isSecondarySpell() && secondarySpells.Count < maxSecondarySpells) {
-                secondarySpells.Add(spell);
-                secondarySpellActions.Add(spell, InputManager.secondaryCastActions[primarySpells.Count - 1]);
-                spell.transform.parent = secondarySpellParent.transform;
-                //Debug.Log("Spell added to secondary spells! - " + spell.name);
-                return true;
+        // Adding a spell to the Player
+        // If spellToRemove is null, the spell will be added if there is room for it
+        // If there is a spellToRemove specified, it will be replaced with the spellToAdd
+        public bool AddSpell(Spell spellToAdd, Spell? spellToRemove) {
+            if (!spellToRemove)
+                return AssignSpellToPlayer(spellToAdd);
+            else
+            {
+                RemoveSpellFromPlayer(spellToRemove);
+                return AssignSpellToPlayer(spellToAdd);
+            }
+        }
+
+        private void RemoveSpellFromPlayer(Spell spell)
+        {
+            if(spell.isPrimarySpell())
+            {
+                primarySpells.Insert(primarySpells.IndexOf(spell), null);
+                primarySpellActions.Remove(spell);
+            }
+            else if(spell.isSecondarySpell())
+            {
+                secondarySpells.Insert(secondarySpells.IndexOf(spell), null);
+                secondarySpellActions.Remove(spell);
+            }
+        }
+
+        // Method that adds the spell if it finds a "null" element in the spell list (could be a pretty dumb method)
+        private bool AssignSpellToPlayer(Spell spell)
+        {
+            if (spell.isPrimarySpell())
+            {
+                if (primarySpells.Count < maxPrimarySpells)
+                {
+                    primarySpells.Add(spell);
+                    primarySpellActions.Add(spell, InputManager.primaryCastActions[InputManager.primaryCastActions.Count - 1]);
+                    spell.transform.parent = primarySpellParent.transform;
+                    return true;
+                }
+                else
+                {
+                    int i = 0;
+                    foreach (var item in primarySpells)
+                    {
+                        i++;
+                        if (!item)
+                        {
+                            // Add the spell
+                            primarySpells.Insert(i, spell);
+                            primarySpellActions.Add(spell, InputManager.primaryCastActions[i]);
+                            spell.transform.parent = primarySpellParent.transform;
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            else if (spell.isSecondarySpell())
+            {
+                if (secondarySpells.Count < maxSecondarySpells)
+                {
+                    secondarySpells.Add(spell);
+                    secondarySpellActions.Add(spell, InputManager.secondaryCastActions[InputManager.secondaryCastActions.Count - 1]);
+                    spell.transform.parent = secondarySpellParent.transform;
+                    return true;
+                }
+                else
+                {
+                    int i = 0;
+                    foreach (var item in secondarySpells)
+                    {
+                        i++;
+                        if (!item)
+                        {
+                            // Add the spell
+                            secondarySpells.Insert(i, spell);
+                            secondarySpellActions.Add(spell, InputManager.secondaryCastActions[i]);
+                            spell.transform.parent = secondarySpellParent.transform;
+                            return true;
+                        }
+                    }
+                }
+                return false;
             }
             return false;
         }
