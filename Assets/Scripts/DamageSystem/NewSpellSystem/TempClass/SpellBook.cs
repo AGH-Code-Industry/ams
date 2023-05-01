@@ -23,13 +23,13 @@ namespace DamageSystem.NewSpellSystem.Core.Temp
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent != null && other.transform.parent.GetComponent<PlayerSpellManager>())
+            /*if (other.transform.parent != null && other.transform.parent.GetComponent<PlayerSpellManager>())
             {
                 if (other.transform.parent.GetComponent<PlayerSpellManager>().AddSpell(spell))
                 {
                     Destroy(gameObject);
                 }
-            }
+            }*/
         }
     }
 }
