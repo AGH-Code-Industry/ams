@@ -29,7 +29,11 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         get => _count;
         set {
             _count = value;
-            countText.text = count.ToString();
+            if (count == 1) {
+                countText.text = "";
+            } else {
+                countText.text = count.ToString();
+            }
         }
     }
 
@@ -39,7 +43,7 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             iconImage.enabled = true;
             iconImage.sprite = _item.icon;
         } 
-        countText.text = count.ToString();
+        count = _count;
         rectTransform = GetComponent<RectTransform>();
     }
 
@@ -61,12 +65,16 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        MoveToDraggingSlot();
+        Inventory.HideHoverWindow();
+    }
+
+    private void MoveToDraggingSlot() {
         DraggingSlot.instance.transform.position = transform.position;
         DraggingSlot.startDragSlot = transform.parent;
         transform.SetParent(DraggingSlot.instance.transform);
         rectTransform.offsetMin = Vector2.zero;
-        rectTransform.offsetMax = Vector2.zero;   
-        Inventory.HideHoverWindow();
+        rectTransform.offsetMax = Vector2.zero;  
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -90,7 +98,7 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Inventory.ShowHoverWindow(this);
         RaycastResult defaultRaycastResult = new RaycastResult();
         RaycastResult newSlotRaycastResult = RaycastMouse().FirstOrDefault(raycastResult => raycastResult.gameObject.GetComponent<InventorySlot>());
-        if (!newSlotRaycastResult.Equals(defaultRaycastResult) && !newSlotRaycastResult.gameObject.GetComponent<InventorySlot>().isTaken) {
+        if (!newSlotRaycastResult.Equals(defaultRaycastResult) && newSlotRaycastResult.gameObject.GetComponent<InventorySlot>().canAccept(item)) {
             transform.SetParent(newSlotRaycastResult.gameObject.transform);
         } else {
             transform.SetParent(DraggingSlot.startDragSlot);
