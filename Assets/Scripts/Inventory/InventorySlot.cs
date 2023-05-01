@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : Slot
 {
     public ItemType type = ItemType.Normal;
-    private bool isTaken { 
+    public bool isTaken { 
         get => GetComponentInChildren<ItemStack>() != null;
     } 
 
-    private bool canAcceptType(ItemType type) {
+    public bool typeMatches(ItemType type) {
         if (this.type == ItemType.Normal) return true;
         return this.type == type;
     }
 
     public bool canAccept(Item item) {
-        return !isTaken && canAcceptType(item.type);
+        return !isTaken && typeMatches(item.type);
     }
 }

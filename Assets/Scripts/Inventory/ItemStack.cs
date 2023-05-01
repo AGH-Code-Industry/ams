@@ -71,10 +71,8 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void MoveToDraggingSlot() {
         DraggingSlot.instance.transform.position = transform.position;
-        DraggingSlot.startDragSlot = transform.parent;
-        transform.SetParent(DraggingSlot.instance.transform);
-        rectTransform.offsetMin = Vector2.zero;
-        rectTransform.offsetMax = Vector2.zero;  
+        DraggingSlot.instance.startDragSlot = transform.parent.GetComponent<InventorySlot>();
+        SetSlot(DraggingSlot.instance);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -93,16 +91,33 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         return results;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
+    public void OnEndDrag(PointerEventData eventData)     {
         Inventory.ShowHoverWindow(this);
-        RaycastResult defaultRaycastResult = new RaycastResult();
         RaycastResult newSlotRaycastResult = RaycastMouse().FirstOrDefault(raycastResult => raycastResult.gameObject.GetComponent<InventorySlot>());
-        if (!newSlotRaycastResult.Equals(defaultRaycastResult) && newSlotRaycastResult.gameObject.GetComponent<InventorySlot>().canAccept(item)) {
-            transform.SetParent(newSlotRaycastResult.gameObject.transform);
+        if (newSlotRaycastResult.Equals(new RaycastResult())) {
+            SetSlot(DraggingSlot.instance.startDragSlot);
         } else {
-            transform.SetParent(DraggingSlot.startDragSlot);
+            InventorySlot newSlot = newSlotRaycastResult.gameObject.GetComponent<InventorySlot>();
+            if (newSlot.canAccept(item)) {
+                SetSlot(newSlot);
+            } else if (newSlot.isTaken && 
+                newSlot.typeMatches(item.type) && 
+                DraggingSlot.instance.startDragSlot.typeMatches(newSlot.GetComponentInChildren<ItemStack>().item.type)) {
+                SwapWithDragged(newSlot);
+            } else {
+                SetSlot(DraggingSlot.instance.startDragSlot);
+            }
         }
+    }
+
+    private void SwapWithDragged(InventorySlot newSlot) {
+        ItemStack swapStack = newSlot.GetComponentInChildren<ItemStack>();
+        SetSlot(newSlot);
+        swapStack.SetSlot(DraggingSlot.instance.startDragSlot);
+    }
+
+    public void SetSlot(Slot slot) {
+        transform.SetParent(slot.transform);
         rectTransform.offsetMin = Vector2.zero;
         rectTransform.offsetMax = Vector2.zero;   
     }
