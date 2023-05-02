@@ -11,7 +11,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         public DamageInfo damageInfo;
         public int lifeSpan;
         public PulseFire.PelletType behaviour;
-
+        // The amount of time that passes before the pursuit behaviour is activated
+        public float pursuitDelay = 2f;
+        private float activatePursuitTime = 0.0f;
 
         //FOR PURSUIT BEHAVIOUR
         GameObject target;
@@ -32,6 +34,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         public void Start() {
             Destroy(gameObject, lifeSpan);
             StartCoroutine(disableCollisionForInitialisation());
+            activatePursuitTime = Time.time + pursuitDelay;
             //Handle pellet behavior
         }
 
@@ -49,7 +52,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (other.GetComponent<Damageable>() || other.GetComponent<Enemy>()) {
+            //Debug.Log("time: " + Time.time + " delayTime: " + activatePursuitTime);
+            if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
                 //set target as that collider
                 target = other.gameObject;
             }

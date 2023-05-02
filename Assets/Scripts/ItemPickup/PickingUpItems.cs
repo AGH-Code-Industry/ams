@@ -32,6 +32,8 @@ public class PickingUpItems : MonoBehaviour
     {
         if(other.CompareTag("Pickable"))
         {
+            // Cancel the exchange prompt in case it was active
+            spellExchangePrompt.Cancel();
             controller.CloseMessagePanel();
             itemToPickUp = null;
         }
@@ -45,35 +47,37 @@ public class PickingUpItems : MonoBehaviour
             if (itemToPickUp.GetComponentInChildren<DamageSystem.NewSpellSystem.Core.Spell>())
             {
                 DamageSystem.NewSpellSystem.Core.Spell spell = itemToPickUp.GetComponentInChildren<DamageSystem.NewSpellSystem.Core.Spell>();
+                Debug.Log("Spell Book contains: " + spell.name);
                 if (!player.AddSpell(spell, null))
                 {
                     if (spell.isPrimarySpell())
                     {
                         if (await spellExchangePrompt.SpellExchange(player.primarySpells, spell, player))
                         {
-                            Destroy(itemToPickUp);
-                            controller.CloseMessagePanel();
-                            itemToPickUp = null;
+                            DestroyItem();
                         }
                     }
                     else if (spell.isSecondarySpell())
                     {
                         if (await spellExchangePrompt.SpellExchange(player.secondarySpells, spell, player))
                         {
-                            Destroy(itemToPickUp);
-                            controller.CloseMessagePanel();
-                            itemToPickUp = null;
+                            DestroyItem();
                         }
                     }
                 }
+                else
+                    DestroyItem();
             }
             else
             {
-                Destroy(itemToPickUp);
-                controller.CloseMessagePanel();
-                Inventory.Add(itemToPickUp);
-                itemToPickUp = null;
+                DestroyItem();
             }
         }
+    }
+    void DestroyItem()
+    {
+        Destroy(itemToPickUp);
+        controller.CloseMessagePanel();
+        itemToPickUp = null;
     }
 }

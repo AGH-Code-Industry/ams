@@ -70,7 +70,6 @@ namespace DamageSystem.NewSpellSystem.Core.UI
 
         public void SetSpellExchangeValue(int value)
         {
-            Debug.Log(value);
             state = value;
         }
     }

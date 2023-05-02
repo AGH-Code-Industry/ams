@@ -51,12 +51,12 @@ namespace DamageSystem.NewSpellSystem.Core
             }
 
             foreach (var (spell, action) in primarySpellActions) {
-                action.started += _ => OnPrimarySpellDown(spell);
+                action.started += _ => OnPrimarySpellDown(action);
                 action.canceled += _ => OnPrimarySpellUp();
             }
 
             foreach (var (spell, action) in secondarySpellActions) {
-                action.started += _ => OnSecondarySpellDown(spell);
+                action.started += _ => OnSecondarySpellDown(action);
             }
         }
 
@@ -81,8 +81,8 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        void OnPrimarySpellDown(Spell spell) {
-            Debug.Log("Primary Spell down " + spell);
+        void OnPrimarySpellDown(InputAction action) {
+            Spell spell = primarySpells[InputManager.primaryCastActions.IndexOf(action)];
             if (!canCast) return;
             if (primaryCasting) {
                 queuedPrimarySpell = spell;
@@ -103,7 +103,8 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        void OnSecondarySpellDown(Spell spell) {
+        void OnSecondarySpellDown(InputAction action) {
+            Spell spell = secondarySpells[InputManager.secondaryCastActions.IndexOf(action)];
             if (!canCast) return;
             if (!secondaryCasting && secondarySpellCooldowns[spell] < Time.time) {
                 secondaryCasting = true;
@@ -130,12 +131,12 @@ namespace DamageSystem.NewSpellSystem.Core
         {
             if(spell.isPrimarySpell())
             {
-                primarySpells.Insert(primarySpells.IndexOf(spell), null);
+                primarySpells[primarySpells.IndexOf(spell)] = null;
                 primarySpellActions.Remove(spell);
             }
             else if(spell.isSecondarySpell())
             {
-                secondarySpells.Insert(secondarySpells.IndexOf(spell), null);
+                secondarySpells[secondarySpells.IndexOf(spell)] = null;
                 secondarySpellActions.Remove(spell);
             }
         }
@@ -153,7 +154,6 @@ namespace DamageSystem.NewSpellSystem.Core
                     activePrimarySpell = null;
                     queuedPrimarySpell = null;
                     canCast = true;
-                    BindInit();
                     return true;
                 }
                 else
@@ -164,13 +164,12 @@ namespace DamageSystem.NewSpellSystem.Core
                         if (!item)
                         {
                             // Add the spell
-                            primarySpells.Insert(i, spell);
+                            primarySpells[i] = spell;
                             primarySpellActions.Add(spell, InputManager.primaryCastActions[i]);
                             spell.transform.parent = primarySpellParent.transform;
                             activePrimarySpell = null;
                             queuedPrimarySpell = null;
                             canCast = true;
-                            BindInit();
                             return true;
                         }
                         i++;
@@ -187,7 +186,6 @@ namespace DamageSystem.NewSpellSystem.Core
                     secondarySpellActions.Add(spell, InputManager.secondaryCastActions[InputManager.secondaryCastActions.Count - 1]);
                     
                     spell.transform.parent = secondarySpellParent.transform;
-                    BindInit();
                     return true;
                 }
                 else
@@ -199,10 +197,9 @@ namespace DamageSystem.NewSpellSystem.Core
                         if (!item)
                         {
                             // Add the spell
-                            secondarySpells.Insert(i, spell);
+                            secondarySpells[i] = spell;
                             secondarySpellActions.Add(spell, InputManager.secondaryCastActions[i]);
                             spell.transform.parent = secondarySpellParent.transform;
-                            BindInit();
                             return true;
                         }
                     }
@@ -212,18 +209,5 @@ namespace DamageSystem.NewSpellSystem.Core
             return false;
         }
 
-        private void BindInit()
-        {
-            foreach (var (spell, action) in primarySpellActions)
-            {
-                action.started += _ => OnPrimarySpellDown(spell);
-                action.canceled += _ => OnPrimarySpellUp();
-            }
-
-            foreach (var (spell, action) in secondarySpellActions)
-            {
-                action.started += _ => OnSecondarySpellDown(spell);
-            }
-        }
     }
 }
