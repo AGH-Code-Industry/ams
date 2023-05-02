@@ -42,7 +42,11 @@ public class HoverWindow : MonoBehaviour
         iconImage.sprite = stack.item.icon;
         nameText.text = stack.item.name;
         countText.text = stack.count.ToString();
-        descriptionText.text = stack.item.description;
+        string statsText = "";
+        foreach (var stat in stack.item.stats) {
+            statsText += stat.name + ": " + stat.value + "\n";
+        }
+        descriptionText.text = stack.item.description + "\n\n" + statsText;
     }
 
     private void UpdateCount() {
