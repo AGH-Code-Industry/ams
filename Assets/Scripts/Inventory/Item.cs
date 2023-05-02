@@ -11,7 +11,6 @@ public class Item : ScriptableObject
     public ItemType type = ItemType.Normal;
 
     public List<ItemStats> stats = new List<ItemStats>();
-
 }
 
 [System.Serializable]
