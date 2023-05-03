@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ad8e6ee83bc24408d76e4944011b21, type: 3}
   m_Name: Generic item
   m_EditorClassIdentifier: 
-  description: Generic description
+  description: Generic description Generic description Generic description Generic
+    description Generic description
   icon: {fileID: 21300000, guid: 18d5690f01f7cee4aa3ce0c69a27da44, type: 3}
   stackSize: 64
