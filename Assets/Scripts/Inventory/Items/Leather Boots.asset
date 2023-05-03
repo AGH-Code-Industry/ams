@@ -16,3 +16,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 53b5135712c88b24eb21faa2a84e93de, type: 3}
   stackSize: 1
   type: 1
+  stats:
+  - name: Resistance
+    value: 3
+  - name: Weight
+    value: 4

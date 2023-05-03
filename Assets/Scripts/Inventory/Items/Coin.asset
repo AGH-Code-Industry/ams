@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ad8e6ee83bc24408d76e4944011b21, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  itemName: Coin
   description: This is coin
   icon: {fileID: 21300000, guid: 3023978b5b692854ba06ac0d5cff85dc, type: 3}
   stackSize: 64
+  type: 0
+  stats:
+  - name: Weight
+    value: 1

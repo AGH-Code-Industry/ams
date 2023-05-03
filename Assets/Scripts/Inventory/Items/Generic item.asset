@@ -15,3 +15,9 @@ MonoBehaviour:
   description: Generic description
   icon: {fileID: 21300000, guid: 18d5690f01f7cee4aa3ce0c69a27da44, type: 3}
   stackSize: 64
+  type: 0
+  stats:
+  - name: Weight
+    value: 2
+  - name: Speed
+    value: 0

@@ -11,8 +11,8 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text countText;
-    [SerializeField] private Item _item;
-    [SerializeField] private int _count = 1;
+    [SerializeField] public Item _item;
+    [SerializeField] public int _count = 1;
     private RectTransform rectTransform;
 
     public Item item 
