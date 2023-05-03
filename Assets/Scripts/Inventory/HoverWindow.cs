@@ -11,12 +11,14 @@ public class HoverWindow : MonoBehaviour
     [SerializeField] private TMP_Text countText;
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private Vector2 mouseMargin = new Vector2(8, -8);
+    [SerializeField] private RectTransform vecticalLayoutGroup;
     public ItemStack stack;
 
     public void Show(ItemStack stack) {
         gameObject.SetActive(true);
         SetItemStack(stack);
         UpdatePosition();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(vecticalLayoutGroup);
     }
 
     public void Hide() {

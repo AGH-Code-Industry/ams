@@ -456,6 +456,7 @@ MonoBehaviour:
   countText: {fileID: 5539129399889228102}
   descriptionText: {fileID: 8703845146853144147}
   mouseMargin: {x: 8, y: -8}
+  vecticalLayoutGroup: {fileID: 7689129178992352980}
   stack: {fileID: 0}
 --- !u!1 &3485159186490007473
 GameObject:
