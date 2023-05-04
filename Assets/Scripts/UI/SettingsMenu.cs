@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -14,11 +15,11 @@ public class SettingsMenu : MonoBehaviour
     private int selectedRes;
     public TextMeshProUGUI resolutionText;
     public TextMeshProUGUI ParticlesText;
-    private int AreParticlesOn;
+    private int areParticlesOn;
     public TextMeshProUGUI graphicText;
     private int selectedGraphic;
     public TextMeshProUGUI SensivityText;
-    public Slider sensivitySlider;
+    public Slider sensitivitySlider;
 
     void Start()
     {
@@ -32,8 +33,8 @@ public class SettingsMenu : MonoBehaviour
         resolutionText.text = resolutions[selectedRes].horizontal.ToString() + "x" + resolutions[selectedRes].vertical.ToString();
         Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullscreenToggle.isOn);
 
-        AreParticlesOn = PlayerPrefs.GetInt("AreParticlesOn", 1);
-        switch(AreParticlesOn) {
+        areParticlesOn = PlayerPrefs.GetInt("AreParticlesOn", 1);
+        switch(areParticlesOn) {
             case 1: ParticlesText.text = "On"; break;
             default: ParticlesText.text = "Off"; break;
         }
@@ -42,7 +43,7 @@ public class SettingsMenu : MonoBehaviour
         selectedGraphic = PlayerPrefs.GetInt("Graphics", 2);
         GraphicApply();
 
-        sensivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("Sensivity", 50);
+        sensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("Sensivity", 50);
     }
 
     public void SetFullscreen(bool isFullscreen)
@@ -71,21 +72,23 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void Particles() {
-        if(AreParticlesOn == 1) {
+        if(areParticlesOn == 1) {
             ParticlesText.text = "Off";
-            AreParticlesOn = 0;
+            areParticlesOn = 0;
         }
         else {
             ParticlesText.text = "On";
-            AreParticlesOn = 1;
+            areParticlesOn = 1;
         }
-        PlayerPrefs.SetInt("AreParticlesOn", AreParticlesOn);
+        PlayerPrefs.SetInt("AreParticlesOn", areParticlesOn);
         // Wł/Wył cząsteczki. Dodać to samo w metodzie Start()
     }
 
     public void Graphics() {
         selectedGraphic++;
-        if(selectedGraphic > 2) {selectedGraphic = 0;}
+        if(selectedGraphic > 2) {
+            selectedGraphic = 0;
+            }
         GraphicApply();
     }
     public void GraphicApply() {
@@ -113,7 +116,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void KeyMap() {
-        // Go to keys maping sceene (don't forget about right "using")
+        SceneManager.LoadScene("ControlsSettings");
     }
 
     public void Back() {
