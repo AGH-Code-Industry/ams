@@ -7,20 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class ControlsSettings : MonoBehaviour
 {
-    private PlayerInputActions playerInputActions;
     public GameObject rebindingOverlay;
+    private PlayerInputActions playerInputActions;
 
     void Start()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.UI.Enable();
-        playerInputActions.Player.Disable();
         rebindingOverlay.SetActive(false);
-        playerInputActions.UI.Cancel.performed += ctx => {
-            if (rebindingOverlay.activeSelf) {
-                rebindingOverlay.SetActive(false);
-            } 
-            };
+
+        playerInputActions.UI.Cancel.performed += ctx => rebindingOverlay.SetActive(false);
     }
 
     void Update()
@@ -30,6 +26,10 @@ public class ControlsSettings : MonoBehaviour
 
     public void StartRebinding() {
         rebindingOverlay.SetActive(true);
+    }
+
+    public void RebindComplete() {
+        rebindingOverlay.SetActive(false);
     }
 
     public void Back() {
