@@ -75,7 +75,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void Particles() {
         if(areParticlesOn == 1) {
-            AreParticlesOn = 0;
+            areParticlesOn = 0;
         }
         else {
             areParticlesOn = 1;
