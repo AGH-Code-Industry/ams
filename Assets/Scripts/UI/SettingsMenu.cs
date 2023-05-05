@@ -11,40 +11,37 @@ public class SettingsMenu : MonoBehaviour
     public Toggle fullscreenToggle;
     public TextMeshProUGUI volumeText;
     public Slider volumeSlider;
-    private float volumeValue;
     public List<ResItem> resolutions = new List<ResItem>();
     private int selectedRes;
     public TextMeshProUGUI resolutionText;
     public TextMeshProUGUI ParticlesText;
-    private int areParticlesOn;
     public TextMeshProUGUI graphicText;
-    private int selectedGraphic;
     public TextMeshProUGUI SensivityText;
     public Slider sensitivitySlider;
-    private float sensitivityValue;
 
     void Start()
     {
+        
         bool isFullscreen = PlayerPrefs.GetInt("isFullscreen", 0) == 1 ? true : false;
         fullscreenToggle.isOn = isFullscreen;
         Screen.fullScreen = isFullscreen;
 
-        volumeValue = PlayerPrefs.GetFloat("Volume", 10);
-        volumeSlider.GetComponent<Slider>().value = volumeValue;
+        Settings.instance.volumeValue_ = PlayerPrefs.GetFloat("Volume", 10);
+        volumeSlider.GetComponent<Slider>().value = Settings.instance.volumeValue_;
 
         selectedRes = PlayerPrefs.GetInt("Resolution", 0);
         resolutionText.text = resolutions[selectedRes].horizontal.ToString() + "x" + resolutions[selectedRes].vertical.ToString();
         Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullscreenToggle.isOn);
 
-        areParticlesOn = PlayerPrefs.GetInt("AreParticlesOn", 1);
+        Settings.instance.particlesOn_ = (PlayerPrefs.GetInt("AreParticlesOn", 1) == 1 ? true : false);
         ParticlesApply();
         // Wł/Wył cząsteczki
 
-        selectedGraphic = PlayerPrefs.GetInt("Graphics", 2);
+        Settings.instance.graphicQuality_ = PlayerPrefs.GetInt("Graphics", 2);
         GraphicApply();
 
-        sensitivityValue = PlayerPrefs.GetFloat("Sensivity", 50);
-        sensitivitySlider.GetComponent<Slider>().value =  sensitivityValue;
+        Settings.instance.sensitivityValue_ = PlayerPrefs.GetFloat("Sensivity", 50);
+        sensitivitySlider.GetComponent<Slider>().value =  Settings.instance.sensitivityValue_;
     }
 
     public void SetFullscreen(bool isFullscreen)
@@ -54,7 +51,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void Volume(float value) {
-        volumeValue = value;
+        Settings.instance.volumeValue_ = value;
         volumeText.text = value.ToString();
         PlayerPrefs.SetFloat("Volume", value);
         // [Głośność] = value*[GłośnośćMax]/10
@@ -74,20 +71,16 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void Particles() {
-        if(areParticlesOn == 1) {
-            areParticlesOn = 0;
-        }
-        else {
-            areParticlesOn = 1;
-        }
+        Settings.instance.particlesOn_ = !Settings.instance.particlesOn_;
         ParticlesApply();
         // Wł/Wył cząsteczki. Dodać to samo w metodzie Start()
     }
     
     public void ParticlesApply() {
-        PlayerPrefs.SetInt("AreParticlesOn", areParticlesOn);
-        switch(areParticlesOn) {
-            case 1:
+
+        PlayerPrefs.SetInt("AreParticlesOn", Settings.instance.particlesOn_ == true ? 1 : 0);
+        switch(Settings.instance.particlesOn_) {
+            case true:
                 ParticlesText.text = "On";
                 break;
             default:
@@ -97,14 +90,14 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void Graphics() {
-        selectedGraphic++;
-        if(selectedGraphic > 2) {
-            selectedGraphic = 0;
+        Settings.instance.graphicQuality_++;
+        if(Settings.instance.graphicQuality_ > 2) {
+            Settings.instance.graphicQuality_ = 0;
             }
         GraphicApply();
     }
     public void GraphicApply() {
-        switch(selectedGraphic) {
+        switch(Settings.instance.graphicQuality_) {
             case 0:
                 graphicText.text = "Low";
                 // set low
@@ -118,10 +111,11 @@ public class SettingsMenu : MonoBehaviour
                 // set high
                 break;
         }
-        PlayerPrefs.SetInt("Graphics", selectedGraphic);
+        PlayerPrefs.SetInt("Graphics", Settings.instance.graphicQuality_);
     }
 
      public void Sensivity(float value) {
+        Settings.instance.sensitivityValue_ = value;
         SensivityText.text = value.ToString();
         PlayerPrefs.SetFloat("Sensivity", value);
         // [Czułość] = value*[CzułośćMax]/100

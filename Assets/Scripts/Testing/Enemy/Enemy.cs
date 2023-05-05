@@ -6,7 +6,7 @@ using System;
 public abstract class Enemy : MonoBehaviour {
 
     [SerializeField] protected float _maxHP = 100f;
-    [SerializeField, ReadOnly] protected float _currentHP;
+    [SerializeField] protected float _currentHP;
     [SerializeField] protected bool _immortal = false; // HP will never go below 1
 
     public delegate void OnDamageReceivedDelegate(float amount, string source);
