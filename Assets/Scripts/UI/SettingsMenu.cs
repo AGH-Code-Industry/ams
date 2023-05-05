@@ -11,6 +11,7 @@ public class SettingsMenu : MonoBehaviour
     public Toggle fullscreenToggle;
     public TextMeshProUGUI volumeText;
     public Slider volumeSlider;
+    private float volumeValue;
     public List<ResItem> resolutions = new List<ResItem>();
     private int selectedRes;
     public TextMeshProUGUI resolutionText;
@@ -20,6 +21,7 @@ public class SettingsMenu : MonoBehaviour
     private int selectedGraphic;
     public TextMeshProUGUI SensivityText;
     public Slider sensitivitySlider;
+    private float sensitivityValue;
 
     void Start()
     {
@@ -27,23 +29,22 @@ public class SettingsMenu : MonoBehaviour
         fullscreenToggle.isOn = isFullscreen;
         Screen.fullScreen = isFullscreen;
 
-        volumeSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("Volume", 10);
+        volumeValue = PlayerPrefs.GetFloat("Volume", 10);
+        volumeSlider.GetComponent<Slider>().value = volumeValue;
 
         selectedRes = PlayerPrefs.GetInt("Resolution", 0);
         resolutionText.text = resolutions[selectedRes].horizontal.ToString() + "x" + resolutions[selectedRes].vertical.ToString();
         Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullscreenToggle.isOn);
 
         areParticlesOn = PlayerPrefs.GetInt("AreParticlesOn", 1);
-        switch(areParticlesOn) {
-            case 1: ParticlesText.text = "On"; break;
-            default: ParticlesText.text = "Off"; break;
-        }
+        ParticlesApply();
         // Wł/Wył cząsteczki
 
         selectedGraphic = PlayerPrefs.GetInt("Graphics", 2);
         GraphicApply();
 
-        sensitivitySlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("Sensivity", 50);
+        sensitivityValue = PlayerPrefs.GetFloat("Sensivity", 50);
+        sensitivitySlider.GetComponent<Slider>().value =  sensitivityValue;
     }
 
     public void SetFullscreen(bool isFullscreen)
@@ -53,6 +54,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void Volume(float value) {
+        volumeValue = value;
         volumeText.text = value.ToString();
         PlayerPrefs.SetFloat("Volume", value);
         // [Głośność] = value*[GłośnośćMax]/10
@@ -73,15 +75,25 @@ public class SettingsMenu : MonoBehaviour
 
     public void Particles() {
         if(areParticlesOn == 1) {
-            ParticlesText.text = "Off";
-            areParticlesOn = 0;
+            AreParticlesOn = 0;
         }
         else {
-            ParticlesText.text = "On";
             areParticlesOn = 1;
         }
-        PlayerPrefs.SetInt("AreParticlesOn", areParticlesOn);
+        ParticlesApply();
         // Wł/Wył cząsteczki. Dodać to samo w metodzie Start()
+    }
+    
+    public void ParticlesApply() {
+        PlayerPrefs.SetInt("AreParticlesOn", areParticlesOn);
+        switch(areParticlesOn) {
+            case 1:
+                ParticlesText.text = "On";
+                break;
+            default:
+                ParticlesText.text = "Off";
+                break;
+        }
     }
 
     public void Graphics() {
