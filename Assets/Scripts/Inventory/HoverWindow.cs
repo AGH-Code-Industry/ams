@@ -10,6 +10,7 @@ public class HoverWindow : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text countText;
     [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text statsWindowText;
     [SerializeField] private Vector2 mouseMargin = new Vector2(8, -8);
     [SerializeField] private RectTransform vecticalLayoutGroup;
     public ItemStack stack;
@@ -48,7 +49,8 @@ public class HoverWindow : MonoBehaviour
         foreach (var stat in stack.item.stats) {
             statsText += stat.name + ": " + stat.value + "\n";
         }
-        descriptionText.text = stack.item.description + "\n\n" + statsText;
+        descriptionText.text = stack.item.description;
+        statsWindowText.text = statsText;
     }
 
     private void UpdateCount() {
