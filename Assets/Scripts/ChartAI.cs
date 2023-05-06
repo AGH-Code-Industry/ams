@@ -8,14 +8,16 @@ public class ChartAI : MonoBehaviour
     public float moveSpeed = 5f;
     public float detectionRange = 30f;
     public float stoppingDistance = 2f;
-    private float firstAcceleration = 0f;
 
     private Renderer objectRenderer;
 
     private bool isChasing = false;
+    public Vector3 nestPosition;
+
 
     void Start() {
         objectRenderer = GetComponent<Renderer>();
+        nestPosition = transform.position;
     }
 
     void Update()
@@ -44,26 +46,36 @@ public class ChartAI : MonoBehaviour
         }
 
 
+
+
         if (isChasing)
         {
-            // Obliczamy kierunek, w którym powinien poruszać się przeciwnik
+            // Obliczamy kierunek, w ktorym powinien poruszac sie przeciwnik
             Vector3 direction = player.position - transform.position;
             direction.Normalize();
-
-            // Obracamy przeciwnika w kierunku gracza
             transform.LookAt(player);
 
-            // if (distanceToPlayer < stoppingDistance) {
-            //     moveSpeed = 0f;
-            // }
 
-            // Przeciwnik porusza się w kierunku gracza
+            // Przeciwnik porusza sie w kierunku gracza
             transform.position += direction * moveSpeed * Time.deltaTime;
 
             if (distanceToPlayer < stoppingDistance)
             {
                 transform.position = transform.position;
             }
+
+        } else if (!isChasing && distanceToPlayer > stoppingDistance) {
+
+            
+            if (Vector3.Distance(transform.position, nestPosition) > 1) {
+
+            objectRenderer.material.color = Color.blue;
+            Vector3 directionToNest = nestPosition - transform.position;
+
+            transform.LookAt(nestPosition);
+            transform.Translate(directionToNest.normalized * moveSpeed * Time.deltaTime);
+            }
+            
         }
     }
 }
