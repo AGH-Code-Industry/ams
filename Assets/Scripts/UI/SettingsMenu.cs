@@ -126,7 +126,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void Back() {
-        // Go to sceene where you got to settings from
+        SceneManager.LoadScene("MenuStart");
     }
 }
 

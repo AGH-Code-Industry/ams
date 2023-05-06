@@ -10,6 +10,11 @@ public class FirstMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void OpenSettings()
+    {
+        SceneManager.LoadScene("SettingsMenu");
+    }
+
     public void Quit()
     {
         Application.Quit();
