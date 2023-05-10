@@ -7,14 +7,14 @@ using UnityEngine.AI;
 namespace Enemies
 {
     public class FireEnemy : MonoBehaviour
-    {
+    {        
         public float attackRadius = 7f;
         public float chaseRadius = 10f;
         public float patrolRadius = 30f;
         public float attackCooldown = 1f;
         public Rigidbody projectile;
-        public float ForwardStrength = 20f;
-        public float UpwardStrength = 10f;
+        public float ForwardStrength = 0f;
+        public float UpwardStrength = -20f;
         public float ChaseSpeed = 5f;
 
         public delegate void AttackTest();
@@ -27,12 +27,14 @@ namespace Enemies
         private bool isPatrolling = false;
         private bool alreadyAttacked = false;
         private Transform player;
+        private PlayerData playerData;
         private NavMeshAgent agent;
 
         // Start is called before the first frame update
         private void Awake()
         {
             player = GameObject.Find("Player").transform;
+            playerData = player.GetComponent<PlayerData>();
             agent = GetComponent<NavMeshAgent>();
             agent.SetDestination(player.position);
         }
@@ -50,11 +52,7 @@ namespace Enemies
 
         private void Patrol()
         {
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                isPatrolling = false;
-            }
-
+            if (agent.remainingDistance <= agent.stoppingDistance) isPatrolling = false;          
             if (isPatrolling) return;
 
             RaycastHit hit;
@@ -95,15 +93,18 @@ namespace Enemies
             Rigidbody rb =
                 Instantiate(projectile, transform.position + transform.forward + transform.up, Quaternion.identity)
                     .GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * ForwardStrength, ForceMode.Impulse);
-            rb.AddForce(transform.up * UpwardStrength, ForceMode.Impulse);
-            // Destroy(rb.gameObject, ProjectileLifetime);
-        }
 
-        private void Attacking(AttackTest method)
-        {
-            method();
-        }
+            FireBall fireball = rb.GetComponent<FireBall>();             
+
+            float distance = Mathf.Sqrt(Mathf.Pow(player.position.x - rb.position.x, 2) + Mathf.Pow(player.position.z - rb.position.z, 2));
+            float height = rb.position.y - playerData.getBottomY() - fireball.height/2;
+
+            Debug.Log(fireball.height);
+            
+            float speedZ = distance * Mathf.Sqrt(Mathf.Abs(Physics.gravity.y / (2 * height)));            
+
+            rb.velocity = transform.forward * speedZ;            
+        }      
 
         private void DeleteProjectile(Rigidbody rb)
         {
