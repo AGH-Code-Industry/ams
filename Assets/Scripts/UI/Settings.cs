@@ -12,7 +12,11 @@ public class Settings : MonoBehaviour
     }
 
     public static List<ResItem> resolutions = new List<ResItem>() {
+        new ResItem() { horizontal = 3840, vertical = 2160 },
+        new ResItem() { horizontal = 2560, vertical = 1440 },
         new ResItem() { horizontal = 1920, vertical = 1080 },
+        new ResItem() { horizontal = 1600, vertical = 900 },
+        new ResItem() { horizontal = 1366, vertical = 768 },
         new ResItem() { horizontal = 1280, vertical = 720 },
         new ResItem() { horizontal = 800, vertical = 600 }
     };
@@ -31,7 +35,7 @@ public class Settings : MonoBehaviour
     }
 
     public static int resolutionPreset {
-        get { return PlayerPrefs.GetInt("resolutionPreset", 0); }
+        get { return PlayerPrefs.GetInt("resolutionPreset", 2); }
         set {
             PlayerPrefs.SetInt("resolutionPreset", value);
             Screen.SetResolution(resolutions[value].horizontal, resolutions[value].vertical, fullscreen);
