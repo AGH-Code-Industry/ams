@@ -6,7 +6,7 @@ public class SpellStorage : MonoBehaviour {
 
     [SerializeField] private Spell[] _spells;
 
-    [SerializeField] private int _activeSpellIndex = 0;
+    [SerializeField, ReadOnly] private int _activeSpellIndex = 0;
     [SerializeField] public Spell activeSpell { get; private set; }
 
     void Start() {
