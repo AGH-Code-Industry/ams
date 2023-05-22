@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 7050234134953712666}
   - component: {fileID: 470472691}
   - component: {fileID: 8191216528665066598}
+  - component: {fileID: -3171308358885455875}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -246,6 +247,8 @@ MonoBehaviour:
   maxSecondarySpells: 3
   primarySpellParent: {fileID: 1822658532502970046}
   secondarySpellParent: {fileID: 6056120916226507955}
+  primarySpells: []
+  secondarySpells: []
   queuedSecondarySpell: {fileID: 0}
   secondaryCastTime: 0
 --- !u!114 &470472691
@@ -291,6 +294,19 @@ MonoBehaviour:
   PauseCanvas: {fileID: 0}
   GameCanvas: {fileID: 0}
   _isPaused: 0
+--- !u!114 &-3171308358885455875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152802754467829290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c90fff3815e241409d4fa3716ea4497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 9152802754467829293}
 --- !u!1001 &273624704813222316
 PrefabInstance:
   m_ObjectHideFlags: 0
