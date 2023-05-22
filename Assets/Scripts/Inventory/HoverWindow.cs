@@ -10,13 +10,16 @@ public class HoverWindow : MonoBehaviour
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text countText;
     [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text statsWindowText;
     [SerializeField] private Vector2 mouseMargin = new Vector2(8, -8);
+    [SerializeField] private RectTransform vecticalLayoutGroup;
     public ItemStack stack;
 
     public void Show(ItemStack stack) {
         gameObject.SetActive(true);
         SetItemStack(stack);
         UpdatePosition();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(vecticalLayoutGroup);
     }
 
     public void Hide() {
@@ -41,11 +44,16 @@ public class HoverWindow : MonoBehaviour
         this.stack = stack;
         iconImage.sprite = stack.item.icon;
         nameText.text = stack.item.name;
-        countText.text = stack.count.ToString();
+        UpdateCount();
+        string statsText = "";
+        foreach (var stat in stack.item.stats) {
+            statsText += stat.name + ": " + stat.value + "\n";
+        }
         descriptionText.text = stack.item.description;
+        statsWindowText.text = statsText;
     }
 
     private void UpdateCount() {
-        countText.text = stack.count.ToString();
+        countText.text = stack.count != 1 ? stack.count.ToString() : "";
     }
 }

@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
         } 
         else 
         {
-            InventorySlot slot = GetFreeSlot();
+            InventorySlot slot = GetFreeSlot(item);
             if (slot) {
                 ItemStack newStack = Instantiate(itemStackPrefab);
                 newStack.item = item;
@@ -60,9 +60,9 @@ public class Inventory : MonoBehaviour
         return new List<InventorySlot>(slotsContainer.GetComponentsInChildren<InventorySlot>());
     }
 
-    private InventorySlot GetFreeSlot()
+    private InventorySlot GetFreeSlot(Item item)
     {
-        return GetSlots().FirstOrDefault(slot => !slot.isTaken);
+        return GetSlots().FirstOrDefault(slot => slot.canAccept(item));
     }
 
     public static void ShowHoverWindow(ItemStack stack)

@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8ad8e6ee83bc24408d76e4944011b21, type: 3}
-  m_Name: Generic item
+  m_Name: Leather Boots
   m_EditorClassIdentifier: 
-  description: Generic description Generic description Generic description Generic
-    description Generic description
-  icon: {fileID: 21300000, guid: 18d5690f01f7cee4aa3ce0c69a27da44, type: 3}
-  stackSize: 64
-  type: 0
+  description: Lorem ipsum
+  icon: {fileID: 21300000, guid: 53b5135712c88b24eb21faa2a84e93de, type: 3}
+  stackSize: 1
+  type: 1
   stats:
+  - name: Resistance
+    value: 3
   - name: Weight
-    value: 2
-  - name: Speed
-    value: 0
+    value: 4
