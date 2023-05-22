@@ -22,8 +22,8 @@ namespace DamageSystem.NewSpellSystem.Core
         Dictionary<Spell, InputAction> primarySpellActions = new Dictionary<Spell, InputAction>();
         Dictionary<Spell, InputAction> secondarySpellActions = new Dictionary<Spell, InputAction>();
 
-        List<Spell> primarySpells;
-        List<Spell> secondarySpells;
+        public List<Spell> primarySpells;
+        public List<Spell> secondarySpells;
 
         Spell activePrimarySpell;
         Spell queuedPrimarySpell;
@@ -51,12 +51,12 @@ namespace DamageSystem.NewSpellSystem.Core
             }
 
             foreach (var (spell, action) in primarySpellActions) {
-                action.started += _ => OnPrimarySpellDown(spell);
+                action.started += _ => OnPrimarySpellDown(action);
                 action.canceled += _ => OnPrimarySpellUp();
             }
 
             foreach (var (spell, action) in secondarySpellActions) {
-                action.started += _ => OnSecondarySpellDown(spell);
+                action.started += _ => OnSecondarySpellDown(action);
             }
         }
 
@@ -66,14 +66,14 @@ namespace DamageSystem.NewSpellSystem.Core
         }
 
         void TryCastPrimarySpell() {
-            if (activePrimarySpell && primarySpellActions[activePrimarySpell].IsPressed() && activeSpellCooldown < Time.time) {
+            if (canCast && activePrimarySpell && primarySpellActions[activePrimarySpell].IsPressed() && activeSpellCooldown < Time.time) {
                 activePrimarySpell.Cast(spellOrigin);
                 activeSpellCooldown = Time.time + activePrimarySpell.GetCooldown();
             }
         }
 
         void TryCastSecondarySpell() {
-            if (queuedSecondarySpell && secondaryCasting && secondaryCastTime < Time.time) { 
+            if (canCast && queuedSecondarySpell && secondaryCasting && secondaryCastTime < Time.time) { 
                 queuedSecondarySpell.Cast(spellOrigin);
                 secondaryCasting = false;
                 secondarySpellCooldowns[queuedSecondarySpell] = Time.time + queuedSecondarySpell.GetCooldown();
@@ -81,7 +81,8 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        void OnPrimarySpellDown(Spell spell) {
+        void OnPrimarySpellDown(InputAction action) {
+            Spell spell = primarySpells[InputManager.primaryCastActions.IndexOf(action)];
             if (!canCast) return;
             if (primaryCasting) {
                 queuedPrimarySpell = spell;
@@ -102,7 +103,8 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        void OnSecondarySpellDown(Spell spell) {
+        void OnSecondarySpellDown(InputAction action) {
+            Spell spell = secondarySpells[InputManager.secondaryCastActions.IndexOf(action)];
             if (!canCast) return;
             if (!secondaryCasting && secondarySpellCooldowns[spell] < Time.time) {
                 secondaryCasting = true;
@@ -111,23 +113,101 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        //Initial implementation of adding spells to the player
-        //Replace this with instantiating a spell under the player or something
-        public bool AddSpell(Spell spell) {
-            if (spell.isPrimarySpell() && primarySpells.Count < maxPrimarySpells) {
-                primarySpells.Add(spell);
-                primarySpellActions.Add(spell, InputManager.primaryCastActions[primarySpells.Count - 1]);
-                spell.transform.parent = primarySpellParent.transform;
-                //Debug.Log("Spell added to primary spells! - " + spell.name);
-                return true;
-            } else if (spell.isSecondarySpell() && secondarySpells.Count < maxSecondarySpells) {
-                secondarySpells.Add(spell);
-                secondarySpellActions.Add(spell, InputManager.secondaryCastActions[primarySpells.Count - 1]);
-                spell.transform.parent = secondarySpellParent.transform;
-                //Debug.Log("Spell added to secondary spells! - " + spell.name);
-                return true;
+        // Adding a spell to the Player
+        // If spellToRemove is null, the spell will be added if there is room for it
+        // If there is a spellToRemove specified, it will be replaced with the spellToAdd
+        public bool AddSpell(Spell spellToAdd, Spell? spellToRemove) {
+            if (!spellToRemove)
+                return AssignSpellToPlayer(spellToAdd);
+            else
+            {
+                canCast = false;
+                RemoveSpellFromPlayer(spellToRemove);
+                return AssignSpellToPlayer(spellToAdd);
+            }
+        }
+
+        private void RemoveSpellFromPlayer(Spell spell)
+        {
+            if(spell.isPrimarySpell())
+            {
+                primarySpells[primarySpells.IndexOf(spell)] = null;
+                primarySpellActions.Remove(spell);
+            }
+            else if(spell.isSecondarySpell())
+            {
+                secondarySpells[secondarySpells.IndexOf(spell)] = null;
+                secondarySpellActions.Remove(spell);
+            }
+        }
+
+        // Method that adds the spell if it finds a "null" element in the spell list (could be a pretty dumb method)
+        private bool AssignSpellToPlayer(Spell spell)
+        {
+            if (spell.isPrimarySpell())
+            {
+                if (primarySpells.Count < maxPrimarySpells)
+                {
+                    primarySpells.Add(spell);
+                    primarySpellActions.Add(spell, InputManager.primaryCastActions[InputManager.primaryCastActions.Count - 1]);
+                    spell.transform.parent = primarySpellParent.transform;
+                    activePrimarySpell = null;
+                    queuedPrimarySpell = null;
+                    canCast = true;
+                    return true;
+                }
+                else
+                {
+                    int i = 0;
+                    foreach (var item in primarySpells)
+                    {
+                        if (!item)
+                        {
+                            // Add the spell
+                            primarySpells[i] = spell;
+                            primarySpellActions.Add(spell, InputManager.primaryCastActions[i]);
+                            spell.transform.parent = primarySpellParent.transform;
+                            activePrimarySpell = null;
+                            queuedPrimarySpell = null;
+                            canCast = true;
+                            return true;
+                        }
+                        i++;
+                    }
+                }
+                canCast = true;
+                return false;
+            }
+            else if (spell.isSecondarySpell())
+            {
+                if (secondarySpells.Count < maxSecondarySpells)
+                {
+                    secondarySpells.Add(spell);
+                    secondarySpellActions.Add(spell, InputManager.secondaryCastActions[InputManager.secondaryCastActions.Count - 1]);
+                    
+                    spell.transform.parent = secondarySpellParent.transform;
+                    return true;
+                }
+                else
+                {
+                    int i = 0;
+                    foreach (var item in secondarySpells)
+                    {
+                        i++;
+                        if (!item)
+                        {
+                            // Add the spell
+                            secondarySpells[i] = spell;
+                            secondarySpellActions.Add(spell, InputManager.secondaryCastActions[i]);
+                            spell.transform.parent = secondarySpellParent.transform;
+                            return true;
+                        }
+                    }
+                }
+                return false;
             }
             return false;
         }
+
     }
 }
