@@ -105,7 +105,11 @@ public class EnemyMoth : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    private void OnDestroy()
+    public void OnDeath() {
+        SpawnMoth();
+    }
+
+    private void SpawnMoth()
     {
     
         for(int i = 0; i < 10; i++)
