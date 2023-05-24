@@ -67,4 +67,8 @@ public class ControlsSettings : MonoBehaviour
         SceneManager.LoadScene("SettingsMenu");
     }
 
+    public void Reset() {
+        
+    }
+
 }
