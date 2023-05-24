@@ -53,6 +53,7 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (transform.parent == DraggingSlot.instance.transform) return;
         Inventory.ShowHoverWindow(this);
         Cursor.SetCursor(CursorTextures.instance.cursorPointer, Vector2.zero, CursorMode.Auto);
     }       
