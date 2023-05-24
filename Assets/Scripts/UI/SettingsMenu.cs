@@ -111,4 +111,16 @@ public class SettingsMenu : MonoBehaviour
     public void Back() {
         SceneManager.LoadScene("MenuStart");
     }
+    public void Reset() {
+        Settings.ResetSettings();
+        fullscreenToggle.isOn = Settings.fullscreen;
+        volumeText.text = Settings.volume.ToString();       
+        volumeSlider.GetComponent<Slider>().value = Settings.volume;
+        Graphics();
+        SensivityText.text = Settings.sensitivity.ToString();
+        sensitivitySlider.GetComponent<Slider>().value =  Settings.sensitivity;
+        Particles();
+        selectedRes = Settings.resolutionPreset;
+        resolutionText.text = Settings.resolutions[selectedRes].horizontal.ToString() + "x" + Settings.resolutions[selectedRes].vertical.ToString();
+    }
 }
