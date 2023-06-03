@@ -68,7 +68,11 @@ public class ControlsSettings : MonoBehaviour
     }
 
     public void Reset() {
-        
+        upButton.onClick.AddListener(() => StartRebinding("Move", "WASD", "Up"));
+        downButton.onClick.AddListener(() => StartRebinding("Move", "WASD", "Down"));
+        leftButton.onClick.AddListener(() => StartRebinding("Move", "WASD", "Left"));
+        rightButton.onClick.AddListener(() => StartRebinding("Move", "WASD", "Right"));
+        attack1Button.onClick.AddListener(() => StartRebinding("PrimarySpell1", "Left Button"));
+        attack2Button.onClick.AddListener(() => StartRebinding("PrimarySpell2", "Right Button"));
     }
-
 }
