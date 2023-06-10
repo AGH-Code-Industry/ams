@@ -914,7 +914,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88812550}
-  m_LocalRotation: {x: 0.38268343, y: 0.000000015896617, z: -0.000000006584594, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.00000001589663, z: 0.0000000065845986, w: 0.92387956}
   m_LocalPosition: {x: 12.65, y: 11.3029785, z: 64.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5867,7 +5867,7 @@ GameObject:
   - component: {fileID: 227810372}
   - component: {fileID: 227810371}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5944,8 +5944,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227810370}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 22.821535, y: 10, z: 60}
-  m_LocalScale: {x: 1, y: 20, z: 80}
+  m_LocalPosition: {x: 20, y: 10, z: 60}
+  m_LocalScale: {x: 1, y: 20, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -9738,7 +9738,7 @@ GameObject:
   - component: {fileID: 365646275}
   - component: {fileID: 365646274}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9815,8 +9815,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365646273}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 22.82, y: 10, z: 100}
-  m_LocalScale: {x: 1, y: 20, z: 80}
+  m_LocalPosition: {x: 20, y: 10, z: 100}
+  m_LocalScale: {x: 1, y: 20, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -14895,7 +14895,7 @@ GameObject:
   - component: {fileID: 630755767}
   - component: {fileID: 630755766}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14972,8 +14972,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630755765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 70}
-  m_LocalScale: {x: 1, y: 20, z: 80}
+  m_LocalPosition: {x: 0, y: 10, z: 80}
+  m_LocalScale: {x: 1, y: 20, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -17460,6 +17460,12 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &782472656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9172906495103107146, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1542400394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &796352632
 Mesh:
   m_ObjectHideFlags: 0
@@ -24705,7 +24711,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268343, y: 0.000000015896617, z: -0.000000006584594, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.00000001589663, z: 0.0000000065845986, w: 0.92387956}
   m_LocalPosition: {x: 12.65, y: 11.3029785, z: 64.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29852,8 +29858,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPosition: {x: 0, y: 0, z: 0}
   player: {fileID: 470472686}
-  speed: 10
+  speed: 14
   movRange: 16
+  wall1: {fileID: 365646277}
+  wall2: {fileID: 227810374}
+  wall3: {fileID: 630755769}
+  wall4: {fileID: 1473368417}
+  chartWatykanski: {fileID: 782472656}
 --- !u!43 &1301145593
 Mesh:
   m_ObjectHideFlags: 0
@@ -35814,7 +35825,7 @@ GameObject:
   - component: {fileID: 1473368415}
   - component: {fileID: 1473368414}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35891,8 +35902,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473368413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 10, z: 70}
-  m_LocalScale: {x: 1, y: 20, z: 80}
+  m_LocalPosition: {x: 40, y: 10, z: 80}
+  m_LocalScale: {x: 1, y: 20, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -36942,6 +36953,100 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &1542400394
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9172906493905010023, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 470472686}
+    - target: {fileID: 9172906493905010023, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: detectionRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906493905010023, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: nestPosition.x
+      value: 37.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906493905010023, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: nestPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107146, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_Name
+      value: ChartWatykanski
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 37.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.398724
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495103107147, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172906495308193542, guid: 0e29dc5539fcb10429ab6d1eb9779ee6,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 470472686}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e29dc5539fcb10429ab6d1eb9779ee6, type: 3}
 --- !u!1 &1548016126
 GameObject:
   m_ObjectHideFlags: 0
@@ -40266,7 +40371,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28150
+  m_Name: pb_Mesh35374
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
