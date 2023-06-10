@@ -27,7 +27,7 @@ namespace DamageSystem.Traps {
         void Start() {
             damageInfo = new DamageInfo(attackElementalsList, gameObject);
             if (initiallyExtended) {
-                animator.Play("FloorSpikes Extend instantly");
+                animator.Play("Extend instantly");
                 extended = true;
             }
             lastExtendTime = Time.time + startDelay;
@@ -52,13 +52,13 @@ namespace DamageSystem.Traps {
         }
 
         void Extend() {
-            animator.Play("FloorSpikes Extend");
+            animator.Play("Extend");
             lastExtendTime = Time.time;
             extended = true;
         }
 
         void Retract() {
-            animator.Play("FloorSpikes Retract");
+            animator.Play("Retract");
             lastRetractTime = Time.time;
             extended = false;
         }

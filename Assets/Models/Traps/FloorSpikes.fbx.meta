@@ -1,8 +1,23 @@
 fileFormatVersion: 2
-guid: 2597181e47ca41e43a27a5627b78dbda
+guid: 25940b67ff043ba4ea19e320b299015d
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -5896978545651071317
+    second: Extend
+  - first:
+      74: 8979269963596733007
+    second: Retract
+  - first:
+      74: 2319007735507439676
+    second: Spikes|Extend
+  - first:
+      74: -5972126190061344418
+    second: Spikes|Extend Instantly
+  - first:
+      74: -5801630894931185967
+    second: Spikes|Retract
   externalObjects: {}
   materials:
     materialImportMode: 2

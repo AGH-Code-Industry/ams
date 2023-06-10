@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorSpikes Extend
+  m_Name: Extend
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 762cfbbcfbbc8a3418a27b039432a47f, type: 2}
+  m_Motion: {fileID: 2319007735507439676, guid: 25940b67ff043ba4ea19e320b299015d,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -33,7 +34,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorSpikes Retract
+  m_Name: Retract
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -46,7 +47,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7769486b0ae9dcb459e91856c5f8b3a2, type: 2}
+  m_Motion: {fileID: -5801630894931185967, guid: 25940b67ff043ba4ea19e320b299015d,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -81,7 +83,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorSpikes Extend instantly
+  m_Name: Extend instantly
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -94,7 +96,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 716bf6453481008499725dae237de1ce, type: 2}
+  m_Motion: {fileID: -5972126190061344418, guid: 25940b67ff043ba4ea19e320b299015d,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
