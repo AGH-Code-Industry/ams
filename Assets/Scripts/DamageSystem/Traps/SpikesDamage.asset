@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementalType: 5
   efect: {fileID: 11400000, guid: b56a8fbfbe21b6f44820e0fb8a4b244f, type: 2}
-  elementalDamage: 50
+  elementalDamage: 40
   effectValue: 0
