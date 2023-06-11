@@ -46,14 +46,14 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         //Logic for pursuit system
 
         private void FixedUpdate() {
-            if (behaviour == PulseFire.PelletType.PURSUIT && target) {
-                GetComponent<Rigidbody>().velocity += (target.transform.position - transform.position) * 20 * Time.deltaTime;
+            if (behaviour == PulseFire.PelletType.PURSUIT && target) {                
+                GetComponent<Rigidbody>().velocity += (target.transform.position - transform.position) * 20 * Time.fixedDeltaTime;
             }
         }
 
         private void OnTriggerEnter(Collider other) {
             //Debug.Log("time: " + Time.time + " delayTime: " + activatePursuitTime);
-            if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
+            if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>()) && other.transform.name != "Player") {
                 //set target as that collider
                 target = other.gameObject;
             }
