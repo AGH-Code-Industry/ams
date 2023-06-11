@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea9e35ede9145e4899d4d8de4c93688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 2415600696902671449}
+  collisionTrigger: {fileID: 8281689434724625714}
+  explosion: {fileID: 2415600697593939509}
 --- !u!1 &2415600696902671451
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +62,7 @@ GameObject:
   - component: {fileID: 2415600696902671455}
   - component: {fileID: 2415600696902671448}
   - component: {fileID: 2415600696902671449}
+  - component: {fileID: 8281689434724625714}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -1111,7 +1113,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1067
+  m_VersionIndex: 1070
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1211,6 +1213,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8281689434724625714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415600696902671451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d879c54594a12347887309e8b5b52f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosiveBarrel: {fileID: 2415600696755213162}
 --- !u!1001 &1488232061902614511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1288,6 +1303,12 @@ PrefabInstance:
 --- !u!4 &2415600697593939508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3828819608375699931, guid: 4fb1930e9d3388541a4837a94e215230,
+    type: 3}
+  m_PrefabInstance: {fileID: 1488232061902614511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2415600697593939509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3828819608375699930, guid: 4fb1930e9d3388541a4837a94e215230,
     type: 3}
   m_PrefabInstance: {fileID: 1488232061902614511}
   m_PrefabAsset: {fileID: 0}

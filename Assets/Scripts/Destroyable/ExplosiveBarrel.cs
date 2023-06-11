@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveBarrel : MonoBehaviour {
-    [SerializeField] private Collider collider;
-    void Start() {
-        
-    }
+namespace Destroyable {
+    public class ExplosiveBarrel : MonoBehaviour, IExplosive {
+        [SerializeField] private ExplosiveBarrelCollisionTrigger collisionTrigger;
+        [SerializeField] private GameObject explosion;
 
-    void Update() {
-        
+        public void Explode() {
+            explosion.SetActive(true);
+            collisionTrigger.gameObject.SetActive(false);
+        }
     }
 }
