@@ -73,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3593012219230085305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.72, y: 8.3, z: 14.33}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -109,7 +109,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.3, z: 1}
+  m_Size: {x: 1, y: 1.15, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &3593012219230085309
 MonoBehaviour:
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db21b2b8e7d5f24a8912a6110a17772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 3593012219230085311}
   _rigidbody: {fileID: 3593012219230085310}
   _anim: {fileID: 3593012219230085308}
   height: 0
@@ -190,7 +191,6 @@ GameObject:
   - component: {fileID: 3593012219790073357}
   - component: {fileID: 3593012219790073358}
   - component: {fileID: 3593012219790073359}
-  - component: {fileID: 3593012219790073353}
   - component: {fileID: 3593012219790073356}
   m_Layer: 0
   m_Name: Ball
@@ -264,21 +264,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3593012219790073353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3593012219790073364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db21b2b8e7d5f24a8912a6110a17772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 0}
-  _anim: {fileID: 0}
-  height: 0
 --- !u!95 &3593012219790073356
 Animator:
   serializedVersion: 4

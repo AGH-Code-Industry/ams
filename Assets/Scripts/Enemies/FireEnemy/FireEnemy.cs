@@ -96,9 +96,7 @@ namespace Enemies
             FireBall fireball = rb.GetComponent<FireBall>();             
 
             float distance = Mathf.Sqrt(Mathf.Pow(player.position.x - rb.position.x, 2) + Mathf.Pow(player.position.z - rb.position.z, 2));
-            float height = rb.position.y - playerData.getBottomY() - fireball.height/2;
-
-            Debug.Log(fireball.height);
+            float height = rb.position.y - playerData.getBottomY() - fireball.height/2;            
             
             float speedZ = distance * Mathf.Sqrt(Mathf.Abs(Physics.gravity.y / (2 * height)));            
 
