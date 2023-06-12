@@ -126,6 +126,8 @@ MonoBehaviour:
   boxCollider: {fileID: 3593012219230085311}
   _rigidbody: {fileID: 3593012219230085310}
   _anim: {fileID: 3593012219230085308}
+  elementals:
+  - {fileID: 11400000, guid: 610540028839dde44802b4114f49207f, type: 2}
   height: 0
 --- !u!95 &3593012219230085308
 Animator:

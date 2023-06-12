@@ -19,8 +19,8 @@ public class FireBall : MonoBehaviour
     private float _minYScale = 0.3f;
 
     private bool _isTriggeringPlayer = false;
-    private float _lastTimeAttackPlayer = 0.0f;
-    private float _deltaTimeAttackPlayer = 2f;
+    private float _lastTimeAttackPlayer = -6f;
+    private float _deltaTimeAttackPlayer = 5f;
 
     // Start is called before the first frame update
     void Awake()
@@ -75,11 +75,12 @@ public class FireBall : MonoBehaviour
         OnTriggerPlayer(other);
     }
 
-    private void OnTriggerPlayer(Collider other){
-        if(!other.CompareTag("Player") || Time.time -_lastTimeAttackPlayer < _deltaTimeAttackPlayer ) return;
+    private void OnTriggerPlayer(Collider other) {
+        if(!other.CompareTag("Player") || Time.time - _lastTimeAttackPlayer < _deltaTimeAttackPlayer ) return;
 
         DamageInfo info = new DamageInfo(elementals , gameObject);
         other.GetComponent<Damageable>().TakeDamage(info);        
+        _lastTimeAttackPlayer = Time.time;
     }
 
     private void PlayFlattenAnimation()
