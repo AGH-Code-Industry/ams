@@ -10,6 +10,11 @@ public class InputManager : MonoBehaviour
     static public List<InputAction> secondaryCastActions;
 
     private void Awake() {
+        if (FindObjectsOfType<InputManager>().Length > 1) {
+            Destroy(this.gameObject);
+            return;
+        }
+
         actions = new PlayerInputActions();
         actions.Enable();
 
@@ -24,5 +29,7 @@ public class InputManager : MonoBehaviour
             actions.Player.SecondarySpell2,
             actions.Player.SecondarySpell3,
         };
+
+        DontDestroyOnLoad(this.gameObject);
     }
 }
