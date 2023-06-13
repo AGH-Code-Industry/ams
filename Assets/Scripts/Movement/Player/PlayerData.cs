@@ -6,8 +6,7 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;    
 
-    public float getBottomY() {
-        Debug.Log(_characterController.height);
-        return transform.position.y - _characterController.height/2;
+    public float getBottomY() {        
+        return transform.position.y;
     }
 }
