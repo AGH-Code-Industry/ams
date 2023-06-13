@@ -50,12 +50,23 @@ namespace DamageSystem.NewSpellSystem.Core
                 secondarySpellCooldowns.Add(secondarySpells[i], Time.time);
             }
 
-            foreach (var (spell, action) in primarySpellActions) {
+            /*foreach (var (spell, action) in primarySpellActions) {
                 action.started += _ => OnPrimarySpellDown(action);
                 action.canceled += _ => OnPrimarySpellUp();
             }
 
             foreach (var (spell, action) in secondarySpellActions) {
+                action.started += _ => OnSecondarySpellDown(action);
+            }*/
+
+            foreach(var action in InputManager.primaryCastActions)
+            {
+                action.started += _ => OnPrimarySpellDown(action);
+                action.canceled += _ => OnPrimarySpellUp();
+            }
+
+            foreach(var action in InputManager.secondaryCastActions)
+            {
                 action.started += _ => OnSecondarySpellDown(action);
             }
         }
@@ -82,13 +93,19 @@ namespace DamageSystem.NewSpellSystem.Core
         }
 
         void OnPrimarySpellDown(InputAction action) {
-            Spell spell = primarySpells[InputManager.primaryCastActions.IndexOf(action)];
-            if (!canCast) return;
-            if (primaryCasting) {
-                queuedPrimarySpell = spell;
-            } else {
-                primaryCasting = true;
-                activePrimarySpell = spell;
+            if (primarySpellActions.ContainsValue(action))
+            {
+                Spell spell = primarySpells[InputManager.primaryCastActions.IndexOf(action)];
+                if (!canCast) return;
+                if (primaryCasting)
+                {
+                    queuedPrimarySpell = spell;
+                }
+                else
+                {
+                    primaryCasting = true;
+                    activePrimarySpell = spell;
+                }
             }
         }
 
@@ -104,12 +121,16 @@ namespace DamageSystem.NewSpellSystem.Core
         }
 
         void OnSecondarySpellDown(InputAction action) {
-            Spell spell = secondarySpells[InputManager.secondaryCastActions.IndexOf(action)];
-            if (!canCast) return;
-            if (!secondaryCasting && secondarySpellCooldowns[spell] < Time.time) {
-                secondaryCasting = true;
-                queuedSecondarySpell = spell;
-                secondaryCastTime = Time.time + spell.GetCastTime();
+            if (secondarySpellActions.ContainsValue(action))
+            {
+                Spell spell = secondarySpells[InputManager.secondaryCastActions.IndexOf(action)];
+                if (!canCast) return;
+                if (!secondaryCasting && secondarySpellCooldowns[spell] < Time.time)
+                {
+                    secondaryCasting = true;
+                    queuedSecondarySpell = spell;
+                    secondaryCastTime = Time.time + spell.GetCastTime();
+                }
             }
         }
 
@@ -151,6 +172,7 @@ namespace DamageSystem.NewSpellSystem.Core
                     primarySpells.Add(spell);
                     primarySpellActions.Add(spell, InputManager.primaryCastActions[InputManager.primaryCastActions.Count - 1]);
                     spell.transform.parent = primarySpellParent.transform;
+                    //spell.transform.localPosition = primarySpellParent.transform.position;
                     activePrimarySpell = null;
                     queuedPrimarySpell = null;
                     canCast = true;
@@ -167,6 +189,8 @@ namespace DamageSystem.NewSpellSystem.Core
                             primarySpells[i] = spell;
                             primarySpellActions.Add(spell, InputManager.primaryCastActions[i]);
                             spell.transform.parent = primarySpellParent.transform;
+                            //spell.transform.localPosition = primarySpellParent.transform.position;
+
                             activePrimarySpell = null;
                             queuedPrimarySpell = null;
                             canCast = true;
@@ -184,8 +208,10 @@ namespace DamageSystem.NewSpellSystem.Core
                 {
                     secondarySpells.Add(spell);
                     secondarySpellActions.Add(spell, InputManager.secondaryCastActions[InputManager.secondaryCastActions.Count - 1]);
-                    
+                    secondarySpellCooldowns.Add(spell, Time.time);
+
                     spell.transform.parent = secondarySpellParent.transform;
+
                     return true;
                 }
                 else
@@ -199,6 +225,7 @@ namespace DamageSystem.NewSpellSystem.Core
                             // Add the spell
                             secondarySpells[i] = spell;
                             secondarySpellActions.Add(spell, InputManager.secondaryCastActions[i]);
+                            secondarySpellCooldowns.Add(spell, Time.time);
                             spell.transform.parent = secondarySpellParent.transform;
                             return true;
                         }
