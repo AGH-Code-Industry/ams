@@ -1313,6 +1313,16 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 7a7dac71-886e-4659-975f-ea1caa331c50
       objectReference: {fileID: 0}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindText
+      value: 
+      objectReference: {fileID: 709681090}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindOverlay
+      value: 
+      objectReference: {fileID: 1564186566}
     - target: {fileID: 4945332560084340041, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_Name
@@ -1476,6 +1486,16 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: e545b9eb-8f82-498d-b675-20ea2c005ef5
       objectReference: {fileID: 0}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindText
+      value: 
+      objectReference: {fileID: 709681090}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindOverlay
+      value: 
+      objectReference: {fileID: 1564186566}
     - target: {fileID: 4945332560084340041, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_Name
@@ -2604,9 +2624,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1151157535}
         m_TargetAssemblyTypeName: ControlsSettings, Assembly-CSharp
-        m_MethodName: Reset
+        m_MethodName: ResetSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3126,6 +3146,16 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 64dfac87-b90d-4852-839c-93a365b9470a
       objectReference: {fileID: 0}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindText
+      value: 
+      objectReference: {fileID: 709681090}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindOverlay
+      value: 
+      objectReference: {fileID: 1564186566}
     - target: {fileID: 4945332560084340041, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_Name
@@ -3505,6 +3535,16 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 09e50863-1262-42cd-ba6c-3b21d0c8e1ec
       objectReference: {fileID: 0}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindText
+      value: 
+      objectReference: {fileID: 709681090}
+    - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
+        type: 3}
+      propertyPath: m_RebindOverlay
+      value: 
+      objectReference: {fileID: 1564186566}
     - target: {fileID: 4945332560084340041, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_Name

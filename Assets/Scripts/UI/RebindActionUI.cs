@@ -195,7 +195,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             var controlPath = default(string);
 
             // Get display string from action.
-            if (InputManager.actions != null)
+            if (InputManager.actions != null && !string.IsNullOrEmpty(m_BindingId) && m_Action != null && m_Action.action != null)
             {
                 var action = InputManager.actions.FindAction(m_Action.action.name, true);
                 var bindingIndex = action.bindings.IndexOf(x => x.id.ToString() == m_BindingId);
@@ -266,14 +266,20 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             action.Disable();
 
+            var button = this.GetComponentInChildren<Button>();
+            if (button != null) {
+                button.interactable = false;
+            }
+
             // Configure the rebind.
-            m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
+            m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex).WithCancelingThrough("<Keyboard>/escape")
                 .OnCancel(
                     operation =>
                     {
                         m_RebindStopEvent?.Invoke(this, operation);
                         m_RebindOverlay?.SetActive(false);
                         action.Enable();
+                        button.interactable = true;
                         UpdateBindingDisplay();
                         CleanUp();
                     })
@@ -283,6 +289,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                         m_RebindOverlay?.SetActive(false);
                         m_RebindStopEvent?.Invoke(this, operation);
                         action.Enable();
+                        button.interactable = true;
                         UpdateBindingDisplay();
                         CleanUp();
 
