@@ -4,10 +4,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
-////TODO: localization support
-
-////TODO: deal with composites that have parts bound in different control schemes
-
 namespace UnityEngine.InputSystem.Samples.RebindUI
 {
     /// <summary>
