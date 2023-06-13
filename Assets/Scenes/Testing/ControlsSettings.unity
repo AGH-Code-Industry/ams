@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: W
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -609,7 +609,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: S
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1317,7 +1317,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -1490,7 +1490,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -1668,7 +1668,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -1824,7 +1824,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2491,8 +2491,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151157533}
-  - component: {fileID: 1151157534}
   - component: {fileID: 1151157535}
+  - component: {fileID: 1151157536}
   m_Layer: 0
   m_Name: ControlsSettings
   m_TagString: Untagged
@@ -2515,19 +2515,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1151157534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151157531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2bd31370848f347ac52fddbccf68e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: {fileID: -944628639613478452, guid: dc1d46ba1f429584aab1dc3359274030, type: 3}
 --- !u!114 &1151157535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,6 +2525,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad766225ae7c5d04c9d9906ea3a663b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 1865055537}
+--- !u!114 &1151157536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151157531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2bd31370848f347ac52fddbccf68e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1167533300
@@ -2812,7 +2812,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -3150,7 +3150,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -3539,7 +3539,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -3643,7 +3643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: D
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3915,7 +3915,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -4298,7 +4298,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
@@ -4595,7 +4595,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindText
       value: 
-      objectReference: {fileID: 709681090}
+      objectReference: {fileID: 0}
     - target: {fileID: 3690953837782163358, guid: 830e9a05f82bf244b822fbf2939994a8,
         type: 3}
       propertyPath: m_RebindOverlay
