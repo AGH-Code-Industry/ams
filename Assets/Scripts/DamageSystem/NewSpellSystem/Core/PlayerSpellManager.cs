@@ -40,24 +40,23 @@ namespace DamageSystem.NewSpellSystem.Core
         void Start() {
             primarySpells = new List<Spell>(primarySpellParent.GetComponentsInChildren<Spell>());
             secondarySpells = new List<Spell>(secondarySpellParent.GetComponentsInChildren<Spell>());
+            
+            while (primarySpells.Count < maxPrimarySpells)
+                primarySpells.Add(null);
 
-            for (int i = 0; i < primarySpells.Count && i < InputManager.primaryCastActions.Count; i++) {
+            while (secondarySpells.Count < maxSecondarySpells)
+                secondarySpells.Add(null);
+
+
+            for (int i = 0; primarySpells[i] && i < InputManager.primaryCastActions.Count; i++) {
                 primarySpellActions.Add(primarySpells[i], InputManager.primaryCastActions[i]);
             }
 
-            for (int i = 0; i < secondarySpells.Count && i < InputManager.secondaryCastActions.Count; i++) {
+            for (int i = 0; secondarySpells[i] && i < InputManager.secondaryCastActions.Count; i++) {
                 secondarySpellActions.Add(secondarySpells[i], InputManager.secondaryCastActions[i]);
                 secondarySpellCooldowns.Add(secondarySpells[i], Time.time);
             }
 
-            /*foreach (var (spell, action) in primarySpellActions) {
-                action.started += _ => OnPrimarySpellDown(action);
-                action.canceled += _ => OnPrimarySpellUp();
-            }
-
-            foreach (var (spell, action) in secondarySpellActions) {
-                action.started += _ => OnSecondarySpellDown(action);
-            }*/
 
             foreach(var action in InputManager.primaryCastActions)
             {
@@ -66,9 +65,7 @@ namespace DamageSystem.NewSpellSystem.Core
             }
 
             foreach(var action in InputManager.secondaryCastActions)
-            {
                 action.started += _ => OnSecondarySpellDown(action);
-            }
         }
 
         void Update() {
@@ -93,10 +90,9 @@ namespace DamageSystem.NewSpellSystem.Core
         }
 
         void OnPrimarySpellDown(InputAction action) {
-            if (primarySpellActions.ContainsValue(action))
+            if (canCast && primarySpellActions.ContainsValue(action))
             {
                 Spell spell = primarySpells[InputManager.primaryCastActions.IndexOf(action)];
-                if (!canCast) return;
                 if (primaryCasting)
                 {
                     queuedPrimarySpell = spell;
@@ -110,21 +106,24 @@ namespace DamageSystem.NewSpellSystem.Core
         }
 
         void OnPrimarySpellUp() {
-            primaryCasting = false;
-            activePrimarySpell.StopCast();
-            if (queuedPrimarySpell && queuedPrimarySpell != activePrimarySpell) {
-                primaryCasting = true;
-                activePrimarySpell = queuedPrimarySpell;
-            } else {
-                queuedPrimarySpell = null;
+            if (activePrimarySpell)
+            {
+                primaryCasting = false;
+                activePrimarySpell.StopCast();
+                if (queuedPrimarySpell && queuedPrimarySpell != activePrimarySpell)
+                {
+                    primaryCasting = true;
+                    activePrimarySpell = queuedPrimarySpell;
+                }
+                else
+                    queuedPrimarySpell = null;
             }
         }
 
         void OnSecondarySpellDown(InputAction action) {
-            if (secondarySpellActions.ContainsValue(action))
+            if (canCast && secondarySpellActions.ContainsValue(action))
             {
                 Spell spell = secondarySpells[InputManager.secondaryCastActions.IndexOf(action)];
-                if (!canCast) return;
                 if (!secondaryCasting && secondarySpellCooldowns[spell] < Time.time)
                 {
                     secondaryCasting = true;
@@ -162,77 +161,54 @@ namespace DamageSystem.NewSpellSystem.Core
             }
         }
 
-        // Method that adds the spell if it finds a "null" element in the spell list (could be a pretty dumb method)
         private bool AssignSpellToPlayer(Spell spell)
         {
             if (spell.isPrimarySpell())
             {
-                if (primarySpells.Count < maxPrimarySpells)
+                int i = 0;
+                foreach (var item in primarySpells)
                 {
-                    primarySpells.Add(spell);
-                    primarySpellActions.Add(spell, InputManager.primaryCastActions[InputManager.primaryCastActions.Count - 1]);
-                    spell.transform.parent = primarySpellParent.transform;
-                    //spell.transform.localPosition = primarySpellParent.transform.position;
-                    activePrimarySpell = null;
-                    queuedPrimarySpell = null;
-                    canCast = true;
-                    return true;
-                }
-                else
-                {
-                    int i = 0;
-                    foreach (var item in primarySpells)
+                    if (!item)
                     {
-                        if (!item)
-                        {
-                            // Add the spell
-                            primarySpells[i] = spell;
-                            primarySpellActions.Add(spell, InputManager.primaryCastActions[i]);
-                            spell.transform.parent = primarySpellParent.transform;
-                            //spell.transform.localPosition = primarySpellParent.transform.position;
+                        // Add the spell
+                        primarySpells[i] = spell;
+                        primarySpellActions.Add(spell, InputManager.primaryCastActions[i]);
+                        spell.transform.parent = primarySpellParent.transform;
+                            
+                        // Set the position of the physical spell object (so the casted spell starts from the correct position)
+                        spell.transform.localPosition = spellOrigin.transform.localPosition;
 
-                            activePrimarySpell = null;
-                            queuedPrimarySpell = null;
-                            canCast = true;
-                            return true;
-                        }
-                        i++;
+                        activePrimarySpell = null;
+                        queuedPrimarySpell = null;
+                        canCast = true;
+                        return true;
                     }
+                    i++;
                 }
-                canCast = true;
-                return false;
             }
             else if (spell.isSecondarySpell())
             {
-                if (secondarySpells.Count < maxSecondarySpells)
+                int i = 0;
+                foreach (var item in secondarySpells)
                 {
-                    secondarySpells.Add(spell);
-                    secondarySpellActions.Add(spell, InputManager.secondaryCastActions[InputManager.secondaryCastActions.Count - 1]);
-                    secondarySpellCooldowns.Add(spell, Time.time);
-
-                    spell.transform.parent = secondarySpellParent.transform;
-
-                    return true;
-                }
-                else
-                {
-                    int i = 0;
-                    foreach (var item in secondarySpells)
+                    if (!item)
                     {
-                        i++;
-                        if (!item)
-                        {
-                            // Add the spell
-                            secondarySpells[i] = spell;
-                            secondarySpellActions.Add(spell, InputManager.secondaryCastActions[i]);
-                            secondarySpellCooldowns.Add(spell, Time.time);
-                            spell.transform.parent = secondarySpellParent.transform;
-                            return true;
-                        }
+                        // Add the spell
+                        secondarySpells[i] = spell;
+                        secondarySpellActions.Add(spell, InputManager.secondaryCastActions[i]);
+                        secondarySpellCooldowns.Add(spell, Time.time);
+                        spell.transform.parent = secondarySpellParent.transform;
+
+                        // Set the position of the physical spell object (so the casted spell starts from the correct position)
+                        spell.transform.localPosition = spellOrigin.transform.localPosition;
+
+                        canCast = true;
+                        return true;
                     }
+                    i++;
                 }
-                return false;
             }
+            canCast = true;
             return false;
         }
 

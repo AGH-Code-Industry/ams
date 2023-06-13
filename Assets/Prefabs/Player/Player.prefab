@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6062810822470439177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.2006266, y: -0.51, z: -3.6887522}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -147,6 +147,8 @@ GameObject:
   - component: {fileID: 470472691}
   - component: {fileID: 8191216528665066598}
   - component: {fileID: -3171308358885455875}
+  - component: {fileID: 470472687}
+  - component: {fileID: 470472688}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -248,7 +250,9 @@ MonoBehaviour:
   primarySpellParent: {fileID: 1822658532502970046}
   secondarySpellParent: {fileID: 6056120916226507955}
   primarySpells: []
-  secondarySpells: []
+  secondarySpells:
+  - {fileID: 5077218825852919779}
+  - {fileID: 3234243216289807901}
   queuedSecondarySpell: {fileID: 0}
   secondaryCastTime: 0
 --- !u!114 &470472691
@@ -286,7 +290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9152802754467829290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1161d4a21639c3e4b85ca756e673dbc6, type: 3}
   m_Name: 
@@ -307,6 +311,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 9152802754467829293}
+--- !u!114 &470472687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152802754467829290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f6287f28e4e44c6a7a4ae6edf3a226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  Inventory: []
+  player: {fileID: 7050234134953712666}
+  spellExchangePrompt: {fileID: 0}
+--- !u!114 &470472688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9152802754467829290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f853e4c5b421a34d8b5c07392c63e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: 0
 --- !u!1001 &273624704813222316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -393,6 +426,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: testPursuitPulse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379103912421825744, guid: 23fd2249c5df08f46823f024b65bf2ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4379103912421825745, guid: 23fd2249c5df08f46823f024b65bf2ce,
         type: 3}
@@ -649,6 +687,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3073954164798536022}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5077218825852919779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7844433384196908725, guid: c5b55c8aca605804f972198c85b88f9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3073954164798536022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4629508587481077928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +768,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4629508587481077928}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3234243216289807901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7844433384196908725, guid: b141d54fd74f1aa428fa86ae072426b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4629508587481077928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6750832811172309071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -790,6 +840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: testBurstPulse
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943420447863844204, guid: 2251d74d9ad1e0c47b1a3315707d37dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2251d74d9ad1e0c47b1a3315707d37dc, type: 3}
