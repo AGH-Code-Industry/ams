@@ -254,6 +254,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             }
         }
 
+        public string GetBindingString() {
+            if (!ResolveActionAndBinding(out var action, out var bindingIndex)) {
+                return "";
+            }
+
+            return action.bindings[bindingIndex].effectivePath;
+        }
+
         private void PerformInteractiveRebind(InputAction action, int bindingIndex, bool allCompositeParts = false)
         {
             m_RebindOperation?.Cancel(); // Will null out m_RebindOperation.
@@ -266,6 +274,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             action.Disable();
 
+            // Wyłącza przycisk, ponieważ raaguje ze spacją i w rezultacie nie można jej przypisać
             var button = this.GetComponentInChildren<Button>();
             if (button != null) {
                 button.interactable = false;
@@ -290,6 +299,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                         m_RebindStopEvent?.Invoke(this, operation);
                         action.Enable();
                         button.interactable = true;
+
+                        // Sprawdza czy nie ma konfliktu z innym przyciskiem
+                        FindObjectOfType<ControlsSettings>().CheckBindingsValidity();
+
                         UpdateBindingDisplay();
                         CleanUp();
 

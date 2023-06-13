@@ -18,7 +18,6 @@ public class RebindSaveLoad : MonoBehaviour
         if (!string.IsNullOrEmpty(rebinds) && InputManager.actions != null) {
             InputManager.actions.LoadBindingOverridesFromJson(rebinds);
         }
-        Debug.Log("Bonjour");
     }
 
     public void OnDisable()
@@ -29,6 +28,5 @@ public class RebindSaveLoad : MonoBehaviour
 
         var rebinds = InputManager.actions.SaveBindingOverridesAsJson();
         PlayerPrefs.SetString("rebinds", rebinds);
-        Debug.Log("Bye");
     }
 }
