@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2415600696755213163}
   - component: {fileID: 2415600696755213162}
   - component: {fileID: 2354866815466549794}
+  - component: {fileID: 3412229476030116837}
   m_Layer: 0
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
@@ -49,6 +50,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionTrigger: {fileID: 8281689434724625714}
   explosion: {fileID: 2415600697593939509}
+  explosionRadius: 3
+  attackElementalsList:
+  - {fileID: 11400000, guid: 621b40eda6f5e1042b2b8c173de97e1f, type: 2}
+  dealDamageTriggerEnabledTime: 0.1
+  destroyAfterExplosionDelay: 5
+  explosionForce: 10
+  explosionUpwardsForceModifier: 5
+  afterExplosionGetUpDelay: 1
 --- !u!82 &2354866815466549794
 AudioSource:
   m_ObjectHideFlags: 0
@@ -145,6 +154,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &3412229476030116837
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415600696755213172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2415600696902671451
 GameObject:
   m_ObjectHideFlags: 0
