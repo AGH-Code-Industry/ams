@@ -47,6 +47,18 @@ public class ItemStack : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         rectTransform = GetComponent<RectTransform>();
     }
 
+    void OnValidate() {
+        if (_item) {
+            iconImage.enabled = true;
+            iconImage.sprite = _item.icon;
+            count = _count;
+        } else {
+            iconImage.enabled = false;
+            iconImage.sprite = null;
+            count = 1;
+        }
+    }
+
     public bool CanAdd(int amount = 1) {
         return count + amount <= item.stackSize;
     }
