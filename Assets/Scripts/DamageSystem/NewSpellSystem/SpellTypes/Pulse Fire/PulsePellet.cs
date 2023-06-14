@@ -77,6 +77,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         }
 
 
+        // Create a small explosion vfx at the end of pulse pellet's life (so it doesn't just disappear)
         private void OnDestroy()
         {
             GameObject explodeVfx = Instantiate(explosion, transform.position, transform.rotation);

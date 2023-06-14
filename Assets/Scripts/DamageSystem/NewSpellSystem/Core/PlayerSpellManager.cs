@@ -48,11 +48,11 @@ namespace DamageSystem.NewSpellSystem.Core
                 secondarySpells.Add(null);
 
 
-            for (int i = 0; primarySpells[i] && i < InputManager.primaryCastActions.Count; i++) {
+            for (int i = 0; i < InputManager.primaryCastActions.Count && primarySpells[i]; i++) {
                 primarySpellActions.Add(primarySpells[i], InputManager.primaryCastActions[i]);
             }
 
-            for (int i = 0; secondarySpells[i] && i < InputManager.secondaryCastActions.Count; i++) {
+            for (int i = 0; i < InputManager.secondaryCastActions.Count && secondarySpells[i]; i++) {
                 secondarySpellActions.Add(secondarySpells[i], InputManager.secondaryCastActions[i]);
                 secondarySpellCooldowns.Add(secondarySpells[i], Time.time);
             }
@@ -159,6 +159,7 @@ namespace DamageSystem.NewSpellSystem.Core
                 secondarySpells[secondarySpells.IndexOf(spell)] = null;
                 secondarySpellActions.Remove(spell);
             }
+            Destroy(spell.gameObject);
         }
 
         private bool AssignSpellToPlayer(Spell spell)
