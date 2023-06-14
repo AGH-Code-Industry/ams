@@ -136,7 +136,7 @@ namespace DamageSystem.NewSpellSystem.Core
         // Adding a spell to the Player
         // If spellToRemove is null, the spell will be added if there is room for it
         // If there is a spellToRemove specified, it will be replaced with the spellToAdd
-        public bool AddSpell(Spell spellToAdd, Spell? spellToRemove) {
+        public bool AddSpell(Spell spellToAdd, Spell spellToRemove = null) {
             if (!spellToRemove)
                 return AssignSpellToPlayer(spellToAdd);
             else
