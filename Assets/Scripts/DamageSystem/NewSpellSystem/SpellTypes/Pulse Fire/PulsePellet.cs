@@ -14,6 +14,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         // The amount of time that passes before the pursuit behaviour is activated
         public float pursuitDelay = 2f;
         private float activatePursuitTime = 0.0f;
+        // Plays when particle despawns
+        public GameObject explosion;
+
 
         //FOR PURSUIT BEHAVIOUR
         GameObject target;
@@ -52,7 +55,6 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         }
 
         private void OnTriggerEnter(Collider other) {
-            //Debug.Log("time: " + Time.time + " delayTime: " + activatePursuitTime);
             if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
                 //set target as that collider
                 target = other.gameObject;
@@ -72,6 +74,13 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
             GetComponent<Collider>().enabled = false;
             yield return new WaitForSeconds(0.1f);
             GetComponent<Collider>().enabled = true;
+        }
+
+
+        private void OnDestroy()
+        {
+            GameObject explodeVfx = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(explodeVfx, 1f);
         }
     }
 }

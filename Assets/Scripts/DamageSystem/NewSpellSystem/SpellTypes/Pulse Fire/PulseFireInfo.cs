@@ -13,6 +13,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         public float castTime;
         public float cooldown;
         public Rigidbody pellet;
+        public GameObject pelletExplosion;
         public int pelletLifeSpan;
         public PulseFire.CastType castBehaviour;
         public PulseFire.PelletType pelletBehaviour;

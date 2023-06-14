@@ -28,12 +28,10 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Projectile {
             projectileObject projectile = temp.gameObject.AddComponent<projectileObject>();
             projectile.AssignDamageInfo(spellInfo.elementals, origin.gameObject);
             projectile.lifeSpan = spellInfo.projectileLifeSpan;
-            //Testing for aoe
+            
             if(spellInfo.aoe != null)
-            { 
-            projectile.aoeEffect = spellInfo.aoe;
-            }
-            //Testing for aoe
+                projectile.aoeEffect = spellInfo.aoe;
+            
             projectile.Start();
         }
 

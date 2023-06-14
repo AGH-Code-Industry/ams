@@ -48,9 +48,7 @@ namespace DamageSystem.DamageNumbers
                 textColor.a -= disappearSpeed * Time.deltaTime;
                 textMesh.color = textColor;
                 if(textColor.a < 0)
-                {
                     Destroy(gameObject);
-                }
             }
         }
 
