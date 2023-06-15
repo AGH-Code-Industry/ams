@@ -2,6 +2,7 @@ using DamageSystem.NewSpellSystem.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DamageSystem.ReceiveDamage.Elementals;
 
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
@@ -61,14 +62,11 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
             temp = Instantiate(spellInfo.pellet, origin.position, origin.rotation) as Rigidbody;
             temp.AddForce(origin.forward * 500f);
             PulsePellet pelletInfo = temp.gameObject.AddComponent<PulsePellet>();
-            pelletInfo.lifeSpan = spellInfo.pelletLifeSpan;
-            pelletInfo.behaviour = spellInfo.pelletBehaviour;
-            pelletInfo.explosion = spellInfo.pelletExplosion;
-
+            
+            pelletInfo.Init(origin.GetComponentInParent<Damageable>().gameObject, spellInfo.elementals, spellInfo.pelletLifeSpan, spellInfo.pelletBehaviour, spellInfo.pelletExplosion);
 
             AddPelletBehaviour(pelletInfo, temp);
 
-            pelletInfo.AssignDamageInfo(spellInfo.elementals, origin.gameObject);
             pelletInfo.Start();
         }
 

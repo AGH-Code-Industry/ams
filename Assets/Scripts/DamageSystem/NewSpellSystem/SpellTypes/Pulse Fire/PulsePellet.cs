@@ -11,40 +11,54 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         public DamageInfo damageInfo;
         public int lifeSpan;
         public PulseFire.PelletType behaviour;
+
+        /* Not needed anymore, diferrent solution created
         // The amount of time that passes before the pursuit behaviour is activated
         public float pursuitDelay = 2f;
-        private float activatePursuitTime = 0.0f;
+        private float activatePursuitTime = 0.0f;*/
+
         // Plays when particle despawns
         public GameObject explosion;
+        public Transform caster;
+
+        public void Init(GameObject _caster, List<AttackElemental> elementals, int _lifeSpan, PulseFire.PelletType _behaviour, GameObject _explosion)
+        {
+            damageInfo.caster = _caster;
+            lifeSpan = _lifeSpan;
+            damageInfo.elementals = elementals;
+            behaviour = _behaviour;
+            explosion = _explosion;
+        }
 
 
         //FOR PURSUIT BEHAVIOUR
         GameObject target;
 
         private void OnCollisionEnter(Collision collision) {
-            if (collision.gameObject.GetComponent<Damageable>()) {
-                collision.gameObject.GetComponent<Damageable>().TakeDamage(damageInfo);
-            }
-            //Do starej implementacji dummy
-            //if (collision.gameObject.GetComponent<Enemy>()) {
+            // Ignore collision checks if the collider is the caster
+            if (collision.gameObject != damageInfo.caster)
+            {
+                if (collision.gameObject.GetComponent<Damageable>())
+                {
+                    collision.gameObject.GetComponent<Damageable>().TakeDamage(damageInfo);
+                }
+                // Do starej implementacji dummy
+                /*if (collision.gameObject.GetComponent<Enemy>()) {
 
-            //    collision.gameObject.GetComponent<Enemy>().DealDamage(damageInfo.elementals[0].elementalDamage, "Pulse Fire");
-            //}
-            Destroy(this.gameObject);
+                    collision.gameObject.GetComponent<Enemy>().DealDamage(damageInfo.elementals[0].elementalDamage, "Pulse Fire");
+                }*/
+                Destroy(this.gameObject);
+            }
         }
 
 
         public void Start() {
             Destroy(gameObject, lifeSpan);
-            StartCoroutine(disableCollisionForInitialisation());
-            activatePursuitTime = Time.time + pursuitDelay;
-            //Handle pellet behavior
+            // Old implementation
+           /* StartCoroutine(disableCollisionForInitialisation());
+            activatePursuitTime = Time.time + pursuitDelay;*/
         }
 
-        public void AssignDamageInfo(List<AttackElemental> elementals, GameObject caster) {
-            damageInfo.elementals = elementals;
-            damageInfo.caster = caster;
-        }
 
         //Logic for pursuit system
 
@@ -55,8 +69,9 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
-                //set target as that collider
+            // Check if the detected collider is not the caster
+            if (behaviour == PulseFire.PelletType.PURSUIT && other.gameObject != damageInfo.caster && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
+                // set target as that collider
                 target = other.gameObject;
             }
         }
@@ -68,13 +83,13 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
             }
         }
 
-
+        /*  Changed
         //Player Collision workaround (please change)
         IEnumerator disableCollisionForInitialisation() {
             GetComponent<Collider>().enabled = false;
             yield return new WaitForSeconds(0.1f);
             GetComponent<Collider>().enabled = true;
-        }
+        }*/
 
 
         // Create a small explosion vfx at the end of pulse pellet's life (so it doesn't just disappear)
