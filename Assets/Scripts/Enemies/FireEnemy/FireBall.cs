@@ -15,10 +15,7 @@ public class FireBall : MonoBehaviour
     public float height;
 
     private bool _isFlying = true;
-    private bool _isPlayingFlattenAnimation = false;
-    private float _minYScale = 0.3f;
-
-    private bool _isTriggeringPlayer = false;
+    private bool _isPlayingFlattenAnimation = false;    
     private float _lastTimeAttackPlayer = -6f;
     private float _deltaTimeAttackPlayer = 5f;
 
