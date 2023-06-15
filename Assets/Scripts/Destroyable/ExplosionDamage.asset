@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed990f3236e340a6beb534324a8cd4c2, type: 3}
-  m_Name: ExplosiveBarrelAttackElemental
+  m_Name: ExplosionDamage
   m_EditorClassIdentifier: 
   elementalType: 0
   efect: {fileID: 11400000, guid: b56a8fbfbe21b6f44820e0fb8a4b244f, type: 2}
