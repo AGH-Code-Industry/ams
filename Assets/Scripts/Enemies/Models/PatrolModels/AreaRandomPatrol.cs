@@ -25,8 +25,9 @@ namespace Enemies.Models.PatrolModels {
             _checkpoints = new List<Vector3>();
             while (_checkpoints.Count < checkpointsCount) {
                 Vector3 point = Random.insideUnitCircle * areaRadius;
-                // TODO: Add check if point is a valid NavMesh point
-                _checkpoints.Add(point);
+                if (movementModel.IsDestinationValid(point)) {
+                    _checkpoints.Add(point);
+                }
             }
             _checkpoints.Add(transform.position); // Add current position to have at least one point
         }
