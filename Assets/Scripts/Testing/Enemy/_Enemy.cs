@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class Enemy : MonoBehaviour {
+public abstract class _Enemy : MonoBehaviour {
 
     [SerializeField] protected float _maxHP = 100f;
     [SerializeField, ReadOnly] protected float _currentHP;

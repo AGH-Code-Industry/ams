@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy : Enemy {
+public class Dummy : _Enemy {
     [SerializeField] private TMPro.TMP_Text _healthText;
     [SerializeField] private TMPro.TMP_Text _spellText;
 
