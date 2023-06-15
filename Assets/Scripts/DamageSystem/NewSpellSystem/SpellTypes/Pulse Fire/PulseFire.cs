@@ -76,7 +76,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
             {
                 SphereCollider col = pellet.gameObject.AddComponent<SphereCollider>();
                 col.isTrigger = true;
-                col.radius = 10; //Here we can add customizability (probably to be set in pulseFireInfo)
+                col.radius = 20; //Here we can add customizability (probably to be set in pulseFireInfo)
                 
                 //FIX dla problemu obracania postaci z uzyciem raycastowania. Ta linijka kodu nie powinna byc potrzebna p�niej.
                 pellet.gameObject.layer = 2;
