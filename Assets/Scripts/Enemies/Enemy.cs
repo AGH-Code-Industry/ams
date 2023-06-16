@@ -66,5 +66,9 @@ namespace Enemies {
             _chaseModel.StartModel();
             _patrolModel.StartModel();
         }
+
+        public void OnDie() {
+            Destroy(gameObject);
+        }
     }
 }

@@ -5161,8 +5161,11 @@ GameObject:
   - component: {fileID: 3691780297689014248}
   - component: {fileID: 3578681978938696903}
   - component: {fileID: -4536317352630296776}
-  - component: {fileID: -5513186748648968151}
-  - component: {fileID: 1474699156096549100}
+  - component: {fileID: 1992246663076526979}
+  - component: {fileID: 829090556698353100}
+  - component: {fileID: 4934591566490505703}
+  - component: {fileID: 3546522599506121199}
+  - component: {fileID: -5577185764229600234}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -5214,21 +5217,9 @@ MonoBehaviour:
   Died:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8074503151584093211}
-        m_TargetAssemblyTypeName: DebilPlayer, Assembly-CSharp
-        m_MethodName: OnDead
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1474699156096549100}
-        m_TargetAssemblyTypeName: EnemyMoth, Assembly-CSharp
-        m_MethodName: OnDeath
+      - m_Target: {fileID: 1992246663076526979}
+        m_TargetAssemblyTypeName: Enemies.Enemy, Assembly-CSharp
+        m_MethodName: OnDie
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5289,7 +5280,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
---- !u!114 &-5513186748648968151
+--- !u!114 &1992246663076526979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5298,41 +5289,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 7017696525455545317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5baa421ef107770418e8ad896b19884c, type: 3}
+  m_Script: {fileID: 11500000, guid: 38b97e6f0d82a1b4aa3ae56b259b29fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 3
-  chaseRadius: 10
-  patrolRadius: 30
-  attackCooldown: 4
-  projectile: {fileID: -3436793938213148360, guid: 36f6898587ae4d945a5bb6b596d72875,
-    type: 3}
-  ForwardStrength: 20
-  UpwardStrength: 2
-  ChaseSpeed: 5
-  ProjectileLifetime: 3
---- !u!114 &1474699156096549100
+--- !u!114 &829090556698353100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7017696525455545317}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a12064a816584b2b88048fbe021d819, type: 3}
+  m_Script: {fileID: 11500000, guid: de1ed1f0182b46e8a1def738da0fbd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 3
-  chaseRadius: 10
-  patrolRadius: 30
-  attackCooldown: 4
-  projectile: {fileID: -3154055617728312617, guid: 7db1eb6a9fa4a4e5ba4319a376cef4d4,
-    type: 3}
-  ForwardStrength: 25
-  UpwardStrength: 2
-  ChaseSpeed: 6
-  ProjectileLifetime: 3
+--- !u!114 &4934591566490505703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017696525455545317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec37ef237624ace4c858fff6c7ee9ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerDistance: 11
+  checkpointsCount: 3
+  areaRadius: 7
+  checkPointTime: 3
+--- !u!114 &3546522599506121199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017696525455545317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78eef32c0cde94428f7f34654b6397c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRange: 7
+--- !u!114 &-5577185764229600234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017696525455545317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb81ae4f9a7f904d99dc2956d35724b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spell: {fileID: 7844433384196908723, guid: b141d54fd74f1aa428fa86ae072426b6, type: 3}
 --- !u!1 &7258600378676356205
 GameObject:
   m_ObjectHideFlags: 0

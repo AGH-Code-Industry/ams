@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using DamageSystem.NewSpellSystem.Core;
 
 namespace Enemies.Models.AttackModels {
     public class NaiveSpellAttack : AttackModel {
         [SerializeField] [Tooltip("Spell to attack")]
         private DamageSystem.NewSpellSystem.Core.Spell spell;
 
-        private float _nextAvailableCastTime; 
+        private float _nextAvailableCastTime;
+        
+        public override void StartModel(){}
         public override bool Attack() {
+            transform.LookAt(player);
             if (!IsAbleToCast()) {
                 return false;
             }
@@ -20,7 +22,6 @@ namespace Enemies.Models.AttackModels {
         }
 
         private void CastSpell() {
-            transform.LookAt(player);
             spell.Cast(transform);
             _nextAvailableCastTime = Time.time + spell.GetCooldown();
         }
