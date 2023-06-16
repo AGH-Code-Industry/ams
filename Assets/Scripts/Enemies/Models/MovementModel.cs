@@ -5,6 +5,11 @@ using UnityEngine;
 namespace Enemies.Models {
     public abstract class MovementModel : MonoBehaviour {
 
+        [SerializeField] [Range(0, 20)] [Tooltip("Max movement speed of your entity")]
+        protected float movementSpeed = 1;
+        
+        [SerializeField] [Range(0, 10)] [Tooltip("How fast your entity will achieve max speed")]
+        protected float acceleration = 1;
         public void SetupModel(Enemy enemy) {
             
         }

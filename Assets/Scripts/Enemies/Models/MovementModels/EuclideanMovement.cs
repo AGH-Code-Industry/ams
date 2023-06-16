@@ -14,6 +14,8 @@ namespace Enemies.Models.MovementModels {
 
         private void Start() {
             _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+            _navMeshAgent.speed = movementSpeed;
+            _navMeshAgent.acceleration = acceleration;
         }
 
         public override void Move(Vector3 destination) {
