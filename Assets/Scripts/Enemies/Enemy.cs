@@ -6,44 +6,49 @@ using UnityEngine;
 
 namespace Enemies {
     public class Enemy : MonoBehaviour {
-        [Header("Enabled Models")]
-        [SerializeField] private PatrolModel patrolModel;
-        [SerializeField] private ChaseModel chaseModel;
-        [SerializeField] private AttackModel attackModel;
-        [SerializeField] private MovementModel movementModel;
+        private PatrolModel _patrolModel;
+        private ChaseModel _chaseModel;
+        private AttackModel _attackModel;
+        private MovementModel _movementModel;
 
         private bool _isPatrolling;
         private bool _isChasing;
         private bool _isAttacking;
 
+        private Transform _player;
+
         private void Start() {
-            Setup();
+            _player = GameObject.Find("Player").transform;
+            SetupModels();
         }
 
         private void Update() {
             if (_isPatrolling) {
-                _isPatrolling = patrolModel.Patrol();
+                _isPatrolling = _patrolModel.Patrol();
                 return;
             }
-            if (!chaseModel.Chase(new GameObject())) {
+            if (!_chaseModel.Chase()) {
                 return;
             }
 
-            attackModel.Attack();
+            _attackModel.Attack();
         }
 
-        private void Setup() {
-            movementModel = gameObject.GetComponent<MovementModel>();
-            if (movementModel is null) throw new Exception("Enemy must have MovementModel component added.");
+        private void SetupModels() {
+            _movementModel = gameObject.GetComponent<MovementModel>();
+            if (_movementModel is null) throw new Exception("Enemy must have MovementModel component added.");
 
-            attackModel = gameObject.GetComponent<AttackModel>();
-            if (attackModel is null) throw new Exception("Enemy must have AttackModel component added.");
+            _attackModel = gameObject.GetComponent<AttackModel>();
+            if (_attackModel is null) throw new Exception("Enemy must have AttackModel component added.");
+            _attackModel.SetupModel(_movementModel, _player);
 
-            chaseModel = gameObject.GetComponent<ChaseModel>();
-            if (chaseModel is null) throw new Exception("Enemy must have ChaseModel component added.");
+            _chaseModel = gameObject.GetComponent<ChaseModel>();
+            if (_chaseModel is null) throw new Exception("Enemy must have ChaseModel component added.");
+            _chaseModel.SetupModel(_movementModel, _player);
 
-            patrolModel = gameObject.GetComponent<PatrolModel>();
-            if (patrolModel is null) throw new Exception("Enemy must have PatrolModel component added.");
+            _patrolModel = gameObject.GetComponent<PatrolModel>();
+            if (_patrolModel is null) throw new Exception("Enemy must have PatrolModel component added.");
+            _patrolModel.SetupModel(_movementModel, _player);
         }
     }
 }

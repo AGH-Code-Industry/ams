@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemies.Models {
-    public class AttackModel : MonoBehaviour
+    public abstract class AttackModel : MonoBehaviour
     {
         protected MovementModel movementModel;
+        protected Transform player;
         
-        public void SetupMovementModel(MovementModel movModel) {
+        public void SetupModel(MovementModel movModel, Transform target) {
             movementModel = movModel;
+            player = target;
         }
-        
-        public bool Attack() {
-            return true;
-        }
+
+        /*
+         * Performs an attack by the enemy. First thing this method should do is check whether attack
+         * can be performed. If not, false should be returned and no action taken. If yes, attack should
+         * take place and true returned, regardless if attack was performed successfully.
+         */
+        public abstract bool Attack();
     }
 }
 
