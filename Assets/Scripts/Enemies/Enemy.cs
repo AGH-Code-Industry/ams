@@ -12,6 +12,8 @@ namespace Enemies {
         private PatrolModel _patrolModel;
         private ChaseModel _chaseModel;
         private AttackModel _attackModel;
+        private DeathModel _deathModel;
+
 
         private bool _isTriggered;
         private bool _isChasing;
@@ -24,6 +26,7 @@ namespace Enemies {
             _patrolModel = gameObject.GetComponent<PatrolModel>();
             _attackModel = gameObject.GetComponent<AttackModel>();
             _chaseModel = gameObject.GetComponent<ChaseModel>();
+            _deathModel = gameObject.GetComponent<DeathModel>();
         }
 
         private void Start() {
@@ -68,7 +71,7 @@ namespace Enemies {
         }
 
         public void OnDie() {
-            Destroy(gameObject);
+            _deathModel.Die();
         }
     }
 }
