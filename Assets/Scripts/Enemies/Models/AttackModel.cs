@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemies.Models {
-    public abstract class AttackModel : MonoBehaviour
-    {
+    public abstract class AttackModel : MonoBehaviour {
         protected MovementModel movementModel;
         protected Transform player;
         
-        public void SetupModel(MovementModel movModel, Transform target) {
-            movementModel = movModel;
-            player = target;
+        public void SetupModel(Enemy enemy) {
+            movementModel = enemy.movementModel;
+            player = enemy.player;
         }
+        
+        public abstract void StartModel();
 
         /*
          * Performs an attack by the enemy. First thing this method should do is check whether attack
