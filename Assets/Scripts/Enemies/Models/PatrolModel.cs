@@ -7,10 +7,12 @@ namespace Enemies.Models {
         protected MovementModel movementModel;
         protected Transform player;
         
-        public void SetupModel(MovementModel movModel, Transform target) {
-            movementModel = movModel;
-            player = target;
+        public void SetupModel(Enemy enemy) {
+            movementModel = enemy.movementModel;
+            player = enemy.player;
         }
+
+        public abstract void StartModel();
         
         /*
          * This method should return true at the if player has been in patrol range and triggered the

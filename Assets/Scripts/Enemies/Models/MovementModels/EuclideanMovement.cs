@@ -5,14 +5,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemies.Models.MovementModels {
+    
+    [RequireComponent(typeof(NavMeshAgent))]
     public class EuclideanMovement : MovementModel{
         private NavMeshAgent _navMeshAgent;
+
+        public override void StartModel() {}
+
+        private void Start() {
+            _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+        }
 
         public override void Move(Vector3 destination) {
             if (!IsDestinationValid(destination)) {
                 return;
             }
-            _navMeshAgent.Move(destination);
+            _navMeshAgent.SetDestination(destination);
         }
 
         public override bool IsDestinationReached() {
