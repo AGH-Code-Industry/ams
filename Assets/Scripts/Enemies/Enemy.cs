@@ -49,18 +49,16 @@ namespace Enemies {
 
         private void SetupModels() {
             if (movementModel is null) throw new Exception("Enemy must have MovementModel component added.");
-            Debug.Log(movementModel.ToString());
-            
             if (_attackModel is null) throw new Exception("Enemy must have AttackModel component added.");
-            _attackModel.SetupModel(this);
-            
             if (_chaseModel is null) throw new Exception("Enemy must have ChaseModel component added.");
-            _chaseModel.SetupModel(this);
-            
             if (_patrolModel is null) throw new Exception("Enemy must have PatrolModel component added.");
-            
+            if (_deathModel is null) throw new Exception("Enemy must have DeathModel component added.");
+
             movementModel.SetupModel(this);
+            _attackModel.SetupModel(this);
+            _chaseModel.SetupModel(this);
             _patrolModel.SetupModel(this);
+            _deathModel.SetupModel(this);
         }
 
         private void StartModels() {
@@ -68,6 +66,7 @@ namespace Enemies {
             _attackModel.StartModel();
             _chaseModel.StartModel();
             _patrolModel.StartModel();
+            _deathModel.StartModel();
         }
 
         public void OnDie() {

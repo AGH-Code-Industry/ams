@@ -17,7 +17,7 @@ namespace Enemies.Models {
         /*
          * Performs an attack by the enemy. First thing this method should do is check whether attack
          * can be performed. If not, false should be returned and no action taken. If yes, attack should
-         * take place and true returned, regardless if attack was performed successfully.
+         * take place and true returned, regardless of attack outcome.
          */
         public abstract bool Attack();
     }
