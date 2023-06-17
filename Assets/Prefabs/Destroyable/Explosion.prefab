@@ -14644,7 +14644,7 @@ MonoBehaviour:
   radius: 3
   force: 10
   upwardsForceModifier: 10
-  dealDamageTriggerEnabledTime: 1
+  dealDamageTriggerEnabledTime: 0.1
   getUpDelay: 1
   attackElementalsList:
   - {fileID: 11400000, guid: 621b40eda6f5e1042b2b8c173de97e1f, type: 2}

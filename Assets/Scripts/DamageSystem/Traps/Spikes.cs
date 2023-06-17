@@ -8,6 +8,12 @@ using DamageSystem.ReceiveDamage.Elementals.Elementals;
 namespace DamageSystem.Traps {
     public class Spikes : MonoBehaviour {
         [SerializeField] private Animator animator;
+        [SerializeField] private Collider damageCollider;
+        [Tooltip("Delay from start of extending to enabling collider that deals damage")]
+        [SerializeField] private float damageColliderExtendDelay = .6f;
+        [Tooltip("Delay from start of retracting to disabling collider that deals damage")]
+        [SerializeField] private float damageColliderRetractDelay = .3f;
+
         [Tooltip("Stops spikes from extending and retracting")]
         [SerializeField] private bool freeze = false;
         [Tooltip("Default position of spikes")]
@@ -26,10 +32,9 @@ namespace DamageSystem.Traps {
 
         void Start() {
             damageInfo = new DamageInfo(attackElementalsList, gameObject);
-            if (initiallyExtended) {
-                animator.Play("Extend instantly");
-                extended = true;
-            }
+            extended = initiallyExtended;
+            animator.Play(extended ? "Active" : "Inactive");
+            damageCollider.enabled = extended;
             lastExtendTime = Time.time + startDelay;
             lastRetractTime = Time.time + startDelay;
         }
@@ -55,12 +60,19 @@ namespace DamageSystem.Traps {
             animator.Play("Extend");
             lastExtendTime = Time.time;
             extended = true;
+            StartCoroutine(SetDamageColliderEnabledWithDelay(extended, damageColliderExtendDelay));
         }
 
         void Retract() {
             animator.Play("Retract");
             lastRetractTime = Time.time;
             extended = false;
+            StartCoroutine(SetDamageColliderEnabledWithDelay(extended, damageColliderRetractDelay));
+        }
+
+        IEnumerator SetDamageColliderEnabledWithDelay(bool enabled, float delay) {
+            yield return new WaitForSeconds(delay); 
+            damageCollider.enabled = enabled;
         }
     }
 }

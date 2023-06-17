@@ -11,7 +11,7 @@ namespace Destroyable {
         [SerializeField] private float radius = 3f;
         [SerializeField] private float force = 10f;
         [SerializeField] private float upwardsForceModifier = 10f;
-        [SerializeField] private float dealDamageTriggerEnabledTime = 5f;
+        [SerializeField] private float dealDamageTriggerEnabledTime = .1f;
         [SerializeField] private float getUpDelay = 1f;
         [SerializeField] private List<AttackElemental> attackElementalsList;
         private DamageInfo damageInfo;

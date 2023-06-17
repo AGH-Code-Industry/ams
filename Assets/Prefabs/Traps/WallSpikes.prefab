@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6129993243875005841}
+  damageCollider: {fileID: 6129993244247162184}
+  damageColliderExtendDelay: 0.6
+  damageColliderRetractDelay: 0.3
   freeze: 0
   initiallyExtended: 0
   startDelay: 0

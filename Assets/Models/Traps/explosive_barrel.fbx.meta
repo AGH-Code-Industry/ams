@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: 25940b67ff043ba4ea19e320b299015d
+guid: ef4bada0ffd056a4d8ccfea34bd9e192
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: -5896978545651071317
-    second: Extend
-  - first:
-      74: 8979269963596733007
-    second: Retract
-  - first:
-      74: 2319007735507439676
-    second: Spikes|Extend
-  - first:
-      74: -5972126190061344418
-    second: Spikes|Extend Instantly
-  - first:
-      74: -5801630894931185967
-    second: Spikes|Retract
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -47,7 +32,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
