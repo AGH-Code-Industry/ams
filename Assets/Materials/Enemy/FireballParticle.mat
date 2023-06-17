@@ -12,7 +12,6 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _EMISSION
-  - _FLIPBOOKBLENDING_OFF
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
