@@ -7,8 +7,14 @@ namespace Destroyable {
         [SerializeField] private Explosion explosion;
         [SerializeField] private FractureFragmentsForceApplier model;
         [SerializeField] private float destroyAfterExplosionDelay = 5f;
+        private Collider collider;
+
+        void Awake() {
+            collider = GetComponent<Collider>();
+        }
 
         public void Explode() {
+            collider.enabled = false;
             explosion.gameObject.SetActive(true);
             model.Explode();
             StartCoroutine(DestroyAfterDelay());

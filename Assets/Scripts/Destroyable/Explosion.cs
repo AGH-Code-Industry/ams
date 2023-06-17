@@ -6,6 +6,8 @@ using UnityEngine.AI;
 using DamageSystem.ReceiveDamage.Elementals;
 using DamageSystem.ReceiveDamage.Elementals.Elementals;
 
+using Enemies;
+
 namespace Destroyable {
     public class Explosion : MonoBehaviour {
         [SerializeField] private float radius = 3f;
@@ -38,7 +40,11 @@ namespace Destroyable {
         private void OnTriggerEnter(Collider other) {
             if (!other.gameObject.TryGetComponent<Damageable>(out var damageable)) return;
 
-            damageable.TakeDamage(damageInfo);
+            if(other.gameObject.CompareTag("Barrel")) { 
+                StartCoroutine(DealDamageDelayed(damageable, damageInfo, Random.Range(0.03f, 0.1f)));
+            } else {
+                damageable.TakeDamage(damageInfo);
+            }
 
             if (!other.gameObject.TryGetComponent<Rigidbody>(out var rigidbody)) return;
 
@@ -49,8 +55,22 @@ namespace Destroyable {
             }
         }
 
+        IEnumerator DealDamageDelayed(Damageable damageable, DamageInfo damageInfo, float time = 0) {
+            yield return new WaitForSeconds(time);
+
+            if(damageable is not null) {
+                damageable.TakeDamage(damageInfo);
+            }
+        }
+
         IEnumerator AddExplosionForceDisablingNavMeshAgent(NavMeshAgent navMeshAgent, Rigidbody rigidbody) {
             navMeshAgent.enabled = false;
+            rigidbody.isKinematic = false;
+            rigidbody.useGravity = true;
+            if(rigidbody.gameObject.TryGetComponent(out Enemy enemy)) {
+                enemy.enabled = false;
+            }
+
             yield return new WaitForEndOfFrame();
             if (!rigidbody) yield break;
             rigidbody.AddExplosionForce(force, transform.position, radius, upwardsForceModifier, ForceMode.Impulse);
@@ -60,7 +80,13 @@ namespace Destroyable {
             }
             yield return new WaitForSeconds(getUpDelay);
             if (!navMeshAgent) yield break;
+
             navMeshAgent.enabled = true;
+            rigidbody.isKinematic = true;
+            rigidbody.useGravity = false;
+            if(enemy is not null) {
+                enemy.enabled = true;
+            }
         }
 
         IEnumerator DisableDealDamageTriggerAfterDelay() {

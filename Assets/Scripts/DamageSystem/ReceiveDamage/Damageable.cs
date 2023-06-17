@@ -30,8 +30,10 @@ namespace DamageSystem.ReceiveDamage.Elementals {
             _currentHealth = Math.Clamp(_currentHealth - damageTaken, entity.isImmortal ? 1 : 0, entity.maxHealth);
 
             //Spawn a damage number :)
-            Vector3 popupOrigin = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-            DamageNumbers.DamagePopup.Create(popupOrigin, damageTaken);
+            if (entity.showDamagePopup) {
+                Vector3 popupOrigin = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+                DamageNumbers.DamagePopup.Create(popupOrigin, damageTaken);
+            }
 
             if (_currentHealth == 0) {
                 //Debug.Log("Dead");
