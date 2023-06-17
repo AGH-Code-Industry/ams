@@ -8,5 +8,6 @@ namespace DamageSystem.ReceiveDamage.Elementals
         public bool isInvincible;
         public bool isImmortal;
         public int maxHealth;
+        public bool showDamagePopup = true;
     }
 }
