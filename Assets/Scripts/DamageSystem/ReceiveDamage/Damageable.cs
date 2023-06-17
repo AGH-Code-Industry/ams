@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace DamageSystem.ReceiveDamage.Elementals {
+    [RequireComponent(typeof(Collider))]
     public class Damageable : MonoBehaviour, IDamageable {
         public static Damageable instance; // for test
-        [SerializeField] private EntitySO entity;
+        public EntitySO entity;
         public UnityEvent Died;
+        public UnityEvent<int> HealthUpdate;
         private readonly List<ExtendedEffect> effects = new();
 
         private int _currentHealth;
@@ -34,6 +36,8 @@ namespace DamageSystem.ReceiveDamage.Elementals {
                 Vector3 popupOrigin = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
                 DamageNumbers.DamagePopup.Create(popupOrigin, damageTaken);
             }
+
+            HealthUpdate.Invoke(_currentHealth);
 
             if (_currentHealth == 0) {
                 //Debug.Log("Dead");

@@ -87,22 +87,23 @@ namespace Enemies
             {
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), attackCooldown);
-            }
+            }      
 
             Rigidbody rb =
-                Instantiate(projectile, transform.position + transform.forward + transform.up, Quaternion.identity)
+                Instantiate(projectile, transform.position - transform.forward + transform.up, Quaternion.identity)
                     .GetComponent<Rigidbody>();
 
-            FireBall fireball = rb.GetComponent<FireBall>();             
+            FireBall fireball = rb.GetComponent<FireBall>();            
+
 
             float distance = Mathf.Sqrt(Mathf.Pow(player.position.x - rb.position.x, 2) + Mathf.Pow(player.position.z - rb.position.z, 2));
-            float height = rb.position.y - playerData.getBottomY() - fireball.height/2;
+            float height = rb.position.y - player.position.y;
 
-            Debug.Log(fireball.height);
-            
-            float speedZ = distance * Mathf.Sqrt(Mathf.Abs(Physics.gravity.y / (2 * height)));            
+            float speedZ = distance * Mathf.Sqrt(Mathf.Abs(Physics.gravity.y / (2 * height)));
 
-            rb.velocity = transform.forward * speedZ;            
+            Vector3 directionVector = player.position - rb.position;
+            directionVector.y = 0;
+            rb.velocity = directionVector.normalized * speedZ;
         }      
 
         private void DeleteProjectile(Rigidbody rb)
