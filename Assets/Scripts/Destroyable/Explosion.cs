@@ -6,6 +6,8 @@ using UnityEngine.AI;
 using DamageSystem.ReceiveDamage.Elementals;
 using DamageSystem.ReceiveDamage.Elementals.Elementals;
 
+using Enemies;
+
 namespace Destroyable {
     public class Explosion : MonoBehaviour {
         [SerializeField] private float radius = 3f;
@@ -65,6 +67,9 @@ namespace Destroyable {
             navMeshAgent.enabled = false;
             rigidbody.isKinematic = false;
             rigidbody.useGravity = true;
+            if(rigidbody.gameObject.TryGetComponent(out Enemy enemy)) {
+                enemy.enabled = false;
+            }
 
             yield return new WaitForEndOfFrame();
             if (!rigidbody) yield break;
@@ -79,6 +84,9 @@ namespace Destroyable {
             navMeshAgent.enabled = true;
             rigidbody.isKinematic = true;
             rigidbody.useGravity = false;
+            if(enemy is not null) {
+                enemy.enabled = true;
+            }
         }
 
         IEnumerator DisableDealDamageTriggerAfterDelay() {
