@@ -22,6 +22,7 @@ namespace BOSS {
         private bool isMovingLeft = true;
         private float periodCount = -0.5f;
         private int TPcounter = 1;
+       [ SerializeField, Range(0f,20f)] private float teleportDelay = 5f;
 
         public Vector3 startingPosition;
 
@@ -45,7 +46,7 @@ namespace BOSS {
         // Update is called once per frame
         void Update() {
 
-            if (Time.time - periodCount >= 5) {
+            if (Time.time - periodCount >= teleportDelay) {
                 Teleportation();
                 periodCount = Time.time;
             }
