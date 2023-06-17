@@ -139,7 +139,7 @@ namespace BOSS {
                 FireBall fireball = rb.GetComponent<FireBall>();
 
                 float distance = Mathf.Sqrt(Mathf.Pow(player.position.x - rb.position.x, 2) + Mathf.Pow(player.position.z - rb.position.z, 2));
-                float height = fireball.GetBottomY() - playerData.getBottomY();
+                float height = rb.position.y - player.position.y;
 
                 float speedZ = distance * Mathf.Sqrt(Mathf.Abs(Physics.gravity.y / (2 * height)));
 
@@ -147,7 +147,7 @@ namespace BOSS {
                 directionVector.y = 0;
                 rb.velocity = directionVector.normalized * speedZ;
 
-                yield return new WaitForSeconds(10);
+                yield return new WaitForSeconds(2);
             }
         }
 
