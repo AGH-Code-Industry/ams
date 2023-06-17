@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1820775091}
   m_Layer: 0
   m_Name: ExplosiveBarrel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,6 +260,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &1633005375
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681648581578447468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5511451256289451371, guid: ef4bada0ffd056a4d8ccfea34bd9e192, type: 3}
 --- !u!114 &6294910660664935469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,20 +326,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   currentRefractureCount: 0
---- !u!64 &1633005375
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681648581578447468}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5511451256289451371, guid: ef4bada0ffd056a4d8ccfea34bd9e192, type: 3}
 --- !u!1001 &1488232061902614511
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -38,7 +38,11 @@ namespace Destroyable {
         private void OnTriggerEnter(Collider other) {
             if (!other.gameObject.TryGetComponent<Damageable>(out var damageable)) return;
 
-            damageable.TakeDamage(damageInfo);
+            if(other.gameObject.CompareTag("Barrel")) { 
+                StartCoroutine(DealDamageDelayed(damageable, damageInfo, Random.Range(0.03f, 0.1f)));
+            } else {
+                damageable.TakeDamage(damageInfo);
+            }
 
             if (!other.gameObject.TryGetComponent<Rigidbody>(out var rigidbody)) return;
 
@@ -46,6 +50,14 @@ namespace Destroyable {
                 StartCoroutine(AddExplosionForceDisablingNavMeshAgent(navMeshAgent, rigidbody));
             } else {
                 rigidbody.AddExplosionForce(force, transform.position, radius, upwardsForceModifier, ForceMode.Impulse);
+            }
+        }
+
+        IEnumerator DealDamageDelayed(Damageable damageable, DamageInfo damageInfo, float time = 0) {
+            yield return new WaitForSeconds(time);
+
+            if(damageable is not null) {
+                damageable.TakeDamage(damageInfo);
             }
         }
 
