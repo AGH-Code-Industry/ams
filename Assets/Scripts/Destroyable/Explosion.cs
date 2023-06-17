@@ -51,6 +51,9 @@ namespace Destroyable {
 
         IEnumerator AddExplosionForceDisablingNavMeshAgent(NavMeshAgent navMeshAgent, Rigidbody rigidbody) {
             navMeshAgent.enabled = false;
+            rigidbody.isKinematic = false;
+            rigidbody.useGravity = true;
+
             yield return new WaitForEndOfFrame();
             if (!rigidbody) yield break;
             rigidbody.AddExplosionForce(force, transform.position, radius, upwardsForceModifier, ForceMode.Impulse);
@@ -60,7 +63,10 @@ namespace Destroyable {
             }
             yield return new WaitForSeconds(getUpDelay);
             if (!navMeshAgent) yield break;
+
             navMeshAgent.enabled = true;
+            rigidbody.isKinematic = true;
+            rigidbody.useGravity = false;
         }
 
         IEnumerator DisableDealDamageTriggerAfterDelay() {
