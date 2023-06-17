@@ -6,7 +6,8 @@ public enum TriggerType
 {
     Collision,
     Trigger,
-    Keyboard
+    Keyboard,
+    None
 }
 
 [Serializable]
