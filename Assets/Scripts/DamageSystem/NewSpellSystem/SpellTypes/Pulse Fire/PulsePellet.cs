@@ -53,14 +53,14 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
 
         private void OnTriggerEnter(Collider other) {
             //Debug.Log("time: " + Time.time + " delayTime: " + activatePursuitTime);
-            if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
+            if (behaviour == PulseFire.PelletType.PURSUIT && Time.time > pursuitDelay  && (other.GetComponent<Damageable>() || other.GetComponent<_Enemy>())) {
                 //set target as that collider
                 target = other.gameObject;
             }
         }
 
         private void OnTriggerExit(Collider other) {
-            if (other.GetComponent<Damageable>() || other.GetComponent<Enemy>()) {
+            if (other.GetComponent<Damageable>() || other.GetComponent<_Enemy>()) {
                 //disable target
                 target = null;
             }
