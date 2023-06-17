@@ -251,6 +251,8 @@ GameObject:
   - component: {fileID: 8711057042085245425}
   - component: {fileID: 762549248117120736}
   - component: {fileID: 3287355381119200805}
+  - component: {fileID: 948478233380935316}
+  - component: {fileID: 781360887619423036}
   m_Layer: 0
   m_Name: FireEnemy
   m_TagString: Untagged
@@ -391,6 +393,49 @@ MonoBehaviour:
   UpwardStrength: 2
   ChaseSpeed: 6
   ProjectileLifetime: 3
+--- !u!114 &948478233380935316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380468802188311852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a02c8d8aaf2c944dbbd78971a87b6b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &781360887619423036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380468802188311852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3098914c204217b46b7554fbf4979fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 11400000, guid: 3aa9b482573c7b84082b68dc508c4c7a, type: 2}
+  Died:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 948478233380935316}
+        m_TargetAssemblyTypeName: DummyEnemy, Assembly-CSharp
+        m_MethodName: OnDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6724892162894662308
 GameObject:
   m_ObjectHideFlags: 0
