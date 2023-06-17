@@ -70,14 +70,14 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
 
         private void OnTriggerEnter(Collider other) {
             // Check if the detected collider is not the caster
-            if (behaviour == PulseFire.PelletType.PURSUIT && other.gameObject != damageInfo.caster && (other.GetComponent<Damageable>() || other.GetComponent<Enemy>())) {
+            if (behaviour == PulseFire.PelletType.PURSUIT && other.gameObject != damageInfo.caster && (other.GetComponent<Damageable>() || other.GetComponent<_Enemy>())) {
                 // set target as that collider
                 target = other.gameObject;
             }
         }
 
         private void OnTriggerExit(Collider other) {
-            if (other.GetComponent<Damageable>() || other.GetComponent<Enemy>()) {
+            if (other.GetComponent<Damageable>() || other.GetComponent<_Enemy>()) {
                 //disable target
                 target = null;
             }

@@ -13,6 +13,8 @@ TagManager:
   - Wall
   - Door
   - Floor
+  - Projectile
+  - Barrel
   layers:
   - Default
   - TransparentFX

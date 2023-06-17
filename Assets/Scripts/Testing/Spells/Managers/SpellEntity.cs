@@ -37,7 +37,7 @@ public class SpellEntity : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Enemy")) {
-            bool success = other.TryGetComponent(out Enemy enemy);
+            bool success = other.TryGetComponent(out _Enemy enemy);
 
             if(success == false) {
                 throw new System.Exception("Enemy is missing an Enemy-derived script!");

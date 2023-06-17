@@ -36,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!agent.enabled) return;
         isInChaseRadius = Vector3.Distance(transform.position, player.position) <= chaseRadius;
         isInAttackRadius = Vector3.Distance(transform.position, player.position) <= attackRadius;
 
