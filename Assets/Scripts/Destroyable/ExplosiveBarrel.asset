@@ -15,3 +15,4 @@ MonoBehaviour:
   isInvincible: 0
   isImmortal: 0
   maxHealth: 1
+  showDamagePopup: 0
