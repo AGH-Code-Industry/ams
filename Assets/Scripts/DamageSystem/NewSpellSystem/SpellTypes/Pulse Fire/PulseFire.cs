@@ -2,6 +2,7 @@ using DamageSystem.NewSpellSystem.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DamageSystem.ReceiveDamage.Elementals;
 
 
 namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
@@ -13,23 +14,19 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
 
         [System.Serializable]
         public enum PelletType { SIMPLE, PURSUIT }
-        /*Bug log for pursuit behaviour:
-            Posta� si� dziwnie obraca podczas u�ywania pulse Fire typu PURSUIT
-
-            Prawdopodobny pow�d:
-                Skrypt od obracania si� "trafia" w trigger u�ywany przy detekcji magnetyzmu pocisk�w, przez co posta� si� 
-                pr�buje odbi� w jego stron�.
-
-                Nie powinno by� to problemem przy lepszej implementacji systemu obracania si�, ale jest to rzecz o kt�rej
-                warto pami�ta� na przysz�o�� gdyby to nadal nie dzia�a�o.
-            
-            Tymczasowe rozwi�zanie:
-                w void AddPelletBehaviour, nadaje pelletom z PURSUIT layer Ignore Raycast, w przysz�o�ci (gdy b�dziemy u�ywa� innego
-                    sposobu na obracanie postaci) j� wywali�.
-
-         */
+        
         [System.Serializable]
         public enum CastType { CONSTANT, BURSTS }
+
+        // Variable for keeping track of how many shots remaining in a burst
+        private int burstCounter = 0;
+
+        // Delay between every pellet of a burst, could be added into spell info later on
+        private float burstDelay = 0.08f;
+
+        private float burstCooldown = 0f;
+
+        private Transform castOrigin;
 
         public override bool isPrimarySpell()
         {
@@ -45,9 +42,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
                     InitializePellet(_origin);
                     return;
                 case CastType.BURSTS:
-                    StartCoroutine(shootBurst(3, _origin));
+                    ShootBurst(3, _origin);
                     return;
-
             }
         }
     
@@ -66,12 +62,11 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
             temp = Instantiate(spellInfo.pellet, origin.position, origin.rotation) as Rigidbody;
             temp.AddForce(origin.forward * 500f);
             PulsePellet pelletInfo = temp.gameObject.AddComponent<PulsePellet>();
-            pelletInfo.lifeSpan = spellInfo.pelletLifeSpan;
-            pelletInfo.behaviour = spellInfo.pelletBehaviour;
+            
+            pelletInfo.Init(origin.GetComponentInParent<Damageable>().gameObject, spellInfo.elementals, spellInfo.pelletLifeSpan, spellInfo.pelletBehaviour, spellInfo.pelletExplosion);
 
             AddPelletBehaviour(pelletInfo, temp);
 
-            pelletInfo.AssignDamageInfo(spellInfo.elementals, origin.gameObject);
             pelletInfo.Start();
         }
 
@@ -81,14 +76,38 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
             {
                 SphereCollider col = pellet.gameObject.AddComponent<SphereCollider>();
                 col.isTrigger = true;
-                col.radius = 10; //Here we can add customizability (probably to be set in pulseFireInfo)
+                col.radius = 20; //Here we can add customizability (probably to be set in pulseFireInfo)
                 
                 //FIX dla problemu obracania postaci z uzyciem raycastowania. Ta linijka kodu nie powinna byc potrzebna p�niej.
                 pellet.gameObject.layer = 2;
             }
         }
 
-        IEnumerator shootBurst(int burstSize, Transform origin) {
+        private void Update()
+        {
+            Burst();
+        }
+
+        public void ShootBurst(int burstSize, Transform origin)
+        {
+            castOrigin = origin;
+            burstCounter = burstSize;
+        }
+
+
+        // Create a pellet if there are pellets to burst (burstCounter) and if the cooldown has elapsed (burstCooldown)
+        private void Burst()
+        {
+            if (burstCounter > 0 && Time.time > burstCooldown)
+            {
+                burstCounter--;
+                InitializePellet(castOrigin);
+                burstCooldown = Time.time + burstDelay;
+            }
+        }
+
+        // Old implementation of bursting
+        /*IEnumerator shootBurst(int burstSize, Transform origin) {
             //Can add burstSize as a modifiable variable in PulseFireInfo :)
             for (int i = 0; i < burstSize; i++)
             {
@@ -96,7 +115,7 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.PulseFire {
                 //Burst delay could also be a variable
                 yield return new WaitForSeconds(0.08f);
             }
-        }
+        }*/
 
     }
 }

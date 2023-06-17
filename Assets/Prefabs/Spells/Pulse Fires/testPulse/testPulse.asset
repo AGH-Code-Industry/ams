@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cc02d5f0b48f3419407b770bcc38b8, type: 3}
   m_Name: testPulse
   m_EditorClassIdentifier: 
+  spellName: 
+  description: 
   castTime: 0
   cooldown: 0.3
   pellet: {fileID: 5388026953992196322, guid: 0b53bb248e0945140bbd018f94aab656, type: 3}
+  pelletExplosion: {fileID: 9149499584706921010, guid: 96bc204bc90def548b4c9321c92ca4d4,
+    type: 3}
   pelletLifeSpan: 2
   castBehaviour: 0
   pelletBehaviour: 0

@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cc02d5f0b48f3419407b770bcc38b8, type: 3}
   m_Name: pursuitPulse
   m_EditorClassIdentifier: 
+  spellName: 
+  description: 
   castTime: 0
   cooldown: 0.3
   pellet: {fileID: 5388026953992196322, guid: 6be5a5ed4ccf3264d94bcebb7768ef29, type: 3}
+  pelletExplosion: {fileID: 9149499584706921010, guid: 7b6561fcc4d39824e865b29792a62d89,
+    type: 3}
   pelletLifeSpan: 3
   castBehaviour: 0
   pelletBehaviour: 1

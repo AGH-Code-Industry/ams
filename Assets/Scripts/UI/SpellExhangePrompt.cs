@@ -31,7 +31,7 @@ namespace DamageSystem.NewSpellSystem.Core.UI
         public async Task<bool> SpellExchange(List<Spell> currentSpells, Spell newSpell, PlayerSpellManager player)
         {
             state = -1;
-
+            player.canCast = false;
             exchangePrompt.SetActive(true);
 
             // Initialize buttons that we want to show
@@ -57,7 +57,10 @@ namespace DamageSystem.NewSpellSystem.Core.UI
             }
             exchangePrompt.SetActive(false);
             if (state == -2)
+            {
+                player.canCast = true;
                 return false;
+            }
             else
                 return  player.AddSpell(newSpell, currentSpells[state]);
         }

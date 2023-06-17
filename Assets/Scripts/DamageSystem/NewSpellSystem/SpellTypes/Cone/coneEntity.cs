@@ -100,7 +100,8 @@ namespace DamageSystem.NewSpellSystem.SpellTypes.Cone
             {
                 foreach (Damageable enemy in enemies)
                 {
-                    enemy.TakeDamage(damageInfo);
+                    if (enemy)
+                        enemy.TakeDamage(damageInfo);
                 }
                 cooldown = Time.time + tickRate;
             }

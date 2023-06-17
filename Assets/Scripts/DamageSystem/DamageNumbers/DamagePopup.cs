@@ -21,9 +21,12 @@ namespace DamageSystem.DamageNumbers
         private float disappearTimer;
         private Color textColor;
 
+        private Camera mainCam;
+
         private void Awake()
         {
             textMesh = transform.GetComponent<TextMeshPro>();
+            mainCam = Camera.main;
         }
 
         public void Setup(int damageAmount)
@@ -45,10 +48,15 @@ namespace DamageSystem.DamageNumbers
                 textColor.a -= disappearSpeed * Time.deltaTime;
                 textMesh.color = textColor;
                 if(textColor.a < 0)
-                {
                     Destroy(gameObject);
-                }
             }
+        }
+
+        private void LateUpdate()
+        {
+            Vector3 awayDirection = transform.position - mainCam.transform.position;
+            Quaternion awayRotation = Quaternion.LookRotation(awayDirection);
+            transform.rotation = Quaternion.Euler(awayRotation.eulerAngles.x, 0f, awayRotation.eulerAngles.z);
         }
     }
 }
