@@ -10,12 +10,17 @@ namespace Enemies.Models.MovementModels {
     public class EuclideanMovement : MovementModel{
         private NavMeshAgent _navMeshAgent;
 
-        public override void StartModel() {}
-
-        private void Start() {
+        public override void StartModel() {
             _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
             _navMeshAgent.speed = movementSpeed;
             _navMeshAgent.acceleration = acceleration;
+
+            if(NavMesh.SamplePosition(transform.position + new Vector3(0,0.1f,0), out NavMeshHit closestHit, 100f, NavMesh.AllAreas) == false) {
+                throw new Exception("Navmesh spawned too far from a viable navmesh!");
+            }
+
+            transform.position = closestHit.position;
+            _navMeshAgent.enabled = true;
         }
 
         public override void Move(Vector3 destination) {
