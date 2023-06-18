@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem.Samples.RebindUI;
+using TMPro;
 
 public class ControlsSettings : MonoBehaviour
 {
     public Button backButton;
+    public Color errorColor;
 
     public void Back() {
         SceneManager.LoadScene("SettingsMenu");
@@ -19,23 +21,41 @@ public class ControlsSettings : MonoBehaviour
         foreach (var component in rebindComponents) {
             component.ResetToDefault();
         }
+
+        ResetBindingsTextColor();
         backButton.interactable = true;
     }
 
     // Sprawdza czy wszystkie przyciski mają unikalne przypisania
     public void CheckBindingsValidity() {
-        var bindings = new List<string>();
+        var bindings = new Dictionary<string, KeyRebind>();
         var rebindComponents = FindObjectsOfType<RebindActionUI>();
+        bool areBindingsValid = true;
         foreach (var component in rebindComponents) {
             string binding = component.GetBindingString();
-            if (bindings.Contains(binding)) {
-                backButton.interactable = false;
-                return;
+            KeyRebind keyRebind = component.GetComponent<KeyRebind>();
+            keyRebind.ResetTextColor();
+
+            if (bindings.ContainsKey(binding)) {
+                areBindingsValid = false;
+                bindings[binding].SetError();
+                keyRebind.SetError();
             } else {
-                bindings.Add(binding);
+                bindings.Add(binding, keyRebind);
             }
         }
 
-        backButton.interactable = true;
+        if (!areBindingsValid) {
+            backButton.interactable = false;
+        } else {
+            backButton.interactable = true;
+        }
+    }
+
+    private void ResetBindingsTextColor() {
+        var keyRebinds = FindObjectsOfType<KeyRebind>();
+        foreach (var keyRebind in keyRebinds) {
+            keyRebind.ResetTextColor();
+        }
     }
 }
