@@ -12,6 +12,7 @@ using UnityEngine.InputSystem;
 
 public class RebindSaveLoad : MonoBehaviour
 {
+    public bool areControlsValid = true;
     public static void LoadRebinds()
     {
         var rebinds = PlayerPrefs.GetString("rebinds");
@@ -22,7 +23,7 @@ public class RebindSaveLoad : MonoBehaviour
 
     public void OnDisable()
     {
-        if (InputManager.actions == null) {
+        if (InputManager.actions == null || areControlsValid == false) {
             return;
         }
 

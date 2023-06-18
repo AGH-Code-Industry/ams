@@ -12,6 +12,13 @@ public class ControlsSettings : MonoBehaviour
     public Button backButton;
     public Color errorColor;
 
+    private RebindSaveLoad rebindSaveLoad;
+
+    void Start() {
+        rebindSaveLoad = FindObjectOfType<RebindSaveLoad>();
+        this.CheckBindingsValidity();
+    }
+
     public void Back() {
         SceneManager.LoadScene("SettingsMenu");
     }
@@ -46,8 +53,10 @@ public class ControlsSettings : MonoBehaviour
         }
 
         if (!areBindingsValid) {
+            rebindSaveLoad.areControlsValid = false;
             backButton.interactable = false;
         } else {
+            rebindSaveLoad.areControlsValid = true;
             backButton.interactable = true;
         }
     }
