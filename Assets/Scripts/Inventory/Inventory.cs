@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject slotsContainer;
     [SerializeField] private Canvas canvas;
     [SerializeField] private Item addItemTestItem;
+    [SerializeField] private InventorySliderAnimator inventoryAnimator;
     private List<InventorySlot> slots;
     private static Inventory instance;
 
@@ -22,7 +23,8 @@ public class Inventory : MonoBehaviour
     }
 
     private void Toggle() {
-        canvas.gameObject.SetActive(!canvas.gameObject.activeInHierarchy);
+        //canvas.gameObject.SetActive(!canvas.gameObject.activeInHierarchy);
+        inventoryAnimator.ShowHideMenu();
     }
 
     private void AddItemTest() {
