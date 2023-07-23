@@ -10,7 +10,14 @@ public class InputManager : MonoBehaviour
     static public List<InputAction> secondaryCastActions;
 
     private void Awake() {
+        // Zapobiega istnieniu dwóch menadżerów na raz
+        if (FindObjectsOfType<InputManager>().Length > 1) {
+            Destroy(this.gameObject);
+            return;
+        }
+
         actions = new PlayerInputActions();
+        RebindSaveLoad.LoadRebinds();
         actions.Enable();
 
         primaryCastActions = new List<InputAction>{ 
@@ -24,5 +31,7 @@ public class InputManager : MonoBehaviour
             actions.Player.SecondarySpell2,
             actions.Player.SecondarySpell3,
         };
+
+        DontDestroyOnLoad(this.gameObject);
     }
 }
