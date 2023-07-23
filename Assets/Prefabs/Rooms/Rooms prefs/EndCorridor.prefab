@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1307792134815061218}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000081956375}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -106.190094, y: 0, z: 131.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1208,7 +1208,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4191
+  m_VersionIndex: 4194
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

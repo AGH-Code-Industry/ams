@@ -18,8 +18,8 @@ GameObject:
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7250779528525899138
 Transform:
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7250779528525899149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.053936, y: 2.2882028, z: -0.22003052}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.3, y: 1.61, z: -0.22003052}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7250779528656338602}
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10103
+  m_VersionIndex: 10112
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5933
+  m_VersionIndex: 5942
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1010
+  m_VersionIndex: 1019
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 5834
+  m_VersionIndex: 5843
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6367,7 +6367,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1007
+  m_VersionIndex: 1016
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6711,7 +6711,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1010
+  m_VersionIndex: 1019
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6831,8 +6831,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7250779529990267927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.27, y: 0, z: -3.02}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 49136615050175634}
@@ -6863,7 +6863,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7250779530136182166
 Transform:
@@ -7098,7 +7098,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2087
+  m_VersionIndex: 2096
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -7355,6 +7355,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel_6 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7429,6 +7437,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_Name
       value: Barrel_6 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_RootOrder
@@ -7561,6 +7577,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (low) (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd82e91b47bf945923fc34f3635b91, type: 3}
 --- !u!4 &49136615351122327 stripped
@@ -7636,6 +7662,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (low) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd82e91b47bf945923fc34f3635b91, type: 3}
 --- !u!4 &49136615378374464 stripped
@@ -7710,6 +7746,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Box (low) (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd82e91b47bf945923fc34f3635b91, type: 3}
@@ -7861,6 +7907,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (low) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd82e91b47bf945923fc34f3635b91, type: 3}
 --- !u!4 &49136615912350496 stripped
@@ -7879,6 +7935,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_Name
       value: Barrel_6 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_RootOrder
@@ -8021,10 +8085,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.201
+      objectReference: {fileID: 0}
     - target: {fileID: 2278198950457263268, guid: 645e4e5de731c7a4aa25ea3e587580af,
         type: 3}
       propertyPath: m_Name
       value: Almirah
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457263270, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457263270, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645e4e5de731c7a4aa25ea3e587580af, type: 3}
@@ -8176,6 +8275,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (low)
       objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd82e91b47bf945923fc34f3635b91, type: 3}
 --- !u!4 &49136615050175634 stripped
@@ -8261,10 +8370,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457235590, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.411
+      objectReference: {fileID: 0}
     - target: {fileID: 2278198950457263268, guid: 645e4e5de731c7a4aa25ea3e587580af,
         type: 3}
       propertyPath: m_Name
       value: Almirah (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457263270, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2278198950457263270, guid: 645e4e5de731c7a4aa25ea3e587580af,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645e4e5de731c7a4aa25ea3e587580af, type: 3}
@@ -8341,6 +8480,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box (low) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032926682005648466, guid: 79cd82e91b47bf945923fc34f3635b91,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79cd82e91b47bf945923fc34f3635b91, type: 3}
 --- !u!4 &49136614775782025 stripped
@@ -8359,6 +8508,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_Name
       value: Barrel_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 770bdcece52ec4c88b5f2bd349f4dba5, type: 3}
       propertyPath: m_RootOrder
